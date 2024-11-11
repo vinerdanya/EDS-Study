@@ -668,7 +668,153 @@ $$F_\xi(x)=\mathbb{P}(\{\omega\in\Omega:\xi(\omega)\leqslant x\}),x\in\mathbb{R}
 \end{enumerate}
 
 
+\newpage
+\section{Многомерное распределение}
+\subsection{Случайные величины}
+Пусть $\xi_1,\ldots,\xi_n$ определены на $(\Omega,\fk,\mathbb{P})$
 
+\definition $\xi=\begin{pmatrix}
+    \xi_1\\
+    \vdots\\
+    \xi_n
+\end{pmatrix}$ — случайный вектор ИЛИ $n$-мерная случайная величина
+
+Распределение случайного вектора $\forall B\in\bk(\mathbb{R}^n)\ \prob{\xi\in B}$
+
+\subsection{Функция распределения}
+\definition Многомерной (совместной) функцией распределения $F_{\xi}(x_1,\ldots,x_n)$ называется
+\begin{equation*}
+    \prob{\xi_1\leqslant x_1,\ldots,\xi_n\leqslant x_n}
+\end{equation*}
+
+\begin{enumerate}
+    \item $F_{\xi}(x)\in[0;1]$. Здесь и далее $x=(x_1,\ldots,x_n)$
+    \item $\lim\limits_{x_1\rightarrow-\infty}F_{\xi}(x_1,x_2)=0$
+    
+    $\lim\limits_{x_1\rightarrow+\infty}F_{\xi}(x_1,x_2)=F_{\xi_2}(x_2)$
+
+    $\lim\limits_{\underset{x_2\rightarrow+\infty}{x_1\rightarrow+\infty,}}F_{\xi}(x_1,x_2)=1$
+    \item $F_{\xi}(x_1,x_2)$ не убывает по каждому из аргументов
+    \item $F_{\xi}(x_1,x_2)$ непрерынва справа по каждому из аргументов
+\end{enumerate}
+
+% \ex $F_{\xi}(x_1,x_2)=\begin{cases}
+%     0,& x_1\leqslant 0, x_1+x_2\leqslant 1\\
+%     1,& x_1>0, x_2>0, x_1+x_2 > 1
+% \end{cases}$
+
+% Показать, что выполнены свойства 1-4, но она не может быть функцией распределения
+
+\definition Случайные величины $\xi_1,\xi_2$ имеют совместное дискретное распределение, если $\exists \{a_i,b_j\}$ не более, чем счетный набор чисел
+\begin{equation*}
+    \sum_{i}\sum_{j}\prob{\xi_1=a_i,\xi_2=b_j}=1
+\end{equation*}
+
+\ex $\begin{tabular}{c|c|c|c|c}
+    & -1 & 0 & 1 & $\prob{\xi_2}$\\
+    \hline
+    -2 & 0.1 & 0.1 & 0.1 & 0.3\\
+    \hline
+    0 & 0.1 & 0.1 & 0.1 & 0.3\\
+    \hline
+    2 & 0.1 & 0.1 & 0.2 & 0.4\\
+    \hline
+    $\prob{\xi_1}$ & 0.3 & 0.3 & 0.4 & 1
+\end{tabular}$
+
+% $\begin{tabular}{c|c|c|c}
+%     $\xi_1|\xi_2=-2$ & -1 & 0 & 1\\
+%     \hline
+%     $\mathbb{P}$ & $\frac{1}{3}$ &$\frac{1}{3}$ &$\frac{1}{3}$
+% \end{tabular}$ 
+
+\definition Случайные величины $\xi_1,\xi_2$ имеют совместное абсолютно непрерывное распределение, если $\exists f_{\xi}(x_1,x_2)\geqslant 0\text{ такая, что }\forall B\in\bk(\mathbb{R}^2)$:
+\begin{equation*}
+    \prob{\xi\in B}=\iint\limits_{B} f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}
+\end{equation*}
+
+\ex $\begin{pmatrix}
+    \xi\\
+    \xi
+\end{pmatrix}$ — не имеет совместной плотности
+
+% \comment $F_{\xi}(x_1,x_2)=\displaystyle\int\limits_{-\infty}\limits^{x_1}\int\limits_{-\infty}\limits^{x_2}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}$
+
+\comment Если $f_{\xi}(x_1,x_2)$ непрерына, то 
+\begin{equation*}
+    \frac{\partial^2 F_{\xi}(x_1,x_2)}{\partial x_1\partial x_2}=f_{\xi}(x_1,x_2)
+\end{equation*}
+
+\subsection{Свойства функции плотности}
+
+\begin{enumerate}
+    \item $f_{\xi}\geqslant 0\ \forall x_1,x_2\in\mathbb{R}$
+    \item $\displaystyle\iint\limits_{\mathbb{R}^2}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}=1$
+    \item $f_{\xi_1}(x_1)=\displaystyle\int\limits_{-\infty}\limits^{\infty}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}$
+    
+    $\begin{aligned}
+        F_{\xi_1}(x_1)&=\prob{\xi_1\leqslant x_1\cap\xi_2\in\mathbb{R}}\\
+        &=\displaystyle\int\limits_{\infty}\limits^{x_1}\int\limits_{-\infty}\limits^{+\infty}f_{\xi}(t_1,x_2)\d{x_2}\d{t_1}
+    \end{aligned}$
+\end{enumerate}
+
+\ex Равномерное распределение в области $S\in\mathbb{R}^n$
+\begin{enumerate}
+    \item Имеем куб со стороной 1. Тогда $f_{\xi}(x_1,x_2,x_3)=\begin{cases}
+        \frac{1}{V}=1,& x_1,x_2,x_3\in\text{куб}\\
+        0,&\text{ иначе}
+    \end{cases}$
+    \item Имеем единичный круг в $\mathbb{R}^2$, тогда 
+    \begin{equation*}
+        f_{\xi}(x_1,x_2)=\begin{cases}
+            \frac{1}{\Pi},&x_1^2+x_2^2\leqslant 1\\
+            0,&\text{ иначе}
+        \end{cases}
+    \end{equation*}
+    \item В общем случае, для $S\in\mathbb{R}^n$
+    \begin{equation*}
+        f_{\xi}(x)=\begin{cases}
+            \frac{1}{V(S)}, & x\in S\\
+            0,& x\not\in S
+        \end{cases}
+    \end{equation*}
+\end{enumerate}
+
+\subsection{Независимость случайных величин}
+\definition $\xi_1,\ldots,\xi_n$ независимы, если $\forall B_1,\ldots,B_n\in\bk(\mathbb{R})$:
+\begin{equation*}
+    \prob{\xi_1\in B_1,\ldots,\xi_n\in B_n}=\prob{\xi_1\in B_1}\cdot\ldots\cdot\prob{\xi_n\in B_n}
+\end{equation*}
+
+\definition $\xi_1,\ldots,\xi_n$ независимы, если
+\begin{equation*}
+    F_{\xi}(x_1,\ldots,x_n)=F_{\xi_1}(x_1)\cdot\ldots\cdot F_{\xi_n}(x_n)
+\end{equation*}
+
+\definition Дискретные случайные величины $\xi_1,\xi_n$ независимы, если 
+\begin{equation*}
+    \forall a_i,b_j\ \prob{\xi_1=a_i,\xi_2=b_j}=\prob{\xi_1=a_i}\cdot\prob{\xi_2=b_j}
+\end{equation*}
+
+\definition Для абсолютно непрерывных
+\begin{equation*}
+    f_{\xi}(x_1,\ldots,\xi_n)=f_{\xi_1}(x_1)\cdot\ldots\cdot f_{\xi_n}(x_n)
+\end{equation*}
+
+\definition Копулой называется функция $C(x,y)$, опредедленная на единичном квадрате, $\begin{cases}
+    x\in[0;1]\\
+    y\in[0;1]
+\end{cases}$
+
+$C(x,1)=\begin{cases}
+    x,&x\in[0;1]\\
+    0,&x\not\in[0;1]
+\end{cases}$
+
+\theorem (Склара) Для произвольной двумерной функции распределения $F(x,y)$ с маржинальными распределениями $F_1(x)$ и $F_2(y)$ $\exists$ копула, такая что
+\begin{equation*}
+    F(x,y)=C(F_1(x),F_2(y))
+\end{equation*}
 
 
 
