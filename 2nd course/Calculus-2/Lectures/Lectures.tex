@@ -855,7 +855,7 @@ $f$ — ограничена и $\ui=\oi$. Имеем
 %     \end{cases}
 % \end{equation*}
 
-\textbf{Корректность определения.} $I_1\supset D, I_2\supset D$, тогда 
+\textbf{Корректность определения.} Пусть $I_1\supset D, I_2\supset D$, тогда 
 \begin{equation*}
     \int\limits_{I_1} f\cdot\chi_D\d{x}\text{ и }\int\limits_{I_2}f\cdot\chi_{D}\d{x}
 \end{equation*}
@@ -898,6 +898,137 @@ $f$ — ограничена и $\ui=\oi$. Имеем
 
     $\us(f,\mathbb{T}_{x,y})\leqslant \us(g(x),\mathbb{T}_x)\leqslant\os(g(x), \mathbb{T}_x)\leqslant\os(f,\mathbb{T}_{x,y})\Longrightarrow\exists \oi=\lim\limits_{\delta\rightarrow0} \us(g(x),\mathbb{T}_x)=I$
 \end{itemize}\qed
+
+
+
+\newpage
+\section{Замена переменных в кратном интеграле. Функциональные последовательности}
+\subsection{Теорема о замене переменных в кратном интеграле}
+\theorem
+Пусть имеется $M_1,M_2\in\mathbb{R}^n$ — открытые множества. $\varphi:M_1\longrightarrow M_2$ — биективно, $\varphi,\varphi^{-1}$ — непрерывно дифференцируемые отображения
+
+$D:\overline{D}\subset M_1$ — допустимое множество
+
+$f:\varphi(D)\longrightarrow\mathbb{R}$
+
+$f\in\riman{\varphi(D)}\Longleftrightarrow f(\varphi(t))\cdot|\det J_{\varphi}(t)|\in\riman{D}$ и 
+\begin{equation*}
+    \int\limits_{\varphi(D)}f(x)\d{x}=\int\limits_{D}f(\varphi(t))\cdot|\det J_{\varphi}(t)|\d{t},\text{ где } J=\begin{pmatrix}
+        \frac{\partial\varphi_1}{\partial t_1}&\ldots&\frac{\partial\varphi_1}{\partial t_n}\\
+        \vdots&\ddots&\vdots\\
+        \frac{\partial\varphi_n}{\partial t_1}&\ldots&\frac{\partial\varphi_n}{\partial t_n}
+    \end{pmatrix}
+\end{equation*}
+
+\comment $(x_1,\ldots,x_n)\overset{\varphi}{\longrightarrow}(t_1,\ldots,t_n)$, где $x_i=\varphi_i(t_1,\ldots,t_n)$
+
+\ex Ранее мы переходили к полярным координатам так: $(x,y)\rightarrow(r,\varphi)$, при этом $\begin{cases}
+    x=r\cos{\varphi}\\
+    y=r\sin{\varphi}
+\end{cases}$
+
+$J=\begin{pmatrix}
+    \cos{\varphi} & -\sin{\varphi}\cdot r\\
+    \sin{\varphi} & \cos{\varphi}\cdot r
+\end{pmatrix}$
+
+$|J_{\varphi^{-1}}|=|J_{\varphi}|^{-1}$
+
+\subsection{Функциональные последовательности}
+% $f_n(x)=\displaystyle\frac{x}{n},x\in\mathbb{R}$
+
+Пусть $X\subset\mathbb{R}$ и $f_n:X\rightarrow\mathbb{R}\ \forall n\in\mathbb{N}$.
+
+\definition Последовательность функций $\{f_n(x)\}_{n=1}^{\infty}$ \textit{сходится} в точке $x_0\in X$, если сходится соответствующая числовая последовательность $\{f_n(x_0)\}_{n=1}^{\infty}$:
+\begin{equation*}
+    x_0\in X,\ \forall\ve >0\ \exists N:\forall n>N\hookrightarrow|f_n(x_0)-a_{x_0}|<\ve\Longrightarrow a_{x_0}=\lim\limits_{n\to\infty} f_n{x_0}
+\end{equation*}
+
+\definition Множество $D\subset X$ точек, в которых последовательность функций $\{f_n(x)\}_{n=1}^{\infty}$ сходится называется \textit{множеством сходимости}
+
+\definition Пусть $D\subset X$ — множество сходимости $\{f_n(x)\}_{n=1}^{\infty}$ и $\forall x\in D$ $f_n(x)\rightarrow f(x)$. Тогда, $f(x)=\lim\limits_{n\to\infty} f_n(x)$ будем называть \textit{предельной функцией} $\{f_n(x)\}$
+
+\definition $D\subset \mathbb{R}, f,f_n:D\rightarrow\mathbb{R}$. Будем говорить, что $\{f_n(x)\}$ \textit{сходится поточечно} к $f(x)$ на $D$, если 
+\begin{equation*}
+    \forall x\in D,\ \forall\ve >0\ \exists N:\ \forall n>N\hookrightarrow|f_n(x)-f(x)|<\ve
+\end{equation*}
+
+Обозначение: $f_n(x)\overset{D}{\longrightarrow}f(x)$
+
+\subsection{Примеры функциональных последовательностей}
+\begin{enumerate}
+    \item Пусть есть $f_n(x)=\displaystyle\frac{x}{n},x\in\mathbb{R}$
+
+    Рассмотрим $x_0\in\mathbb{R}$, $f_n(x_0)=\displaystyle\frac{x_0}{n}\longrightarrow 0$ при $n\to\infty$. То есть $f(x)=0\Longrightarrow \displaystyle\frac{x}{n}\overset{\mathbb{R}}{\longrightarrow}0$
+
+    \item $f_n(x)=x^n,\ x\in[0;+\infty]$. Тогда, область сходимости — $[0;1]$
+
+    То есть, предельная функция $f(x)=\begin{cases}
+        0,&x\in[0;1)\\
+        1,&x=1
+    \end{cases}$ — \textit{не непрерывная}
+
+    Таким образом, $f_n(x)\overset{[0;1]}{\longrightarrow}f(x)$
+
+    \item $f_n(x)=\displaystyle\frac{\sin{(n^2x)}}{n}$ на $\mathbb{R}$
+
+    $\forall x_0\in\mathbb{R}\ \lim\limits_{n\to\infty}f_n(x_0)=0$
+
+    $f(x)=0;\ f_n(x)\overset{\mathbb{R}}{\longrightarrow}f(x)$
+
+    Рассмотрим $f_n^{\prime}(x)=n\cos{(n^2x)}$ — эта штука ни к чему не сходится
+
+    \item $f_n(x)=2(n+1)x(1-x^2)^n$ на $[0;1]$
+
+    $f_n(0)=0,\ f_n(1)=1$
+
+    Теперь рассмотрим $x\in(0;1)$. $f_n(x)=2(n+1)xq^n$, где $q\in(0;1)$. Тогда, при $n\to\infty$ $q^n\longrightarrow0$
+
+    $f_n(x)\overset{[0;1]}{\longrightarrow}0$
+    \begin{equation*}
+        \begin{aligned}
+            \int_0^1f(x)\d{x}&=0\\
+            \int_0^1 2(n+1)x(1-x^2)^n\d{x}&=\underbrace{-2(n+1)}_{2}\int_0^1 (1-x^2)^n\d{(-x^2+1)}\\
+            &=-\left.(1-x^2)\right\vert_0^1
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\definition Пусть $D\subset\mathbb{R};f_n,f:D\longrightarrow\mathbb{R}$. Будем говорить, что $\{f_n(x)\}$ \textit{сходится равномерно} к $f(x)$ на $D$, Если
+\begin{equation*}
+    \forall\ve>0\ \exists N:\ \forall n>N,\ \forall x\in D\text{ такое, что }|f_n(x)-f(x)|<\ve
+\end{equation*}
+
+Обозначение: $f_n\overset{D}{\rightrightarrows} f$
+
+\subsection{Супремальный критерий}
+\theorem $f_n\overset{D}{\rightrightarrows} f\Longleftrightarrow \lim\limits_{n\to\infty}\left(\sup\limits_{D} \left|f_n(x)-f(x)\right|\right)=0$
+
+\proof Докажем необходимость $(\Longrightarrow)$
+
+Заметим, что $\sup\limits_{D} \left|f_n(x)-f(x)\right|\geqslant 0$. Тогда,
+\begin{equation*}
+    \forall\ve >0\ \exists N:\ \forall n>N:\ \sup\limits_D |f_n(x)-f(x)|<\ve
+\end{equation*}
+
+$f_n\overset{D}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N,\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\frac{\ve}{2}$
+
+В худшем случае, $\sup\limits_{D} |f_n(x)-f(x)|\leqslant \frac{\ve}{2}<\ve$
+
+\proof Докажем достаточность $(\Longleftarrow)$
+
+$\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|<\ve$, тем более $\forall x\in D\ \sup \geqslant |f_n(x)-f(x)|$ 
+
+Тогда, $f_n\overset{D}{\rightrightarrows} f$\qed 
+
+% \ex Имеем $f_n(x)=\displaystyle\frac{x}{n}$ на $\mathbb{R}$
+
+% $f_n(n)$
+
+
+
+
+
 
 
 
