@@ -9,7 +9,9 @@
 \tableofcontents
 \newpage
 \setlength{\parindent}{15pt}
-\setlength{\parskip}{1.5mm} 
+\setlength{\parskip}{2mm}
+\setlist[itemize]{left=1cm}
+% \setlist[enumerate]{left=1cm}
 \section{Основные определения}
 \subsection{Определение (замкнутого) бруса (координатного промежутка, параллепипеда)}
 \definition Замкнутый брус (координатный промежуток) в $\mathbb{R}^n$ — множество, описываемое как
@@ -736,20 +738,52 @@ $$\{A_{\alpha_i}\}_{i=1}^m\cup\{\mathbb{R}^n\setminus K\}\supset I\supset K\text
         \end{equation*}
 \end{itemize}\qed
 
-\subsection{[TBA] Свойства интегральных сумм Дарбу}
+\subsection{Свойства интегральных сумм Дарбу}
+\subsubsection{Нижняя сумма Дарбу не больше верхней}
+\theorem \begin{equation*}
+    \us(f, \T) = \int_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
+\end{equation*}
+
+\proof
+\begin{equation*}
+    \begin{aligned}
+    &\us(f, \T) = \sum_{i=1}^{K}m_i|I_i| = \sum_{i}\inf_{\xi_i}(f(\xi_i))|I_i| = \inf_{\xi}\sum_{i}f(\xi_i)|I_i| = \inf_{\xi}\sigma(f, \T, \xi) \le\\
+    &\sup_{\xi}\sigma(f, \T, \xi) = \sum_i (f(\xi_i))|I_i| = \sum_{i}M_i|I_i| = \os(f, \T)
+    \end{aligned}
+    \end{equation*}
+
+\subsubsection{Монотонность сумм относительно измельчений разбиения}
+\theorem Пусть $\tilde{\T}$ - измельчение разбиения $\T$, тогда
+\begin{equation*}
+    \us(f, \T) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T)
+\end{equation*}\qed
+
+\proof Если $L \subset M$, то $\inf L \ge \inf M$ и $\sup L \le \sup M$, тогда:
+\begin{equation*}
+    \us(f, \T) \le \us(f, \tilde{\T}) \underset{\text{по 6.2}}{\le} \os (f, \tilde{\T}) \le \os (f, \T)
+\end{equation*}\qed
+
+\subsubsection{Никакая нижняя сумма Дарбу не больше какой-либо верхней суммы на том же брусе}
+\theorem $\forall \T_1, \T_2 : \quad \us(f, \T_1) \le \os(f, \T_2)$
+
+\proof $\forall \T_1, \T_2$ рассм $\tilde{\T} = \T_1 \cap \T_2$, тогда по 6.3:
+\begin{equation*}
+    \us(f, \T_1) \le \us(f, \tilde{\T}) \le \os(f, \tilde{\T}) \le \os(f, \T_2)
+\end{equation*} \qed
+
 
 \subsection{Теорема об интегралах Дарбу как пределах интегральных сумм Дарбу}
 \theorem Пусть $I\subset \R^n$ — замкнутый брус, а $f: I \mapsto \R$ — ограничена. Тогда:
 \begin{equation*}
-    \oi = \lim_{\Delta_{\T}\to0}\os(f, \T) \qquad \text{и} \qquad \ui = \lim_{\Delta_{\T} \to 0} \us(f, \T)
+    \oi = \lim_{\Delta_{\T}\to0}\os(f, \T) \text{ и } \ui = \lim_{\Delta_{\T} \to 0} \us(f, \T)
 \end{equation*}
 
 \proof Докажем, что $\ui = \displaystyle\lim_{\Delta_{\T} \to 0} \us(f, \T) \quad (= \displaystyle\sup_{\T} \us (f, \T))$
 \begin{enumerate}
     \item $f$-ограничена на $I$, то $\exists C > 0: \forall x \in I\quad |f(x)|< C$
     \item т.к. по определению $\underline{I} = \displaystyle\sup_{\T}\us(f, \T)$, то $\forall \ve > 0 \,\, \exists\T_1 = \{I_i^1\}_{i=1}^{m_1}:\ \ui-\ve < \us(f, \T_1) \le \ui < \ui + \ve$
-    \item Пусть $G = \displaystyle\bigcup_{i=1}^{m_1}\partial I_i^1$ - объединение границ брусов (без повторов). Тогда $G$ множество меры нуль по Лебегу (т.к. границы --- мн-ва меры нуль по Лебегу)
-    \item Пусть $\T_2$ - произвольное разбиение $I: \,\, \T_2 = \{I_i^2\}_{i=1}^{m_2}$ \\
+    \item Пусть $G = \displaystyle\bigcup_{i=1}^{m_1}\partial I_i^1$ — объединение границ брусов (без повторов). Тогда $G$ множество меры нуль по Лебегу (т.к. границы --- множества меры нуль по Лебегу)
+    \item Пусть $\T_2$ — произвольное разбиение $I: \,\, \T_2 = \{I_i^2\}_{i=1}^{m_2}$ \\
     Рассмотрим две кучки брусов:\\
     \begin{equation*}
     \begin{aligned}
@@ -757,7 +791,7 @@ $$\{A_{\alpha_i}\}_{i=1}^m\cup\{\mathbb{R}^n\setminus K\}\supset I\supset K\text
         \forall \ve > 0 \,\, \exists \delta > 0 : \forall \T_2: \Delta_{\T_2} < \delta \text{ верно, что } \sum_{I_i^2 \in A} |I_i^2| < \epsilon
     \end{aligned}
     \end{equation*}
-    по определению множества меры нуль, а также т.к. $A$ - покрытие замкнутыми брусами, а $G$ - мн-во меры нуль.
+    по определению множества меры нуль, а также т.к. $A$ - покрытие замкнутыми брусами, а $G$ — множество меры нуль.
 
     \item С другой стороны $\forall I_i^2 \in B$ верно, что $I_i^2 \in \T_1 \cap \T_2$
 \end{enumerate}
@@ -816,8 +850,30 @@ $f$ — ограничена и $\ui=\oi$. Имеем
 Тогда, при $\lim\limits_{\Delta\rightarrow 0} \us=\ui,\ \lim\limits_{\Delta\rightarrow0}\os=\oi$ получаем $\ui=\oi$\qed
 
 
-\subsection{[TBA] Утверждение о независимости определения допустимого множества от выбора бруса}
+\subsection{Утверждение о независимости определения допустимого множества от выбора бруса}
+Пусть $I_1\supset D, I_2\supset D$, тогда 
+\begin{equation*}
+    \int\limits_{I_1} f\cdot\chi_D\d{x}\text{ и }\int\limits_{I_2}f\cdot\chi_{D}\d{x}
+\end{equation*}
 
+либо существуют и равны, либо оба не существуют вообще
+
+Покажем существование
+\begin{itemize}
+    \item $f\cdot\chi_D\in\riman{I_1}\Longrightarrow$ по критерию Лебега $f\cdot\chi_D$ ограничена на $I_1\Longrightarrow$ $f\cdot\chi_D$ ограничена на $D\Longrightarrow f$ ограничена на $D\Longrightarrow f\cdot\chi_D$ ограничена на $I_2$
+    \item $f\cdot\chi_D\in\riman{I_1}\Longrightarrow$ по критерию Лебега $f\cdot\chi_D$ непрерывна почти всюду на $I_1\Longrightarrow f\cdot\chi_D$ непрерынва почти всюду на $D\Longrightarrow $ в худшем случае для $f\cdot\chi_D$ на $I_2$ добавятся разрывы на $\partial D\Longrightarrow f\cdot\chi_D$ непрерынва почти всюду на $I_2$ 
+    \item Тогда, $f\cdot\chi_D\in\riman{I_1}\Longleftrightarrow f\cdot\chi_D\in\riman{I_2}$
+\end{itemize}
+
+Покажем равенство
+\begin{itemize}
+    \item Пусть $\mathbb{T}_i$ — разбиение на $I_i:\mathbb{T}_1$ и $\mathbb{T}_2$ совпадают на общей части $I_1\cap I_2$
+    \item Пусть $\xi^i$ — отмеченные точки $I_i:$ совпадают на общей части
+    \item $\sigma(f\chi_D,\mathbb{T}_1,\xi^1)=\sum_{j}f\chi_D(\xi^1_j)|I_j^1|=\sum_j f(\xi^1_j)|I^1_j|=\sum_j f(\xi^2_j)|I^2_j|=\sum_j f\chi_D(\xi_j^2)|I_j^2|=\sigma(f\chi_D, \mathbb{T}_2, \xi^2)$
+\end{itemize}
+
+\comment Все свойства интеграла Римана и критерия Лебега для бруса справедливы и для других допустимых множеств
+ 
 \subsection{Теорема Фубини о переходе к повторному интегралу}
 Пусть имеются $I_x\subset\mathbb{R}^n, I_y\subset\mathbb{R}^n, I_x\times I_y\subset \mathbb{R}^{m+n}$ — замкнутые брусы, $f:I_x\times I_y\rightarrow \mathbb{R}$, $f\in\riman{I_x\times I_y}$ и $\forall$ фиксированной $x\in I_x:f(x,y)\in\riman{I_y}\Longrightarrow$
 \begin{equation*}
