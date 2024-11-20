@@ -17,7 +17,7 @@
 \definition Замкнутый брус (координатный промежуток) в $\mathbb{R}^n$ — множество, описываемое как
 \begin{equation*}
 \begin{aligned}
-    I&=\{x\in\mathbb{R}^n\ |\ a_i\leqslant x_i\leqslant q_i,\ i\in\{1,\ldots,n\}\}\\
+    I&=\{x\in\mathbb{R}^n\ |\ a_i\leqslant x_i\leqslant b_i,\ i\in\{1,\ldots,n\}\}\\
     &=\left[a_1,b_1\right]\times\ldots\times\left[a_n,b_n\right]
 \end{aligned}
 \end{equation*}
@@ -34,13 +34,13 @@
 
 
 \subsection{Определение разбиения бруса}
-\definition Пусть $I$ — замкнутый, невырожденный брус и $\displaystyle\bigcup_{i=1}^kI_i = I$, где $I_i$ попарно не имеют общих внутренних точек. Тогда набор $\T = \{\T\}_{i=1}^k$ называется разбиением бруса $I$
+\definition Пусть $I$ — замкнутый, невырожденный брус и $\displaystyle\bigcup_{i=1}^kI_i = I$, где $I_i$ попарно не имеют общих внутренних точек. Тогда набор $\T = \{I_i\}_{i=1}^k$ называется разбиением бруса $I$
 
 \subsection{Определение диаметра множества в $\mathbb{R}^n$}
 \definition Диаметр произвольного ограниченного множества $M\subset\R^n$ будем называть 
 \begin{equation*}
 \begin{aligned}
-    d(M) = \displaystyle\sup_{1\leqslant i\leqslant k}\|x-y\|,\text{ где}\\
+    d(M) = \displaystyle\sup_{x,y\in M}\|x-y\|,\text{ где}\\
     \|x-y\|=\sqrt{\sum_{i=1}^{n}\left(x_i-y_i\right)^2}
 \end{aligned}
 \end{equation*}
@@ -49,7 +49,7 @@
 \definition Множество $M\subset \mathbb{R}^n$ называется \textit{ограниченным}, если $$\exists x_0\in\mathbb{R}^n\text{ и }\exists r>0\text{, такой что }M\subset B_{r}(x_0)$$
 
 \subsection{Определение масштаба (диаметра) разбиения}
-\definition Масштаб разбиения $\T=\{I_i\}_{i=1}^k$ — число $\lambda(\T) = \Delta_{\T} = \displaystyle\max_{1\le i\le k} d(I_i)$
+\definition Масштаб разбиения $\T=\{I_i\}_{i=1}^k$ — число $\lambda(\T) = \Delta_{\T} = \displaystyle\max_{1\leqslant i\leqslant k} d(I_i)$
 
 \subsection{Определения отмеченных точек и размеченного разбиения}
 \definition Пусть $\forall\ I_i$ выбрана точка $\xi_i\in I_i$. Тогда, набор $\xi = \{\xi_i\}_{i=1}^k$ будем называть \textbf{отмеченными точками}
@@ -65,9 +65,9 @@ $$\sigma(f, \T, \xi) := \sum_{i=1}^kf(\xi_i)\cdot|I_i|$$
 \subsection{Определение интегрируемой по Риману функции на замкнутом брусе в $\mathbb{R}^n$}
 \definition Функция $f$ интегрируема по Риману на замкнутом брусе $I$ ($f:I\rightarrow\R$), если 
 \begin{equation*}
-    \exists A\in\R: \forall \varepsilon > 0\, \exists \delta > 0: \forall(\T, \xi): \Delta_{\T} < \delta:\text{ верно }|\sigma(f, \T, \xi)| - A| < \varepsilon
+    \exists A\in\R: \forall \varepsilon > 0\ \exists \delta > 0: \forall(\T, \xi): \Delta_{\T} < \delta:\text{ верно }|\sigma(f, \T, \xi) - A| < \varepsilon
 \end{equation*}
-Тогда $A$ называется \textit{кратным интегралом} и 
+Тогда $A$ называется \textit{кратным интегралом Римана} и 
 $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d{x_1}\ldots \d{x_n}$$
 Обозначение: $f\in\mathcal{R}(I)$
 
@@ -117,10 +117,10 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
 \definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{изолированной} точкой $M$, если $$\exists \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M=\varnothing$$ 
 
 \subsection{Определение предельной точки множества}
-\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{предельной} точкой $M$, если $$\exists \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing$$ 
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{предельной} точкой $M$, если $$\forall \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing$$ 
 
 \subsection{Определение точки прикосновения множества}
-\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{точкой прикосновения} $M$, если $$\exists \ve>0:\ B_{\ve}(x_0)\cap M\ne\varnothing$$ 
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{точкой прикосновения} $M$, если $$\forall \ve>0:\ B_{\ve}(x_0)\cap M\ne\varnothing$$ 
 
 \subsection{Определение открытого множества}
 \definition Множество $M\subset\mathbb{R}^n$ называется \textit{открытым}, если все его точки внутренние
