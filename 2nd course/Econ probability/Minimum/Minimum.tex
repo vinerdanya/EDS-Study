@@ -600,7 +600,7 @@ $\xi_i\sim\text{Pois}(\lambda=3)$ — число сбоев за $i$-е сутк
         \end{aligned}
     \end{equation*}
     $\Longrightarrow $ величины $X$ и $Y$ \textit{не} независимы
-    \item $F_{X,Y}(-1;0)=\twoprob{X=-1}{\cap}{Y=-1}+\twoprob{X=-1}{\cap}{Y=0}=0.2+0.1=0.3$
+    \item $F_{X,Y}(-1;0)=\twoprob{X\leqslant-1}{\cap}{Y\leqslant0}=\twoprob{X=-1}{\cap}{Y=-1}+\twoprob{X=-1}{\cap}{Y=0}=0.2+0.1=0.3$
     \item \begin{tabular}{c|c}
         $X$&$\mathbb{P}$\\
         \hline
@@ -625,26 +625,81 @@ $\xi_i\sim\text{Pois}(\lambda=3)$ — число сбоев за $i$-е сутк
     \end{cases}$
     \item $\begin{tikzpicture}
         \draw[black, ->, thick] (-2,0) -- (3,0) node [right] {$x$};
-        \draw[black, ->, thick] (0,0) -- (0,2) node [above left] {$F(x)$};
+        \draw[black, ->, thick] (0,0) -- (0,2) node [above left] {$F_X(x)$};
         \draw[black, thin] (-1,0.5) -- (1,0.5);
         \fill[black] (-1,0.5) circle (1.5pt);
         \draw[black, thin] (1,1) -- (2.5,1);
         \fill[black] (1,1) circle (1.5pt);
-        \fill[white] (1,0.5) circle (1.5pt);
+        \draw (1,0.5) circle (1.5pt);
+        \draw (-1,0) node [black, below] {$-1$} circle (1.5pt);
+        \draw[black] (1,0) node [black, below] {$1$};
+        \draw[black] (0,0.5) node [black, left] {$0.5$};
+        \draw[black] (0,1) node [black, left] {$1$};
     \end{tikzpicture}$
 \end{itemize}
 
-\subsection{[TBA] Пусть задана таблица совместного распределения случайных величин $X$ и $Y$}
+\subsection{Пусть задана таблица совместного распределения случайных величин $X$ и $Y$}
 \begin{equation*}
     \begin{tabular}{cccc}
         \hline
         &$Y=-1$&$Y=0$&$Y=1$\\
         \hline
         $X=-1$&0.2&0.1&0.2\\
-        $X=1$&0.1&0.3&0.1\\
+        $X=1$&0.2&0.1&0.2\\
         \hline
     \end{tabular}
 \end{equation*}
+Найдите
+\begin{itemize}
+    \item $\prob{X=1}=0.2+0.1+0.2=0.5$
+    \item $\prob{Y=1}=0.2+0.2=0.4$
+    \item $\twoprob{X=1}{\cap}{Y=1}=0.2$
+    \item Проверим, выполняется ли 
+    \begin{equation*}
+        \begin{aligned}
+            \twoprob{X=1}{\cap}{Y=1}&=\prob{X=1}\cdot\prob{Y=1}\\
+            0.2&=0.5\cdot0.4
+        \end{aligned}
+    \end{equation*}
+    $\Longrightarrow $ величины $X$ и $Y$ независимы
+    \item $\begin{aligned}
+        F_{X}(1;0)&=\twoprob{X\leqslant1}{\cap}{Y\leqslant0}\\
+        &=\twoprob{X=-1}{\cap}{Y=-1}+\twoprob{X=-1}{\cap}{Y=0}\\
+        &+\twoprob{X=1}{\cap}{Y=-1}+\twoprob{X=1}{\cap}{Y=0}\\
+        &=0.2+0.1+0.2+0.1\\
+        &=0.6
+    \end{aligned}$
+    \item \begin{tabular}{c|c}
+        $Y$&$\mathbb{P}$\\
+        \hline
+        $-1$&$0.4$\\
+        \hline
+        $0$&$0.2$\\
+        \hline
+        $1$&$0.4$
+    \end{tabular}
+    \item $F_{Y}(y)=\prob{Y\leqslant y}=\begin{cases}
+        0,&y<-1\\
+        0.4,&y\in[-1;0)\\
+        0.6,&y\in[0;1)\\
+        1,&y\geqslant1
+    \end{cases}$
+    \item $\begin{tikzpicture}
+        \draw[black, ->, thick] (-2,0) -- (3,0) node [right] {$x$};
+        \draw[black, ->, thick] (0,0) -- (0,2) node [above left] {$F_X(x)$};
+        \draw[black, thin] (-1,0.4) -- (0,0.4);
+        \draw[black, thin] (1,1) -- (2.5,1);
+        \fill[black] (-1,0.4) circle (1.5pt);
+        \draw[black, thin] (0,0.6) -- (1,0.6);
+        \fill[black] (1,1) circle (1.5pt);
+        \draw (0,0.4) node [black, left] {$0.4$} circle (1.5pt);
+        \draw[fill=black] (0,0.6) node [black, right] {$0.6$} circle (1.5pt);
+        \draw (1,0.6) circle (1.5pt);
+        \draw (-1,0) node [black, below] {$-1$} circle (1.5pt);
+        \draw[black] (1,0) node [black, below] {$1$};
+        \draw[black] (0,1) node [black, left] {$1$};
+    \end{tikzpicture}$
+\end{itemize}
 
 
 
