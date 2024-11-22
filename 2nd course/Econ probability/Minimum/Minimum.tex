@@ -97,116 +97,146 @@ $P(A|B)=\displaystyle\frac{P(A\cap B)}{P(B)}\ \forall B: P(B)>0$
     \end{aligned}
 \end{equation*}
 
+
 \subsection{Дайте определение функции распределения $F_X (x)$ случайной величины $X$. Укажите необходимые и достаточные условия для того, чтобы функция была функцией распределения некоторой случайной величины}
-\definition Пусть $\xi:\Omega\rightarrow\mathbb{R}$ — $\fk$-измеримая функция. Функция $F_\xi:\mathbb{R}\longrightarrow[0;1]\ \forall x$ равная
-$$\mathbb{P}(\{\omega\in\Omega:\xi(\omega)\leqslant x\}),x\in\mathbb{R}$$
-называется \textbf{функцией распределения} случайной величины $\xi$
-
-Необходимые условия
-\begin{enumerate}
-    \item $\exists$ пределы $\lim\limits_{x\to\infty}F_\xi(x)=1,\ \lim\limits_{x\to-\infty}F_\xi(x)=0$
-    \item $F_\xi$ не убывает: $F_\xi(x_1)\leqslant F_\xi(x_2)\ \forall x_1\leqslant x_2$
-    \item $F_\xi$ непрерывна справа: $\lim\limits_{x\to x_0+}F_\xi(x)=F_\xi(x_0)$
-\end{enumerate}
-
-Если функция $F:\mathbb{R}\longrightarrow[0;1]$ удовлетворяет данным свойствам, то она является функцией распределения некоторой случайной величины, то есть найдётся вероятностное пространство $(\Omega,\fk,\mathbb{P})$ и определённая на нём случайная величина $\xi$ такая, что $$F(x)=F_{\xi}(x)\ \forall x\in\mathbb{R}$$
-
-
-
-\subsection{Дайте определение функции распределения $f_X (x)$ случайной величины $X$. Укажите необходимые и достаточные условия для того, чтобы функция была функцией плотности некоторой случайной величины}
-\definition Случайная величина $\xi$ называется \textbf{абсолютно непрерывной}, если $\exists f_\xi(x)\geqslant 0$, что функция распределения представима в виде интеграла:
+\definition Функцией рапсредделния случайной величины $X$ называется функция 
 \begin{equation*}
-    F_\xi(x)=\int\limits_{-\infty}^xf_\xi(x)\d{x}
+    F_X(x):=\prob{X\leqslant x},x\in\mathbb{R}
 \end{equation*}
 
-\definition Функция $f_\xi(x)$ называется \textbf{функцией плотности вероятности}
+\theorem Функция $G:\mathbb{R}\to[0;1]$ является функцией распределения некоторой случайной величины $\xi\Longleftrightarrow$
+\begin{itemize}
+    \item $G(x)$ является нестрого возрастающей, то есть $\forall x_1,x_2, x_1\leqslant x_2\ G(x_1)\leqslant G(x_2)$
+    \item $G(x)$ является непрерывной справа в каждой точке $x\in\mathbb{R}$, то есть $\forall x\in\mathbb{R}\ \lim\limits_{y\to x+0} G(y)=G(x)$
+    \item $\lim\limits_{x\to-\infty} G(x)=0$ и $\lim\limits_{x\to+\infty} G(x)=1$
+\end{itemize}
 
-Если некая функция $g(x)$ удовлетворяет следующим свойствам, то она является
-функцией плотности распределения некоторой случайной величины
-\begin{enumerate}
-    \item $f_\xi(x)\geqslant 0, \forall x\in\mathbb{R}$
-    \item $\displaystyle\int\limits_{-\infty}^{+\infty}f_\xi(x)\d{x}=1$ — условие нормировки
-\end{enumerate}
+\subsection{Дайте определение функции плотности $f_X (x)$ случайной величины $X$. Укажите необходимые и достаточные условия для того, чтобы функция была функцией плотности некоторой случайной величины}
+\definition Говорят, что случайная величина $X$ является абсолютно непрерывной, если ее функция распределения $F_{X}(x)$ представима в виде
+\begin{equation*}
+    F_X(x):=\int\limits_{-\infty}^{+\infty}f_X(t)\d{t},x\in\mathbb{R},
+\end{equation*}
+где $f_X(t)$ — неотрицательная интегрируемая функция, которая называется \textit{плотностью распределения} случайной величины $X$
+
+\theorem Функция $g:\mathbb{R}\to[0;+\infty)$ является плотностью распределения некоторой случайной величины $\xi$ тогда и только тогда, когда $\displaystyle\int\limits_{-\infty}^{+\infty} g(x)\d{x}=1$
 
 \subsection{Дайте определение математического ожидания для дискретных и абсолютно непрерывных случайных величин. Укажите, чему равно $\matwait{\alpha X+\beta Y}$, где $X$ и $Y$ — случайные величины, а $\alpha$ и $\beta$ — произвольные константы}
-\definition \textit{Математическим ожиданием} $\matwait{\xi}$ случайной величины $\xi$ с \textbf{дискретным распределением} называется число 
+\definition Пусть дискретная случайная величина $X$ принимает значения $a_1,a_2,\ldots,a_k,\ldots$ и ряд 
 \begin{equation*}
-    \matwait{\xi}=\sum_{\omega\in\Omega}\xi(\omega)\prob{\omega}\footnote[1]{В учебнике Черновой дано такое выражение: $\matwait{\xi}=\sum_k a_k p_k=\sum_{k} a_k \prob{\xi=a_k}$, что, в приницпе, эквивалентно},
+    \sum_{k=1}^{\infty}|a_k|\cdot\prob{X=a_k}
 \end{equation*}
-если данный ряд сходится \textit{абсолютно}
+сходится
 
-\definition \textit{Математическим ожиданием} $\matwait{\xi}$ случайной величины $\xi$ с \textbf{абсолютно непрерывным} распределением с плотностью распределения $f_{\xi}(x)$ называется число 
+Тогда, математическим ожиданием случайной величины $X$ называется
 \begin{equation*}
-    \matwait{\xi}=\int\limits_{-\infty}^{+\infty}xf_{\xi}(x)\d{x},
+    \matwait{X}=\sum_{k=1}^{\infty}a_k\cdot\prob{X=a_k}
 \end{equation*}
-если этот интеграл сходится \textit{абсолютно}
 
-По свойствам математического ожидания: $\matwait{\alpha X+\beta Y}=\alpha\matwait{X}+\beta\matwait{Y}$
+\definition Пусть случайная величина $X$ является абсолютно непрерывной и интеграл
+\begin{equation*}
+    \int\limits_{-\infty}^{+\infty}|x|f_{X}(x)\d{x}
+\end{equation*}
+сходится
+
+Тогда, математическим ожиданием случайной величины $X$ называется 
+\begin{equation*}
+    \matwait{X}=\int\limits_{-\infty}^{+\infty}xf_X(x)\d{x}
+\end{equation*}
+
+\theorem Пусть случайные величины $X$ и $Y$ имеют конечное математическое ожидание\\
+Тогда, $\forall \alpha,\beta\in\mathbb{R}$ случайная величина $\alpha X+\beta Y$ тоже имеет конечное математичское ожидание и 
+\begin{equation*}
+    \matwait{\alpha X+\beta Y}=\alpha\matwait{X}+\beta\matwait{Y}
+\end{equation*}
 
 \subsection{Дайте определение дисперсии случайной величины. Укажите, чему равно $\dispersia{\alpha X+\beta}$, где $X$ — случайная величина, а $\alpha$ и $\beta$ — произвольные константы}
-\definition Дисперсией случайной величины $\xi$ называется число
+\definition Пусть случайная величина $X$ имеет конечное математическое ожидание, тогда дисперсией случайной величины $X$ называется 
 \begin{equation*}
-    \dispersia{\xi}=\matwait{(\xi-\matwait{\xi})^2}
+    \dispersia{X}=\matwait{(X-\matwait{X})^2}
 \end{equation*}
 
-По свойствам дисперсии: $\dispersia{\alpha X+\beta}=\alpha^2\dispersia{X}$
+\theorem Пусть случайная величина $X$ имеет конечное математическое ожидание, тогда $\forall \alpha,\beta\in\mathbb{R}$
+\begin{equation*}
+    \dispersia{\alpha X+\beta}=\alpha^2\dispersia{X}
+\end{equation*}
+
 
 \subsection{Укажите математическое ожидание, дисперсию, множество значений, принимаемых с ненулевой вероятностью, а также функцию плотности или функцию вероятности}
 \begin{enumerate}
-    \item \textbf{Биномиальное} 
+    \item \textbf{Биномиальное.} Случайная величина $X$ имеет биномиальное распределение с параметрами\\ $n\in\mathbb{N},\ p\in(0;1)$, пишут $X\sim Bi(n,p)$, если случайная величина $X$ принимает значения $0,1,2,\ldots,n$ с вероятностями 
     \begin{itemize}
+        \item $\prob{\xi=k}=C_n^k p^k (1-p)^{n-k}$, где $k=0,1,\ldots,n$
         \item $\matwait{\xi}=np$
         \item $\dispersia{\xi}=np(1-p)$
-        \item $\prob{\xi=k}=C_n^k p^k (1-p)^{n-k}$, где $k=0,1,\ldots,n$
     \end{itemize}
-    \item \textbf{Пуассоновское} — $Pois(\lambda)$
+    \item \textbf{Пуассоновское.} Случайная величина $X$ имеет распределение Пуассона с параметром $\lambda>0$, пишут $X\sim Pois(\lambda)$, если случайная величина $X$ принимает значения с вероятностями
     \begin{itemize}
+        \item $\prob{\xi=k}=\displaystyle\frac{\lambda^k}{k!}e^{-\lambda}$, где $k\in\{0,1,\ldots\}$
         \item $\matwait{\xi}=\lambda$
         \item $\dispersia{\xi}=\lambda$
-        \item $\prob{\xi=k}=\displaystyle\frac{\lambda^k}{k!}e^{-\lambda}$, где $k=0,1,\ldots$
     \end{itemize}
-    \item \textbf{Геометрическое} ($\xi$ — номер первого успешного испытания)
+    \item \textbf{Геометрическое.} Случайная величина $X$ имеет геометрическое распределение с параметром $p\in(0;1)$, пишут $X\sim Geom(p)$, если случайная величина $X$ принимает значения $k\in\{1,2,3,\ldots\}$ с вероятностями
     \begin{itemize}
+        \item $\prob{\xi=k}=p(1-p)^{k-1}$
         \item $\matwait{\xi}=\displaystyle\frac{1}{p}$
         \item $\dispersia{\xi}=\displaystyle\frac{1-p}{p^2}$
-        \item $\prob{\xi=k}=p(1-p)^{k-1}$
     \end{itemize}
-    \item \textbf{Равномерное}
+    \item \textbf{Равномерное.} Случайная величина $X$ имеет равномерное распределение на отрезке $[a;b]$, где $a<b$, пишут $X\sim U[a;b]$, если случайная величина $X$ имеет плотность 
     \begin{itemize}
-        \item $\matwait{\xi}=\displaystyle\frac{a+b}{2}$
-        \item $\dispersia{\xi}=\displaystyle\frac{(b-a)^2}{12}$
+        \item $f_{\xi}(x)=\begin{cases}
+            \frac{1}{b-a},&\text{ если }x\in[a;b]\\
+            0,&\text{ если }x\not\in[a;b]
+        \end{cases}$
         \item $F_{\xi}(x)=\begin{cases}
             0,&\text{ если }x<a\\
             \frac{x-a}{b-a},&\text{ если }x\in[a;b]\\
             1,&\text{ если }x>b
         \end{cases}$
-        \item $f_{\xi}(x)=\begin{cases}
-            \frac{1}{b-a},&\text{ если }x\in[a;b]\\
-            0,&\text{ если }x\not\in[a;b]
-        \end{cases}$
+        \item $\matwait{\xi}=\displaystyle\frac{a+b}{2}$
+        \item $\dispersia{\xi}=\displaystyle\frac{(b-a)^2}{12}$
     \end{itemize}
-    \item \textbf{Экспоненциальное} с параметром $\lambda$
+    \item \textbf{Экспоненциальное (показательное).} Случайная величина $X$ имеет экпоненциальное распределение с параметром $\lambda>0$, пишут $X\sim Exp(\lambda)$, если случайная величина $X$ имеет плотность
     \begin{itemize}
-        \item $\matwait{\xi}=\displaystyle\frac{1}{\lambda}$
-        \item $\dispersia{\xi}=\displaystyle\frac{1}{\lambda^2}$
-        \item $F_{\xi}(x)=\begin{cases}
-            1-e^{-\lambda x},&\text{ если }x\geqslant0\\
-            0,&\text{ если }x<0
-        \end{cases}$
         \item $f_{\xi}(x)=\begin{cases}
             \lambda e^{-\lambda x},&x\geqslant0\\
             0,&x<0
         \end{cases}$
+        \item $F_{\xi}(x)=\begin{cases}
+            1-e^{-\lambda x},&\text{ если }x\geqslant0\\
+            0,&\text{ если }x<0
+        \end{cases}$
+        \item $\matwait{\xi}=\displaystyle\frac{1}{\lambda}$
+        \item $\dispersia{\xi}=\displaystyle\frac{1}{\lambda^2}$
     \end{itemize}
 \end{enumerate}
 
 \subsection{Сформулируйте определение функции совместного распределения двух случайных величин, независимости случайных величин. Укажите, как связаны совместное распределение и частные распределения компонент случайного вектора}
-\definition Многомерной (совместной) функцией распределения $F_{\xi}(x_1,\ldots,x_n)$ называется
+\definition Совместной функцией распределения случайных величин $X$ и $Y$ называется функция
 \begin{equation*}
-    \prob{\xi_1\leqslant x_1,\ldots,\xi_n\leqslant x_n}
+    F_{X,Y}(x,y):=\twoprob{X\leqslant x}{\cap}{Y\leqslant y}, x\in\mathbb{R},y\in\mathbb{R}
 \end{equation*}
 
-Свойства многомерного распределения
+\definition Случайные величины $X$ и $Y$ независимы, если $\forall B_1,B_2\in\bk(\mathbb{R})$ события $\{X\in B_1\}$ и $\{Y\in B_2\}$ являются независимыми, то есть
+\begin{equation*}
+    \twoprob{X\in B_1}{\cap}{Y\in B_2}=\prob{X\in B_1}\cdot\prob{Y\in B_2}
+\end{equation*}
+
+\theorem Случайные величины $X$ и $Y$ независимы тогда и только тогда, когда
+\begin{equation*}
+    F_{X,Y}(x,y)=F_{X}(x)\cdot F_{Y}(y),\ \forall x\in\mathbb{R},\forall y\in\mathbb{R}
+\end{equation*}
+
+\theorem (в дискретном случае). Пусть случайная величина $X$ принимает значения $a_1,\ldots,a_m$, случайная величина $Y$ принимает значения $b_1,\ldots,b_n$, тогда случайные величины $X$ и $Y$ независимы $\Longleftrightarrow \forall i\in\{1,\ldots,m\},\forall j\in\{1,\ldots,n\}$ события $\{X=a_i\}$ и $\{Y=b_j\}$ независимы, то есть
+\begin{equation*}
+    \twoprob{X=a_i}{\cap}{Y=b_j}=\prob{X=a_i}\cdot\prob{Y=b_j}
+\end{equation*}
+
+\theorem (в абсолютно непрерывном). Пусть случайный вектор $(X,Y)$ имеет абсолютно непрерывное распредедение. Тогда, случайные величины $X$ и $Y$ независимы $\Longleftrightarrow$
+\begin{equation*}
+    f_{X,Y}(x,y)=f_X(x)\cdot f_{Y}(y),\forall x\in\mathbb{R},\forall y\in\mathbb{R}
+\end{equation*}
+
+\theorem
 \begin{enumerate}
     \item $F_{\xi}(x)\in[0;1]$. Здесь и далее $x=(x_1,\ldots,x_n)$
     \item $\lim\limits_{x_1\rightarrow-\infty}F_{\xi}(x_1,x_2)=0$
@@ -218,53 +248,29 @@ $$\mathbb{P}(\{\omega\in\Omega:\xi(\omega)\leqslant x\}),x\in\mathbb{R}$$
     \item $F_{\xi}(x_1,x_2)$ непрерынва справа по каждому из аргументов
 \end{enumerate}
 
-\definition $\xi_1,\ldots,\xi_n$ независимы, если $\forall B_1,\ldots,B_n\in\bk(\mathbb{R})$:
-\begin{equation*}
-    \prob{\xi_1\in B_1,\ldots,\xi_n\in B_n}=\prob{\xi_1\in B_1}\cdot\ldots\cdot\prob{\xi_n\in B_n}
-\end{equation*}
-
-\definition $\forall x_1,\ldots,x_n\in\mathbb{R}^n$ независимы, если
-\begin{equation*}
-    F_{\xi}(x_1,\ldots,x_n)=F_{\xi_1}(x_1)\cdot\ldots\cdot F_{\xi_n}(x_n)
-\end{equation*}
-
 \subsection{Сформулируйте определение совместной функции плотности двух случайных величин. Укажите необходимые и достаточные условия для того, чтобы функция была совместной функцией плотности некоторой пары случайных величин. Сформулируйте определение независимости случайных величин}
-\definition Случайные величины $\xi_1,\xi_2$ имеют совместное абсолютно непрерывное распределение, если $\exists f_{\xi}(x_1,x_2)\geqslant 0\text{ такая, что }\forall B\in\bk(\mathbb{R}^2)$:
+\definition Случайный вектор $(X,Y)$ имеет абсолютно непрерывное распределение, если совместнаяфункция распределения $F_{X,Y}(x,y)$ представима в виде
 \begin{equation*}
-    \prob{\xi\in B}=\iint\limits_{B} f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}
+    F_{X,Y}(x,y)=\int\limits_{-\infty}^{x}\int\limits_{-\infty}^{y} f_{X,Y}(s,t)\d{s}\d{t},\ \forall x,y\in\mathbb{R},
 \end{equation*}
+где $f_{X,Y}(s,t)$ — неотрицательная интегрируемая функция, называемая плотностью распределения случайного вектора $(X,Y)$
 
+\theorem Функция $g:\mathbb{R}^2\to[0;+\infty)$ является плотностью распределения случайного вектора $(X,Y)\Longleftrightarrow$
+\begin{equation*}
+    \iint\limits_{\mathbb{R}^2}g(x,y)\d{x}\d{y}=1
+\end{equation*} 
+
+\theorem
 \begin{enumerate}
-    \item $f_{\xi}\geqslant 0\ \forall x_1,x_2\in\mathbb{R}$
-    \item $\displaystyle\iint\limits_{\mathbb{R}^2}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}=1$
-    \item $f_{\xi_1}(x_1)=\displaystyle\int\limits_{-\infty}\limits^{\infty}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}$
+    \item $F_{\xi}(x)\in[0;1]$. Здесь и далее $x=(x_1,\ldots,x_n)$
+    \item $\lim\limits_{x_1\rightarrow-\infty}F_{\xi}(x_1,x_2)=0$
     
-    $\begin{aligned}
-        F_{\xi_1}(x_1)&=\prob{\xi_1\leqslant x_1\cap\xi_2\in\mathbb{R}}\\
-        &=\displaystyle\int\limits_{\infty}\limits^{x_1}\int\limits_{-\infty}\limits^{+\infty}f_{\xi}(t_1,x_2)\d{x_2}\d{t_1}
-    \end{aligned}$
+    $\lim\limits_{x_1\rightarrow+\infty}F_{\xi}(x_1,x_2)=F_{\xi_2}(x_2)$
+
+    $\lim\limits_{\underset{x_2\rightarrow+\infty}{x_1\rightarrow+\infty,}}F_{\xi}(x_1,x_2)=1$
+    \item $F_{\xi}(x_1,x_2)$ не убывает по каждому из аргументов
+    \item $F_{\xi}(x_1,x_2)$ непрерынва справа по каждому из аргументов
 \end{enumerate}
-
-Если некоторая функция $g(x)$ удовлетворяет данным свойствам, то она является совместной функцией плотности распределения для некоторой пары случайных величин
-
-\definition $\xi_1,\ldots,\xi_n$ независимы, если $\forall B_1,\ldots,B_n\in\bk(\mathbb{R})$:
-\begin{equation*}
-    \prob{\xi_1\in B_1,\ldots,\xi_n\in B_n}=\prob{\xi_1\in B_1}\cdot\ldots\cdot\prob{\xi_n\in B_n}
-\end{equation*}
-
-\definition $\forall x_1,\ldots,x_n\in\mathbb{R}^n$ независимы, если
-\begin{equation*}
-    F_{\xi}(x_1,\ldots,x_n)=F_{\xi_1}(x_1)\cdot\ldots\cdot F_{\xi_n}(x_n)
-\end{equation*}
-
-
-
-
-
-
-
-
-
 
 
 \newpage
@@ -555,6 +561,91 @@ $\xi_i\sim\text{Pois}(\lambda=3)$ — число сбоев за $i$-е сутк
         \end{aligned}
     \end{equation*}
 \end{enumerate}
+
+
+\subsection{[TBA] Пусть случайная величина $X$ имеет следующую функцию плотности...}
+Дана функция плотности $f_{X}(x)=\begin{cases}
+    cx,&x\in[0;1]\\
+    0,&x\not\in[0;1]
+\end{cases}$
+
+\subsection{[TBA] Пусть случайная величина $X$ имеет следующую функцию плотности...}
+Дана функция плотности $f_{X}(x)=\begin{cases}
+    cx,&x\in[0;1]\\
+    0,&x\not\in[0;1]
+\end{cases}$
+
+\subsection{Пусть задана таблица совместного распределения случайных величин $X$ и $Y$}
+\begin{equation*}
+    \begin{tabular}{cccc}
+        \hline
+        &$Y=-1$&$Y=0$&$Y=1$\\
+        \hline
+        $X=-1$&0.2&0.1&0.2\\
+        $X=1$&0.1&0.3&0.1\\
+        \hline
+    \end{tabular}
+\end{equation*}
+
+Найдите
+\begin{itemize}
+    \item $\prob{X=-1}=0.2+0.1+0.2=0.5$
+    \item $\prob{Y=-1}=0.2+0.1=0.3$
+    \item $\twoprob{X=-1}{\cap}{Y=-1}=0.2$ %(пересечение столбца $Y=-1$ и строки $X=-1$)
+    \item Проверим, выполняется ли 
+    \begin{equation*}
+        \begin{aligned}
+            \twoprob{X=-1}{\cap}{Y=-1}&=\prob{X=-1}\cdot\prob{Y=-1}\\
+            0.2&\ne0.3\cdot0.5
+        \end{aligned}
+    \end{equation*}
+    $\Longrightarrow $ величины $X$ и $Y$ \textit{не} независимы
+    \item $F_{X,Y}(-1;0)=\twoprob{X=-1}{\cap}{Y=-1}+\twoprob{X=-1}{\cap}{Y=0}=0.2+0.1=0.3$
+    \item \begin{tabular}{c|c}
+        $X$&$\mathbb{P}$\\
+        \hline
+        $-1$&$0.5$\\
+        \hline
+        $1$&$0.5$
+    \end{tabular}
+
+    \comment Для случайной величины $Y$ таблица распределения выглядит так: \begin{tabular}{c|c}
+        $Y$&$\mathbb{P}$\\
+        \hline
+        $-1$&$0.3$\\
+        \hline
+        $0$&$0.4$\\
+        \hline
+        $1$&$0.3$
+    \end{tabular}
+    \item $F_{X}(x)=\prob{X\leqslant x}=\begin{cases}
+        0,&x<-1\\
+        0.5,&x\in[-1;1)\\
+        1,&x\geqslant 1
+    \end{cases}$
+    \item $\begin{tikzpicture}
+        \draw[black, ->, thick] (-2,0) -- (3,0) node [right] {$x$};
+        \draw[black, ->, thick] (0,0) -- (0,2) node [above left] {$F(x)$};
+        \draw[black, thin] (-1,0.5) -- (1,0.5);
+        \fill[black] (-1,0.5) circle (1.5pt);
+        \draw[black, thin] (1,1) -- (2.5,1);
+        \fill[black] (1,1) circle (1.5pt);
+        \fill[white] (1,0.5) circle (1.5pt);
+    \end{tikzpicture}$
+\end{itemize}
+
+\subsection{[TBA] Пусть задана таблица совместного распределения случайных величин $X$ и $Y$}
+\begin{equation*}
+    \begin{tabular}{cccc}
+        \hline
+        &$Y=-1$&$Y=0$&$Y=1$\\
+        \hline
+        $X=-1$&0.2&0.1&0.2\\
+        $X=1$&0.1&0.3&0.1\\
+        \hline
+    \end{tabular}
+\end{equation*}
+
 
 
 
