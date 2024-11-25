@@ -563,17 +563,83 @@ $\xi_i\sim\text{Pois}(\lambda=3)$ — число сбоев за $i$-е сутк
 \end{enumerate}
 
 
-\subsection{[TBA] Пусть случайная величина $X$ имеет следующую функцию плотности...}
+\subsection{Пусть случайная величина $X$ имеет следующую функцию плотности...}
 Дана функция плотности $f_{X}(x)=\begin{cases}
     cx,&x\in[0;1]\\
     0,&x\not\in[0;1]
 \end{cases}$
 
-\subsection{[TBA] Пусть случайная величина $X$ имеет следующую функцию плотности...}
+Найдите
+\begin{itemize}
+    \item $F_X(x)=\displaystyle\int\limits_{-\infty}^{x} f_X(t)\d{t}$. Тогда, при $x\to+\infty$
+    \begin{equation*}
+        \begin{aligned}
+            1=\int\limits_{-\infty}^{+\infty} f_X(t)\d{t}&=\int\limits_0^1 ct\d{t}\\
+            &=c\cdot\left.\frac{t^2}{2}\right\vert_{t=0}^{t=1}\\
+            &=\frac{c}{2}
+        \end{aligned}
+    \end{equation*}
+    $\Longrightarrow c=2$
+    \item \theorem Пусть $\xi$ — абсолютно непрерывная случайная величина, тогда $$\forall B\in\bk(\mathbb{R})\ \prob{\xi\in B}=\displaystyle\int\limits_{B}f_{\xi}(t)\d{t}$$
+    
+    Тогда, в нашем случае
+    \begin{equation*}
+        \begin{aligned}
+            \prob{X\leqslant\frac{1}{2}}&=\prob{X\in(-\infty;\frac{1}{2}]}\\
+            &=\int\limits_{B}f_{X}(t)\d{t}\\
+            &=\int\limits_{-\infty}^{\frac{1}{2}}f_{X}(t)\d{t}\\
+            &=\int\limits_{-\infty}^{\frac{1}{2}}2t\d{t}\\
+            &=\left.t^2\right\vert_{t=0}^{t=\frac{1}{2}}\\
+            &=\frac{1}{4}
+        \end{aligned}
+    \end{equation*}
+    \item $\prob{X\in[\frac{1}{2};\frac{3}{2}]}=\displaystyle\int\limits_{B}f_{X}(t)\d{t}=\int\limits_{\frac{1}{2}}^{1}2t\d{t}=\left.t^2\right\vert_{t=\frac{1}{2}}^{t=1}=\frac{3}{4}$
+    \item $\prob{X\in[2;3]}=\displaystyle\int\limits_{[2;3]}f_{X}(t)\d{t}=0$
+    \item $f_{X}(x)=\begin{cases}
+        2x,&x\in[0;1]\\
+        0,&x\not\in[0;1]
+    \end{cases}$
+
+    Теперь рассмотрим три участка:
+    \begin{equation*}
+        \begin{aligned}
+            x<0:& F_{X}(x)=\int\limits_{-\infty}^{x}f_{X}(t)\d{t}=0\\
+            0\leqslant x\leqslant 1:& F_{X}(x)=\int\limits_{-\infty}^{x}f_{X}(t)\d{t}=\int\limits_{-\infty}^{0}0\d{t}+\int\limits_{0}^x 2t\d{t}=\left.t^2\right\vert_{t=0}^{t=x}=x^2\\
+            x>1:& F_{X}(x)=\int\limits_{-\infty}^{x}f_{X}(t)\d{t}=\int\limits_{-\infty}^0 0\d{t}+\int\limits_{0}^1 f_{X}(t)\d{t}+\int\limits_{1}^x0\d{t}=1
+        \end{aligned}
+    \end{equation*}
+
+    $F_{X}(x)=\begin{cases}
+        0,&x<0\\
+        x^2,&x\in[0;1]\\
+        0,&x>1
+    \end{cases}$
+\end{itemize}
+
+
+\subsection{Пусть случайная величина $X$ имеет следующую функцию плотности...}
 Дана функция плотности $f_{X}(x)=\begin{cases}
     cx,&x\in[0;1]\\
     0,&x\not\in[0;1]
 \end{cases}$
+
+Найдите
+\begin{itemize}
+    \item $F_X(x)=\displaystyle\int\limits_{-\infty}^{x} f_X(t)\d{t}$. Тогда, при $x\to+\infty$
+    \begin{equation*}
+        \begin{aligned}
+            1=\int\limits_{-\infty}^{+\infty} f_X(t)\d{t}&=\int\limits_0^1 ct\d{t}\\
+            &=c\cdot\left.\frac{t^2}{2}\right\vert_{t=0}^{t=1}\\
+            &=\frac{c}{2}
+        \end{aligned}
+    \end{equation*}
+    $\Longrightarrow c=2$
+
+    \item $\matwait{X}=\displaystyle\int\limits_{-\infty}^{\infty}xf_{X}(x)\d{x}=\int\limits_{0}^1 x2x\d{x}=2\int\limits_0^1 x^2\d{x}=2\cdot\left.\frac{x^3}{3}\right\vert_{0}^1=\frac{2}{3}$
+    \item $\matwait{X^2}=\displaystyle\int\limits_{-\infty}^{+\infty}xf_{X}(x)\d{x}=\int\limits_{0}^1x^2 2x\d{x}=\frac{1}{2}$
+    \item $\dispersia{X}=\displaystyle\frac{1}{2}-\left(\frac{2}{3}\right)^2=\frac{1}{18}$
+    \item $\matwait{\sqrt{X}}=\displaystyle\int\limits_{0}^1\sqrt{x}2x\d{x}=\frac{4}{5}$
+\end{itemize}
 
 \subsection{Пусть задана таблица совместного распределения случайных величин $X$ и $Y$}
 \begin{equation*}
