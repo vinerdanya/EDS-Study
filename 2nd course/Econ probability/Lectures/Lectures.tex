@@ -314,7 +314,7 @@ $$P(\xi=a)=P\left(\underbrace{\{\omega:\xi(\omega)=a_i\}}_{A\text{-прообр�
 \subsection{Основные дискретные распределения}
 \begin{enumerate}
     \item Вырожденное распределение. $\exists c:P(\xi=c)=1,\ c\in\mathbb{R}$
-    \item Распределение Бернулли: $Bi(1,p)$. $\xi\in[0,1]$ с вероятностями $p$ и $1-p$ соответственно
+    \item Распределение Бернулли: $Be(1,p)$. $\xi\in[0,1]$ с вероятностями $p$ и $1-p$ соответственно
 
     Индикатор события $A$ — $I\{A\}=\begin{cases}
         1,\text{ если }A\\
@@ -610,7 +610,7 @@ $$F_\xi(x)=\mathbb{P}(\{\omega\in\Omega:\xi(\omega)\leqslant x\}),x\in\mathbb{R}
 Для $\forall$ борелевской функции $g(x)$ выполняется:
 \begin{enumerate}
     \item $\matwait{g(\xi)}=\begin{cases}
-        \sum_kg(xk)\mathbb{P}(\xi=x_k),&  \text{если } \xi \text{ — дискретная}\\
+        \sum_kg(x_k)\mathbb{P}(\xi=x_k),&  \text{если } \xi \text{ — дискретная}\\
         \displaystyle\int\limits^\infty_{-\infty}g(x)f_x(x)\d{x},& \text{если } \xi \text{ абсолютно непрерывна}
     \end{cases}$
 
@@ -653,7 +653,7 @@ $$F_\xi(x)=\mathbb{P}(\{\omega\in\Omega:\xi(\omega)\leqslant x\}),x\in\mathbb{R}
         0, & x\leqslant 0
     \end{cases}$$
     
-    $$\matwait{\xi}=\frac{1}{2},\ \dispersia{\xi}=\frac{1}{\lambda^2}$$
+    $$\matwait{\xi}=\frac{1}{\lambda},\ \dispersia{\xi}=\frac{1}{\lambda^2}$$
     
     $$F_\xi(x)=1-e^{-\lambda x},\ x>0$$
     
@@ -882,6 +882,106 @@ $S=\xi_1+\ldots+\xi_\nu=g(\xi_1,\ldots,\xi_n;\nu)$ — элементы сумм
 
 
 
+\newpage
+\section{Ковариация и корреляция случайных величин}
+\subsection{Ковариация}
+\definition Ковариацией двух случайных величин называют 
+\begin{equation*}
+    cov(\xi,\eta)=\matwait{\left(\xi-\matwait{\xi}\right)\left(\eta-\matwait{\eta}\right)}
+\end{equation*}
+
+\subsection{Свойства ковариации}
+\begin{enumerate}
+    \item Для непрерывных случайных величин $$cov(\eta,\eta)=\iint\limits_{\mathbb{R}^2}(x-\matwait{\xi})(y-\matwait{\eta})f(x,y)\d{x}\d{y}$$
+    \item Для дискретных $$cov(\xi,\eta)=\sum_{i}\sum_{j}(x_i-\matwait{\xi})(y_j-\matwait{\eta})\twoprob{\xi=x_i}{\cap}{\eta=y_j}$$
+    \item $cov(\xi,\eta)=\matwait{\xi\cdot\eta}-\matwait{\xi}\matwait{\eta}$
+    \item $cov(a\xi,\eta)=a\cdot cov(\xi,\eta)$
+    \item $cov(\xi,a)=0,a\in\mathbb{R}$
+    \item $cov(\eta,\xi)=cov(\xi,\eta)$
+    \item $cov(\xi_1+\xi_2,\eta)=cov(\xi_1,\eta)+cov(\xi_2,\eta)$
+    \item $\dispersia{\xi}=cov(\xi,\xi)$
+    \item $\dispersia{\xi+\eta}=\dispersia{\xi}+\dispersia{\eta}+2cov(\xi,\eta)$
+    \item $\dispersia{a\xi+b\eta}=a^2\dispersia{\xi}+b^2\dispersia{\eta}+2abcov(\xi,\eta)$
+    \item Если $\xi,\eta$ — независимы, то $cov(\xi,\eta)=0$, но обратное неверно
+    
+    \proof Распишем по определению ковариации 
+    \begin{equation*}
+        \begin{aligned}
+            cov(\xi,\eta)&=\matwait{\left(\xi-\matwait{\xi}\right)\left(\eta-\matwait{\eta}\right)}\\
+            &=\matwait{\xi\eta-\matwait{\xi}\eta-\xi\matwait{\eta}+\matwait{\xi}\cdot\matwait{\eta}}\\
+            &=\matwait{\xi\eta}-\matwait{\xi}\matwait{\eta}
+        \end{aligned}
+    \end{equation*}
+
+    \item Если $\xi,\eta$ — независимы, то $\matwait{\xi\eta}=\matwait{\xi}\cdot\matwait{\eta}$
+    \item Для абсолютно непрерывных случайных величин
+    \begin{equation*}
+        \begin{aligned}
+            \matwait{\xi\eta}&=\iint\limits_{\mathbb{R}^2}xyf(x,y)\d{x}\d{y}\\
+            &=\int\limits_{-\infty}^{\infty}xf_{\xi}(x)\d{x}\int\limits_{-\infty}^{\infty}yf_{\eta}(y)\d{y}\\
+            &=\matwait{\xi}\matwait{\eta}
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\subsection{Корреляция}
+\definition $\xi^*=\displaystyle\frac{\xi-\matwait{\xi}}{\sigma_\xi}$, где $\sigma_\xi=\sqrt{\dispersia{\xi}}$
+
+\comment $\matwait{\xi^*}=0,\dispersia{\xi^*}=1$
+
+\definition $corr(\xi,\eta)=cov(\xi^*,\eta^*)$
+
+\definition $corr(\xi,\eta)=\displaystyle\frac{cov(\xi,\eta)}{\sigma_\xi \sigma_\eta}$
+
+
+\subsection{Свойства корреляции}
+\begin{enumerate}
+    \item Если $\xi,\eta$ — независимы, то $corr(\xi,\eta)=0$
+    \item $-1\leqslant\rho=corr(\xi,\eta)\leqslant1$
+    
+    \proof $$\begin{aligned}
+        \dispersia{\xi^*-\eta^*}&=\dispersia{\xi^*}+\dispersia{\eta^*}-2cov(\xi^*,\eta^*)\\
+        0&\leqslant 1+1-2corr(\xi,\eta)
+    \end{aligned}$$
+
+    Тогда, $corr(\xi,\eta)\leqslant1$
+
+    Теперь рассмотрим в другую сторону
+    \begin{equation*}
+        \dispersia{\xi^*+\eta^*}=2+2corr(\xi,\eta)\geqslant0\Longrightarrow corr(\xi,\eta)\geqslant-1
+    \end{equation*}
+    
+    \item $|\rho|=1\Longleftrightarrow\eta=a\xi+b$
+    
+    \proof Докажем $\eta=a\xi+b\Longrightarrow corr(\xi,\eta)=1$
+
+    $corr(\xi,\eta)=corr(\xi,a\xi+b)=\displaystyle\frac{cov(\xi,a\xi+b)}{\sigma_\xi\sqrt{\dispersia{a\xi+b}}}=\frac{a\cdot cov(\xi,\xi)}{\sigma_\xi|a|\sigma_\xi}=\frac{a}{|a|}=1\cdot sgn(a)$
+
+    Докажем $ corr(\xi,\eta)=1\Longrightarrow \eta=a\xi+b$
+
+    Пусть $\rho=1$, $$\begin{aligned}
+        \dispersia{\xi^*-\eta^*}&=\dispersia{\xi^*}+\dispersia{\eta^*}-2cov(\xi^*,\eta^*)\\
+        &=2-2corr(\xi,\eta)\\
+        &=0
+    \end{aligned}$$
+
+    Значит, $\exists c\in\mathbb{R}\hookrightarrow\xi^*-\eta^*=c:$ 
+    \begin{equation*}
+        \frac{\xi-\matwait{\xi}}{\sigma_\xi}-\frac{\eta-\matwait{\eta}}{\sigma_\eta}=c
+    \end{equation*}
+    $\Longrightarrow$ связь линейна
+
+    \item Корреляция инвариантна относительно линейного преобразования случайных величин, то есть
+    \begin{equation*}
+        \forall a,b,c,d\in\mathbb{R}: corr(a\xi+b,c\eta+d)=corr(\xi,\eta)\cdot sgn(ac)
+    \end{equation*}
+    \proof 
+    \begin{equation*}
+        corr(a\xi+b,c\eta+d)=\frac{cov(a\xi+b,c\eta+d)}{\sqrt{\dispersia{a\xi+b}}\sqrt{\dispersia{c\eta+d}}}=\frac{ac\cdot cov(\xi,\eta)}{|a|\sigma_\xi|c|\sigma_\eta}=sgn(ac)\cdot corr(\xi,\eta)
+    \end{equation*}
+\end{enumerate}
+
+% \subsection{ИНВЕСТ МОМЕНТ}
 
 
 
