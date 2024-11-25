@@ -344,7 +344,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
 \theorem $f_n\overset{D}{\rightrightarrows} f\Longleftrightarrow \lim\limits_{n\to\infty}\left(\sup\limits_{D} \left|f_n(x)-f(x)\right|\right)=0$
 
 \subsection{Критерий Коши равномерной сходимости функциональной последовательности}
-\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \exists x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
+\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
 
 \comment Отрицание Критерия Коши: 
 \begin{equation*}
@@ -904,7 +904,7 @@ $f$ — ограничена и $\ui=\oi$. Имеем
 
 Заметим, что $\sup\limits_{D} \left|f_n(x)-f(x)\right|\geqslant 0$. Тогда,
 \begin{equation*}
-    \forall\ve >0\ \exists N:\ \forall n>N:\ \sup\limits_D |f_n(x)-f(x)|<\ve
+    \forall\ve >0\ \exists N:\ \forall n>N,\forall x\in D\hookrightarrow \sup\limits_D |f_n(x)-f(x)|<\ve
 \end{equation*}
 
 $f_n\overset{D}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N,\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\frac{\ve}{2}$
@@ -921,7 +921,7 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
 
 
 \subsection{Критерий Коши равномерной сходимости функциональной последовательности}
-\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \exists x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
+\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
 
 \proof $\Longrightarrow$ Докажем необходимость
 
@@ -932,7 +932,7 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
 
 Рассмотрим $|f_n(x)-f_m(x)|\leqslant |f_n(x)-f(x)|+|f(x)-f_m(x)|<\frac{\ve}{2}+\frac{\ve}{2}=\ve$
 
-Таким образом, мы показали, что $\forall\ve>0\ \exists N:\ \forall n,m>N,\ \exists x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$\qed
+Таким образом, мы показали, что $\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$\qed
 
 \proof $\Longleftarrow$ Докажем достаточность
 

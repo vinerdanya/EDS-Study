@@ -387,11 +387,11 @@ $$
 
 \ex $M=[0;1]\cup \{3\}\Longrightarrow x=3$ — изолированная
 
-\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{предельной} точкой $M$, если $$\exists \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing$$ 
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{предельной} точкой $M$, если $$\forall \ve>0:\ \stackrel{\circ}{B_{\ve}}(x_0)\cap M\ne\varnothing$$ 
 
 \comment Из определения следует, что изолированные точки не являются предельными
 
-\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{точкой прикосновения} $M$, если $$\exists \ve>0:\ B_{\ve}(x_0)\cap M\ne\varnothing$$ 
+\definition Точку $x_0\in\mathbb{R}^n$ будем называть \textit{точкой прикосновения} $M$, если $$\forall \ve>0:\ B_{\ve}(x_0)\cap M\ne\varnothing$$ 
 
 \comment Точки прикосновения = изолированные точки $\oplus$ предельные точки
 
@@ -620,7 +620,7 @@ $\begin{cases}
 \end{cases}$
 
 \subsection{Критерий Лебега об интегрируемости функции по Риману}
-\theorem \textbf{Критерий Лебега.} Если $I\subset \R^n$ — замкнутый невырожденный брус, $f: I\to\R$, то $f\in R(I) \iff f$ ограничена и непрерывна почти всюду на $I$
+\theorem Если $I\subset \R^n$ — замкнутый невырожденный брус, $f: I\to\R$, то $f\in R(I) \iff f$ ограничена и непрерывна почти всюду на $I$
 
 \proof 
 \begin{itemize}
@@ -1013,7 +1013,7 @@ $|J_{\varphi^{-1}}|=|J_{\varphi}|^{-1}$
 
 Заметим, что $\sup\limits_{D} \left|f_n(x)-f(x)\right|\geqslant 0$. Тогда,
 \begin{equation*}
-    \forall\ve >0\ \exists N:\ \forall n>N:\ \sup\limits_D |f_n(x)-f(x)|<\ve
+    \forall\ve >0\ \exists N:\ \forall n>N,\forall x\in D\hookrightarrow \sup\limits_D |f_n(x)-f(x)|<\ve
 \end{equation*}
 
 $f_n\overset{D}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N,\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\frac{\ve}{2}$
@@ -1036,7 +1036,7 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
 \newpage
 \section{Функциональные последовательности—2}
 \subsection{Критерий Коши равномерной сходимости функциональной последовательности}
-\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \exists x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
+\theorem $f_n(x)\overset{D}{\rightrightarrows} f(x)\Longleftrightarrow\forall\ve>0\ \exists N:\ \forall n,m>N,\ \forall x\in D\hookrightarrow |f_n(x)-f_m(x)|<\ve$
 
 \proof $\Longrightarrow$ Докажем необходимость
 
