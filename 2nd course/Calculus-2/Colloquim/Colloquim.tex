@@ -306,7 +306,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
 \subsection{Свойства интегральных сумм Дарбу}
 \begin{enumerate}
     \item \begin{equation*}
-        \us(f, \T) = \int_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
+        \us(f, \T) = \inf_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
     \end{equation*}
 
     \item Пусть $\tilde{\T}$ — измельчение разбиения $\T$, тогда
@@ -374,11 +374,11 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
     &f_n\in C\left([a;b)\right),\\
     &f\in C((a;b))+\text{разрыв в т.}a,\\
     &f_n\overset{[a;b)}{\longrightarrow} f
-\end{aligned}\right\}\Longrightarrow f_n\overset{(a;b)}{\rightrightarrows} f$
+\end{aligned}\right\}\Longrightarrow f_n\overset{(a;b)}{\not\rightrightarrows} f$
 
 То есть будет поточечная сходимость, но не будет равномерной:
 \begin{equation*}
-    f_n\overset{(a;b)}{\longrightarrow}f,\text{ но }f_n\overset{(a;b)}{\rightrightarrows} f
+    f_n\overset{(a;b)}{\longrightarrow}f,\text{ но не }f_n\overset{(a;b)}{\rightrightarrows} f
 \end{equation*}
 
 \subsection{Утверждение о неравномерной сходимости фун. послед. при наличии расходимости в точке}
@@ -399,7 +399,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
 \theorem Пусть имеется $\left.\begin{aligned}
     &f_n,f,g:[a;b]\to\mathbb{R}\\
     &f_n\in D([a;b])\\
-    &\exists c\in[a;b]:\ \lim\limits_{n\to\infty} f_n(c)\\
+    &\exists c\in[a;b]:\exists \lim\limits_{n\to\infty} f_n(c)\\
     &\exists g(x):\ f^{\prime}_n\overset{[a;b]}{\rightrightarrows}g(x)
 \end{aligned}\right\}\Longrightarrow \begin{aligned}
     &\exists f:\ f_n\overset{[a;b]}{\rightrightarrows}f\\
@@ -759,14 +759,14 @@ $$\{A_{\alpha_i}\}_{i=1}^m\cup\{\mathbb{R}^n\setminus K\}\supset I\supset K\text
 \subsection{Свойства интегральных сумм Дарбу}
 \subsubsection{Нижняя сумма Дарбу не больше верхней}
 \theorem \begin{equation*}
-    \us(f, \T) = \int_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
+    \us(f, \T) = \inf_{\xi}\sigma(f, \T, \xi) \le \sup_{\xi}\sigma(f, \T, \xi) = \os(f, \T)
 \end{equation*}
 
 \proof
 \begin{equation*}
     \begin{aligned}
     &\us(f, \T) = \sum_{i=1}^{K}m_i|I_i| = \sum_{i}\inf_{\xi_i}(f(\xi_i))|I_i| = \inf_{\xi}\sum_{i}f(\xi_i)|I_i| = \inf_{\xi}\sigma(f, \T, \xi) \le\\
-    &\sup_{\xi}\sigma(f, \T, \xi) = \sum_i (f(\xi_i))|I_i| = \sum_{i}M_i|I_i| = \os(f, \T)
+    &\sup_{\xi}\sigma(f, \T, \xi) = \sum_i \sup_{\xi}(f(\xi_i))|I_i| = \sum_{i}M_i|I_i| = \os(f, \T)
     \end{aligned}
     \end{equation*}
 
@@ -1179,7 +1179,7 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
 \theorem Пусть имеется $\left.\begin{aligned}
     &f_n,f,g:[a;b]\to\mathbb{R}\\
     &f_n\in D([a;b])\\
-    &\exists c\in[a;b]:\ \lim\limits_{n\to\infty} f_n(c)\\
+    &\exists c\in[a;b]:\exists\lim\limits_{n\to\infty} f_n(c)\\
     &\exists g(x):\ f^{\prime}_n\overset{[a;b]}{\rightrightarrows}g(x)
 \end{aligned}\right\}\Longrightarrow \begin{aligned}
     &\exists f:\ f_n\overset{[a;b]}{\rightrightarrows}f\\
