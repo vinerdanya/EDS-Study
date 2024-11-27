@@ -239,7 +239,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
     0$
     \item \textbf{Аддитивность:} Пусть $I, I_1, \ldots, I_k$ — брусы
     
-    Тогда, если $\forall i, j\, I_i, I_j$ не имею общих внтренних точек, и $\displaystyle\bigcup_{i=1}^kI_i = I$, то
+    Тогда, если $\forall i, j\, I_i, I_j$ не имеют общих внтренних точек, и $\displaystyle\bigcup_{i=1}^kI_i = I$, то
     \begin{equation*}
         |I| = \sum_{i=1}^k|I_i|
     \end{equation*}
@@ -289,7 +289,7 @@ $$A = \int\limits_If(x)\d{x} = \underset{I}{\int\ldots\int}f(x_1, \ldots, x_n)\d
 \theorem Пусть $I\subset\mathbb{R}^n$ — замкнутый брус $\Longrightarrow I$ — компакт
 
 \subsection{Критерий компактности в $\mathbb{R}^n$}
-\theorem Пусть $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченного
+\theorem Пусть $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченно
 
 \subsection{Теорема Вейерштрасса о непрерывной функции на компакте}
 \theorem Пусть $K\in \R^n$ — компакт и функция $f: K\mapsto \R$ - непрерывная. Тогда $f$ на $K$ достигает наибольшего и наименьшего значений
@@ -664,7 +664,7 @@ $f\in\riman{\varphi(D)}\Longleftrightarrow f(\varphi(t))\cdot|\det J_{\varphi}(t
 \comment Любое ограниченное множество можно вписать в замкнутый брус. Потому что можно вокруг него описать шарик, который точно можно вписать в брус
 
 \subsection{Критерий компактности в $\mathbb{R}^n$}
-\theorem $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченного
+\theorem $K\subset \mathbb{R}^n$. $K$ — компакт $\Longleftrightarrow$ $K$ замкнуто и ограниченно
 
 \proof Докажем необходимость $(\Longrightarrow)$
 \begin{itemize}
@@ -1032,7 +1032,7 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
     \forall x_0\in D: \forall\ve>0\ \exists\delta>0:\forall x\in B_{\delta}(x_0)\cap D\hookrightarrow|f(x)-f(x_0)|
 \end{equation*}
 
-Рассмотрим $|f(x)-f(x_0)|\leqslant\underbrace{|f(x)-f_n(x)|}_{(1)}+\underbrace{|f_n(x)-f_n(x_0)|}_{(2)}+\underbrace{|f_n(x_0)-f(x_0)|}_{(3)}$
+Рассмотрим $|f(x)-f(x_0)|\leqslant\underbrace{|f(x)-f_n(x)|}_{(1)}+\underbrace{|f_n(x)-f_n(x_0)|}_{(2)}+\underbrace{|f_n(x_0)-f(x_0)|}_{(3)}<\frac{\ve}{3}+\frac{\ve}{3}+\frac{\ve}{3}=\ve$
 \begin{enumerate}
     \item $f_n\overset{D}{\rightrightarrows} f:\forall\ve>0\ \exists N:\forall n>N,\ \forall x\in D\hookrightarrow|f_n(x)-f(x)|<\frac{\ve}{3}$
     \item Так как $\forall n\in\mathbb{N}\ f_n\in C(D)\Longrightarrow\forall x_0\in D,\ \forall\ve>0\ \exists\delta>0:\forall x\in B_{\delta}(x_0)\cap D\hookrightarrow|f_n(x)-f_n(x_0)|<\frac{\ve}{3}$
@@ -1063,7 +1063,7 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
 \proof От противного
 
 \begin{enumerate}
-    \item Пусть $f_n\overset{(a;b)}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N\ \forall x\in (a;b)\hookrightarrow|f_n(x)-f(x)|<\ve$
+    \item Пусть $f_n\overset{(a;b)}{\rightrightarrows} f\Longrightarrow \forall\ve>0\ \exists N:\forall n>N\ \forall x\in [a;b)\hookrightarrow|f_n(x)-f(x)|<\ve$
     \item $f_n\overset{[a;b)}{\longrightarrow} f \Longrightarrow f_n(a)\longrightarrow f(a)\Longrightarrow\forall\ve>0\ \exists N_2:\forall n>N_2\hookrightarrow|f_n(a)-f(a)|<\ve$
     \item $f_n\overset{[a;b)}{\rightrightarrows} f$, так как $\forall\ve>0\ \exists N=\max(N_1,N_2)\ \forall n>N,\ \forall x\in [a;b) \hookrightarrow|f_n(x)-f(x)|<\ve$
     \item Получаем, что 
