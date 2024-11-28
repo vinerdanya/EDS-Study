@@ -216,6 +216,11 @@
     F_{X,Y}(x,y):=\twoprob{X\leqslant x}{\cap}{Y\leqslant y}, x\in\mathbb{R},y\in\mathbb{R}
 \end{equation*}
 
+\definition Случайные величины $X$ и $Y$ независимы, если $\forall B_1,B_2\in\bk(\mathbb{R})$ события $\{X\in B_1\}$ и $\{Y\in B_2\}$ являются независимыми, то есть
+\begin{equation*}
+    \twoprob{X\in B_1}{\cap}{Y\in B_2}=\prob{X\in B_1}\cdot\prob{Y\in B_2}
+\end{equation*}
+
 \theorem Случайные величины $X$ и $Y$ независимы тогда и только тогда, когда
 \begin{equation*}
     F_{X,Y}(x,y)=F_{X}(x)\cdot F_{Y}(y),\ \forall x\in\mathbb{R},\forall y\in\mathbb{R}
