@@ -226,16 +226,6 @@
     F_{X,Y}(x,y)=F_{X}(x)\cdot F_{Y}(y),\ \forall x\in\mathbb{R},\forall y\in\mathbb{R}
 \end{equation*}
 
-\theorem (в дискретном случае). Пусть случайная величина $X$ принимает значения $a_1,\ldots,a_m$, случайная величина $Y$ принимает значения $b_1,\ldots,b_n$, тогда случайные величины $X$ и $Y$ независимы $\Longleftrightarrow \forall i\in\{1,\ldots,m\},\forall j\in\{1,\ldots,n\}$ события $\{X=a_i\}$ и $\{Y=b_j\}$ независимы, то есть
-\begin{equation*}
-    \twoprob{X=a_i}{\cap}{Y=b_j}=\prob{X=a_i}\cdot\prob{Y=b_j}
-\end{equation*}
-
-\theorem (в абсолютно непрерывном). Пусть случайный вектор $(X,Y)$ имеет абсолютно непрерывное распредедение. Тогда, случайные величины $X$ и $Y$ независимы $\Longleftrightarrow$
-\begin{equation*}
-    f_{X,Y}(x,y)=f_X(x)\cdot f_{Y}(y),\forall x\in\mathbb{R},\forall y\in\mathbb{R}
-\end{equation*}
-
 \theorem
 \begin{enumerate}
     \item $F_{\xi}(x)\in[0;1]$. Здесь и далее $x=(x_1,\ldots,x_n)$
@@ -260,17 +250,27 @@
     \iint\limits_{\mathbb{R}^2}g(x,y)\d{x}\d{y}=1
 \end{equation*} 
 
-\theorem
-\begin{enumerate}
-    \item $F_{\xi}(x)\in[0;1]$. Здесь и далее $x=(x_1,\ldots,x_n)$
-    \item $\lim\limits_{x_1\rightarrow-\infty}F_{\xi}(x_1,x_2)=0$
-    
-    $\lim\limits_{x_1\rightarrow+\infty}F_{\xi}(x_1,x_2)=F_{\xi_2}(x_2)$
+\theorem (в дискретном случае). Пусть случайная величина $X$ принимает значения $a_1,\ldots,a_m$, случайная величина $Y$ принимает значения $b_1,\ldots,b_n$, тогда случайные величины $X$ и $Y$ независимы $\Longleftrightarrow \forall i\in\{1,\ldots,m\},\forall j\in\{1,\ldots,n\}$ события $\{X=a_i\}$ и $\{Y=b_j\}$ независимы, то есть
+\begin{equation*}
+    \twoprob{X=a_i}{\cap}{Y=b_j}=\prob{X=a_i}\cdot\prob{Y=b_j}
+\end{equation*}
 
-    $\lim\limits_{\underset{x_2\rightarrow+\infty}{x_1\rightarrow+\infty,}}F_{\xi}(x_1,x_2)=1$
-    \item $F_{\xi}(x_1,x_2)$ не убывает по каждому из аргументов
-    \item $F_{\xi}(x_1,x_2)$ непрерынва справа по каждому из аргументов
-\end{enumerate}
+\theorem (в абсолютно непрерывном). Пусть случайный вектор $(X,Y)$ имеет абсолютно непрерывное распредедение. Тогда, случайные величины $X$ и $Y$ независимы $\Longleftrightarrow$
+\begin{equation*}
+    f_{X,Y}(x,y)=f_X(x)\cdot f_{Y}(y),\forall x\in\mathbb{R},\forall y\in\mathbb{R}
+\end{equation*}
+
+% \theorem
+% \begin{enumerate}
+%     \item $F_{\xi}(x)\in[0;1]$. Здесь и далее $x=(x_1,\ldots,x_n)$
+%     \item $\lim\limits_{x_1\rightarrow-\infty}F_{\xi}(x_1,x_2)=0$
+    
+%     $\lim\limits_{x_1\rightarrow+\infty}F_{\xi}(x_1,x_2)=F_{\xi_2}(x_2)$
+
+%     $\lim\limits_{\underset{x_2\rightarrow+\infty}{x_1\rightarrow+\infty,}}F_{\xi}(x_1,x_2)=1$
+%     \item $F_{\xi}(x_1,x_2)$ не убывает по каждому из аргументов
+%     \item $F_{\xi}(x_1,x_2)$ непрерынва справа по каждому из аргументов
+% \end{enumerate}
 
 
 \newpage
