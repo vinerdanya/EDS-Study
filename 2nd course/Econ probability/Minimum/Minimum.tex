@@ -216,11 +216,6 @@
     F_{X,Y}(x,y):=\twoprob{X\leqslant x}{\cap}{Y\leqslant y}, x\in\mathbb{R},y\in\mathbb{R}
 \end{equation*}
 
-\definition Случайные величины $X$ и $Y$ независимы, если $\forall B_1,B_2\in\bk(\mathbb{R})$ события $\{X\in B_1\}$ и $\{Y\in B_2\}$ являются независимыми, то есть
-\begin{equation*}
-    \twoprob{X\in B_1}{\cap}{Y\in B_2}=\prob{X\in B_1}\cdot\prob{Y\in B_2}
-\end{equation*}
-
 \theorem Случайные величины $X$ и $Y$ независимы тогда и только тогда, когда
 \begin{equation*}
     F_{X,Y}(x,y)=F_{X}(x)\cdot F_{Y}(y),\ \forall x\in\mathbb{R},\forall y\in\mathbb{R}
@@ -249,6 +244,12 @@
 \begin{equation*}
     \iint\limits_{\mathbb{R}^2}g(x,y)\d{x}\d{y}=1
 \end{equation*} 
+
+\definition Случайные величины $X$ и $Y$ независимы, если $\forall B_1,B_2\in\bk(\mathbb{R})$ события $\{X\in B_1\}$ и $\{Y\in B_2\}$ являются независимыми, то есть
+\begin{equation*}
+    \twoprob{X\in B_1}{\cap}{Y\in B_2}=\prob{X\in B_1}\cdot\prob{Y\in B_2}
+\end{equation*}
+Необязательно, но для общего понимания:
 
 \theorem (в дискретном случае). Пусть случайная величина $X$ принимает значения $a_1,\ldots,a_m$, случайная величина $Y$ принимает значения $b_1,\ldots,b_n$, тогда случайные величины $X$ и $Y$ независимы $\Longleftrightarrow \forall i\in\{1,\ldots,m\},\forall j\in\{1,\ldots,n\}$ события $\{X=a_i\}$ и $\{Y=b_j\}$ независимы, то есть
 \begin{equation*}
