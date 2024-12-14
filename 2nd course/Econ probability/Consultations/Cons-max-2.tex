@@ -1,0 +1,357 @@
+\documentclass{article}
+\usepackage{header} 
+
+\title{\LARGE{Теория вероятностей и математическая статистика—1}\\
+Консультация по максимуму—2}
+\author{irreitman, \href{https://t.me/danya_vin}{@danya\_vin}}
+\date{Версия от \today} 
+
+\begin{document}
+
+\maketitle
+\begin{flushright}
+    \textit{Яна, спасибо за мак}
+\end{flushright}
+\noindent Все задания взяты из максимума—2 ИП 2023-2024
+
+\section*{№2}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Величины $X$ и $Y$ независимы. Случайная величина $Y$ равномерно распределена на отрезке $[0,1]$. Случайная величина $X$ имеет плотность распределения
+    \begin{equation*}
+        f_X(x)=\begin{cases}
+        2 x,&\text {если } x \in[0 ; 1] \\
+        0,&\text {иначе }
+        \end{cases}
+    \end{equation*}
+    \begin{enumerate}
+        \item[a)] Найдите функцию плотности суммы $f_{X+Y}(z)$
+        \item[b)] Найдите $\mathbb{E}(X+Y)$
+        \item[c)] Найдите интерквартильный размах величины $X$
+    \end{enumerate}
+\end{tcolorbox}
+\begin{enumerate}
+    \item[a)] $f_{X+Y}=\displaystyle\int\limits_{-\infty}^{+\infty} f_{X}(x-U)f_{Y}(U)\d{u}$
+
+    Отметим, что $f_{Y}=\begin{cases}
+        1,&\text{если }x\in[0;1]\\
+        0,&\text{иначе}
+    \end{cases}$
+    
+     Чтобы мы могли взять интеграл нужно, чтобы $\begin{cases}
+        (x-U)\in[0;1]\\
+        U\in[0;1]
+    \end{cases}\Longrightarrow\begin{cases}
+        U\in[x-1;x]\\
+        U\in[0;1]
+    \end{cases}$
+
+    Тогда, у нас есть два случая:
+    \begin{itemize}
+        \item $\begin{cases}
+            x\geqslant 0\\
+            x-1<0
+        \end{cases}\Longrightarrow x\in[0;1)$
+
+        Тогда, интеграл будет равен $\displaystyle\int\limits_0^x 2(x-U)\d{u}=2x^2-x^2=x^2$
+
+        \item $\begin{cases}
+            x\geqslant 1\\
+            x-1\leqslant1
+        \end{cases}\Longrightarrow x\in[1;2]$
+
+        Тогда, интеграл равен $\displaystyle\int\limits_{x-1}^{1}2(x-U)\d{u}=2x-x^2$
+    \end{itemize}
+
+    Таким образом, $f_{X+Y}=\begin{cases}
+        x^2,&x\in[0;1)\\
+        2x-x^2,&x\in[1;2]\\
+        0,&\text{иначе}
+    \end{cases}$
+
+    \item[b)] $\matwait{X+Y}=\matwait{X}+\matwait{Y}=\matwait{X}+\frac{1}{2}$
+
+    $f_{X}=\begin{cases}
+        2x,&x\in[0;1]\\
+        0,&\text{иначе}
+    \end{cases}$
+
+    Тогда, $\matwait{X}=\displaystyle\int\limits_0^1 xf_{X}(x)\d{x}=\int\limits_0^1 2x^2\d{x}=\frac{2}{3}$
+
+    Итого, $\matwait{X+Y}=\matwait{X}+\frac{1}{2}=\frac{2}{3}+\frac{1}{2}=\frac{7}{6}$
+    \item[c)] Найти $IR=q_{0,75}-q_{0,25}$
+
+    $f_{X}=\begin{cases}
+        2x,&x\in[0;1]\\
+        0,&\text{иначе}
+    \end{cases}\Longrightarrow F_{X}=\begin{cases}
+        0,&x<0\\
+        x^2,&x\in[0;1]\\
+        1,&x>1
+    \end{cases}$
+
+    \definition Квантиль уровня $a$ — корень уравнения $F_{X}(q_{a})=a$
+
+    Тогда, $\begin{cases}
+        q_{0,25}: x^2=0,25\Longrightarrow x=0,5\\
+        q_{0,75}: x^2=0,75\Longrightarrow x=0,5\sqrt{3}
+    \end{cases}$ и $IR=q_{0,75}-q_{0,25}=0,5(\sqrt{3}-1)$
+    
+\end{enumerate}
+
+
+\newpage
+\section*{№3}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Сибирский крокодил Утундрий решил заняться риск-менеджментом. В этот раз он изучает теорию эффективных портфелей ценных бумаг. Величины $R_1$ и $R_2$ — это доходности двух рисковых ценных бумаг с $\matwait{R_1}=\matwait{R_2}=0.15, \dispersia{R_1}=0.49, \dispersia{R_2}=1$ и $\operatorname{cov}\left(R_1, R_2\right)=-0.35$.
+    
+    Крокодил Утундрий знает, что:
+    \begin{itemize}
+        \item Доходность портфеля вычисляется по формуле $R=w_1 R_1+w_2 R_2$, где $w_1 \geqslant 0$ и $w_2 \geqslant 0$ — это доли первой и второй ценный бумаг в портфеле, соответственно, и $w_1+w_2=1$
+        \item Ожидаемая доходность портфеля равна $\matwait{R}$
+        \item Квадратичный риск портфеля определяется как $\dispersia{R}$
+    \end{itemize}
+    Утундрий составил два портфеля $A$ и $B$. Доли ценных бумаг, с которыми ценные бумаги входят в портфель $A$, заданы вектором $w^A=(0.7,0.3)$, а в портфель $B-$ вектором $w^B=(1,0)$
+
+    Помогите Утундрию выполнить следующие задания:
+    \begin{enumerate}
+        \item[a)] Найдите ожидаемые доходности портфелей $A$ и $B$
+        \item[b)] Какой из портфелей $A$ или $B$ предпочтительнее, если Утундрий является рискофобом, то есть не приемлет риск?
+        \item[c)] Найдите ковариацию доходностей портфелей $A$ и $B$
+        \item[d)] Составьте портфель $C$, который имеет наименьший квадратичной риск среди всех портфелей с ожидаемой доходностью $0.15$   
+    \end{enumerate}
+\end{tcolorbox}
+\begin{enumerate}
+    \item[a)] $R_A=0.7R_1+0.3R_2$, $R_B=R_1$, тогда $\matwait{R_B}=\matwait{R_1}=0.15$ и  
+    \begin{equation*}
+        \begin{aligned}
+            \matwait{R_A}&=\matwait{0.7R_1+0.3R_2}\\
+            &=\matwait{0.7R_1}+\matwait{0.3R_2}\\
+            &=0.7\matwait{R_1}+0.3\matwait{R_2}\\
+            &=0.15
+        \end{aligned}
+    \end{equation*}
+    Итого, $\matwait{R_A}=\matwait{R_B}=0.15$
+
+    \item[b)] Рассчитаем дисперсии каждого портфеля:
+    \begin{itemize}
+        \item $\dispersia{R_B}=\dispersia{R_1}=0.49$
+        \item \begin{equation*}
+            \begin{aligned}
+                \dispersia{R_A}&=\dispersia{0.7R_1+0.3R_2}\\
+                &=\dispersia{0.7R_1}+\dispersia{0.3R_2}+2cov(0.7R_1,0.3R_2)\\
+                &=0.49\dispersia{R_1}+0.09\dispersia{R_2}+2cov(0.7R_1,0.3R_2)\\
+                &=0.49\dispersia{R_1}+0.09\dispersia{R_2}+2\cdot0.7\cdot0.3cov(R_1,R_2)\\
+                &=0.1831
+            \end{aligned}
+        \end{equation*}
+    \end{itemize}
+
+    \item[c)] \begin{equation*}
+        \begin{aligned}
+            cov(0.7R_1+0.3R_2,R_1)&=cov(0.7R_1,R_1)+cov(0.3R_2,R_1)\\
+            &=0.7\dispersia{R_1}+0.3\cdot cov(R_2,R_1)\\
+            &=0.238
+        \end{aligned}
+    \end{equation*}
+
+    \item[d)] Пусть $\alpha$ — доля $R_1$ и $(1-\alpha)$ — доля $R_2$ в портфеле $C$. Рассчитаем дисперсию нового портфеля
+
+    \begin{equation*}
+        \begin{aligned}
+            \dispersia{\alpha R_1+(1-\alpha)R_2}&=\alpha^2\dispersia{R_1}+(1-\alpha)^2\dispersia{R_2}+2\alpha(1-\alpha)cov(R_1,R_2)\\
+            &=\alpha^2\cdot0.49+(1-\alpha)^2\cdot 1+2(\alpha(1-\alpha)\cdot(-0.35))
+            &=\alpha^2(0.49+1+0.7)+\alpha(-2-0.7)+C
+        \end{aligned}
+    \end{equation*}
+    Чтобы добиться наименьшего квадратичного риска нужно минимизировать эту функцию от $\alpha$, возьмем производную:
+    \begin{equation*}
+        2\cdot2.19\alpha-2.7=0\Longrightarrow\alpha=\frac{2.7}{2\cdot2.19}
+    \end{equation*}
+\end{enumerate}
+
+
+
+\newpage
+\section*{№4}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Величины $X$ и $Y$, описывающие расходы семейной пары, равномерно распределены в треугольнике с вершинами $(0,0),(0,1)$ и $(1,0)$
+
+    \begin{itemize}
+        \item[a)] Найдите $\mathbb{P}\left(X^2+Y^2>0.25\right)$
+        \item[b)] Найдите частные фукнции плотности и математические ожидания величин $X$ и $Y$
+        \item[c)] Проверьте независимость величин $X$ и $Y$
+        \item[d)] Вычислите ковариацию величин $X$ и $Y$  
+    \end{itemize}
+\end{tcolorbox}
+
+\begin{enumerate}
+    \item[a)] $\prob{X^2+Y^2>0.25}=\prob{\sqrt{X^2+Y^2}>0.5}=1-\prob{\sqrt{X^2+Y^2}\leqslant0.5}1-\frac{\frac{\pi}{16}}{\frac{1}{2}}=1-\frac{\pi}{8}$
+
+    \item[b)] $\prob{X\leqslant x}=\frac{\frac{(1-x)+1}{2}\cdot x}{\frac{1}{2}}=x(2-x),x\in[0;1]$
+    
+    Аналогично, для случайной величины $Y$
+
+    Тогда, продифференцировав функцию распределения получим \begin{equation*}f_{X}=\begin{cases}
+        2-2x,&x\in[0;1]\\
+        0,&\text{иначе}
+    \end{cases},\quad f_{Y}=\begin{cases}
+        2-2y,&y\in[0;1]\\
+        0,&\text{иначе}
+    \end{cases}
+    \end{equation*}
+
+    \begin{equation*}
+        \begin{aligned}
+            \matwait{X}&=\int\limits_0^1 xf_{X}(x)\d{x}\\
+            \matwait{Y}&=\int\limits_0^1 yf_{Y}(y)\d{y}
+        \end{aligned}
+    \end{equation*}
+
+    \item[c)] $f_{X,Y}\overset{?}{=}f_{X}(x)\cdot f_{Y}(y)$
+
+    $F_{X,Y}=\prob{X\leqslant x, Y\leqslant y}=\begin{cases}
+        2xy,&\begin{aligned}
+            x+y\leqslant 1\\
+            x\in[0;1]\\
+            y\in[0;1]
+        \end{aligned}\\
+        \frac{S}{\frac{1}{2}},&\begin{aligned}
+            x+y>1\\
+            x\in[0;1]\\
+            y\in[0;1]
+        \end{aligned},\text{ где $S$ — площадь части, попавшей в треугольник}
+    \end{cases}$
+\end{enumerate}
+
+
+
+\newpage
+\section*{№5}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Рассмотрим матрицу
+    \begin{equation*}
+        A=\begin{pmatrix}
+            4&b\\
+            a&9
+        \end{pmatrix}
+    \end{equation*}
+    \begin{itemize}
+        \item[a)] Каким условиям должны удовлетворять константы $a$ и $b$, чтобы матрица $A$ была ковариационной матрицей некоторого случайного вектора?
+        \item[b)] Известно, что $A$ — ковариационная матрица вектора $(X, Y)$ и $a b=36$. Каким соотношением связаны компоненты случайного вектора? 
+    \end{itemize}
+\end{tcolorbox}
+
+\begin{enumerate}
+    \item[a)] Должна удовлетворять двум условиям:
+    \begin{itemize}
+        \item $a=b$
+        \item Все главные миноры неотрицательные
+    \end{itemize}
+    $\det A=4\cdot9-ab\geqslant0\Longrightarrow 36\geqslant ab$
+
+    \item[b)] $ab=36$ и так как $a=b$, то либо $a=b=6$ либо $a=b=-6$
+\end{enumerate}
+
+
+
+
+\newpage
+\section*{№6}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Юрий Долгорукий проводит уличный опрос и спрашивает москвичей: «Знаете ли Вы год основания Москвы?» С помощью неравенства Чебышёва определите, сколько нужно опросить человек, чтобы с вероятностью не менее 0.9 доля знающих ответ среди опрошенных отличалась бы от истинной вероятности не более, чем на $0.05$?
+\end{tcolorbox}
+
+Выпишем неравенство Чебышёва:
+\begin{equation*}
+    \prob{|X-\matwait{X}|\geqslant\varepsilon}\leqslant\frac{\dispersia{X}}{\varepsilon^2}
+\end{equation*}
+Тогда, в нашем случае $\varepsilon=0.05$
+
+Теперь проведем такую цепочку преобразований
+\begin{equation*}
+    \begin{aligned}
+        -\prob{|X-\matwait{X}|\geqslant\varepsilon}&\geqslant-\frac{\dispersia{X}}{\varepsilon^2}\\
+        1-\prob{|X-\matwait{X}|\geqslant\varepsilon}&\geqslant1-\frac{\dispersia{X}}{\varepsilon^2}\\
+        \prob{|X-\matwait{X}|\leqslant\varepsilon}&\geqslant1-\frac{\dispersia{X}}{\varepsilon^2}
+    \end{aligned}
+\end{equation*}
+
+Введем случайные величины $Z_1,\ldots,Z_n\sim Bi(1,p)$, где $Z_i$ — ответ $i$-го москвича на вопрос, тогда
+\begin{equation*}
+    X=\frac{Z_1+Z_2+\ldots+Z_n}{n}\Longrightarrow\matwait{X}=\matwait{Z_i}=p
+\end{equation*} 
+
+По свойствам биномиального распределения: $\dispersia{X}=\displaystyle\frac{\dispersia{Z_i}}{n}=\frac{p(1-p)}{n}$
+
+\begin{equation*}
+    \begin{aligned}
+        1-\frac{p(1-p)}{n}&\geqslant0.9\\
+        \frac{p(1-p)}{n}&\leqslant\varepsilon^2\\
+        \frac{p-p^2}{n}&\leqslant\frac{\frac{1}{4}}{n}\leqslant0.1\varepsilon^2\\
+        n&\geqslant \frac{1}{0.4\varepsilon^2}=\frac{1}{0.4\cdot0.05^2}=1000
+    \end{aligned}
+\end{equation*}
+
+Получается, что надо опросить хотя бы 1000 человек
+
+
+
+\newpage
+\section*{№7}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Второй начальный момент неотрицательной случайной величины $\xi$ равен 3
+
+    Оцените сверху вероятность $\mathbb{P}(\xi \geqslant 3)$
+\end{tcolorbox}
+
+Из условия получаем, что $\xi>0, \matwait{\xi^2}=3$, а $\varepsilon=3$
+
+$\prob{\xi\geqslant \varepsilon}\leqslant\frac{\matwait{\xi}}{\varepsilon}\leqslant \frac{\sqrt{3}}{3}=\frac{1}{\sqrt{3}}$
+
+$\dispersia{\xi}=\matwait{\xi^2}-(\matwait{\xi})^2\geqslant 0$
+
+$\matwait{\xi^2}\geqslant (\matwait{\xi})^2$
+
+$3\geqslant(\matwait{\xi})^2\sqrt{3}\geqslant\matwait{\xi}$
+
+\section*{№8}
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    Величина $\xi$ имеет плотность распределения
+\begin{equation*}
+    f(x)=\frac{\exp (-x)}{(1+\exp (-x))^2}
+\end{equation*}
+
+Для величины $\xi$ вычислите математическое ожидание, медиану, моду и начальный момент порядка $2023$
+\end{tcolorbox}
+
+Имеем $f_{\xi}(x)=\displaystyle\frac{e^{-x}}{(1+e^{-x})^2}$. Напомним, что 
+\begin{equation*}
+    \matwait{\xi}=\int_{-\infty}^{+\infty}x f_{\xi}(x)\d{x}
+\end{equation*}
+
+Основная идея задачи в том, что функция плотности четная, проверим
+\begin{equation*}
+    \begin{aligned}
+        f_{\xi}(-x)&=\frac{e^x}{(1+e^x)^2}\\
+        &=\frac{e^x}{1+2e^x+e^{2x}e^{-2x}}\frac{e^{-x}}{e^{-2x}+2e^{-x}+1}\\
+        &=\frac{e^{-x}}{(1+e^{-x})^2}=f_{\xi}(x)
+    \end{aligned}
+\end{equation*}
+Получаем, что $f_{\xi}(x)$ — четная
+
+% дополню, когда запись будет)
+% Тогда, для вычисления $\matwait{\xi^{2023}}$ нам не нужно считать какие-то огромные степени, а можно просто указать, что так как функция плотности четная, то 
+% $q_{0.5}$
+
+% $\int_{-\infty}^{+\infty}f_{\xi}(x)dx=1$
+
+% $\int_{-\infty}^{0}f_{\xi}(x)dx+\int_0^{+\infty}f_{\xi}(x)dx=1$
+
+% $mode=\underset{x}{argmax} f_{\xi}(x)=0$
+
+
+
+
+
+
+\end{document}
