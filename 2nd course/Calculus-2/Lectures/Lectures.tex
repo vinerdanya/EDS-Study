@@ -24,7 +24,7 @@
     &=\left[a_1,b_1\right]\times\ldots\times\left[a_n,b_n\right]
 \end{aligned}
 \end{equation*}
-\comment $I=\{a_1,b_1\}\times\ldots\times\{a_n,b_n\}$, где $\{\}$ может быть отрезком, интервалом и т.д.
+\comment $I=\{a_1,b_1\}\times\ldots\times\{a_n,b_n\}$, где $\{a_i, b_i\}$ может быть отрезком, интервалом и т.д.
 
 \definition Мера бруса — его объём:
 \begin{equation*}
@@ -1366,6 +1366,384 @@ $\forall \ve>0\ \exists N:\forall n>N\hookrightarrow\sup\limits_{D}|f_n(x)-f(x)|
         \end{aligned}
     \end{equation*}
 \end{enumerate}\qed
+
+
+
+
+\newpage
+\section{Функциональные ряды—1}
+Пусть $D\subset\mathbb{R}$, $f_n, S:D\to\mathbb{R}\ (\forall n\in\mathbb{N})$, а также $S_k(x)=\sum_{n=1}^{k}f_n(x)$ — частичные суммы функционального ряда
+
+\definition Если $\exists S(x): S_k\overset{D}{\longrightarrow}S$, то будем говорить, что функциональный ряд $\sum_{n=1}^{\infty}f_n(x)$ \textit{сходится поточечно} к $S(x)$ на $D$
+
+\definition Если $\exists S(x): S_k\overset{D}{\rightrightarrows}S$, то будем говорить, что функциональный ряд $\sum_{n=1}^{\infty}f_n(x)$ \textit{сходится равномерно} к $S(x)$
+
+\subsection{Критерий Коши равномерной сходимости функционального ряда}
+\theorem Пусть $f_n:D\to\mathbb{R}\ \forall n\in\mathbb{N}$, $\sum_{n=1}^{\infty}f_n(x)\overset{D}{\rightrightarrows}$ тогда и только тогда, когда
+\begin{equation*}
+    \forall \ve>0\ \exists N:\ \forall m>k>N\ \forall x\in D\hookrightarrow |S_m(x)-S_k(x)|=\left|\sum_{n=k+1}^{m}f_n(x)\right|<\ve
+\end{equation*}
+
+\proof Следует из критерия Коши для функциональных последовательностей 
+\begin{equation*}
+    S_i(x)=\sum_{n=1}^{i}f_n(x)
+\end{equation*}\qed
+
+\subsection{Необходимое условие равномерной сходимости функционального ряда}
+\corollary Пусть $\left.\begin{aligned}
+   &f_n:D\to\mathbb{R}\ (\forall n\in\mathbb{N})\\
+   &\sum_{n=1}^{\infty}f_n(x)\overset{D}{\rightrightarrows}
+\end{aligned}\right\}\Longrightarrow f_n(x)\overset{D}{\rightrightarrows}0$
+
+\proof $\sum_{n=1}^{\infty}f_n(x)\overset{D}{\rightrightarrows}$, значит выполняется критерий Коши:
+\begin{equation*}
+    \forall\ve>0\ \exists N:\ \forall k,k-1>N\ \forall x\in D\hookrightarrow |S_k(x)-S_{k-1}(x)|=|f_{k}(x)|<\ve
+\end{equation*}
+Получаем, что $\forall\ve>0\ \exists N:\ \forall k>N+1\ \forall x\in D\hookrightarrow |f_k(x)|<\ve$, то есть $f_k(x)\overset{D}{\rightrightarrows}0$\qed
+
+\definition Ряд $\sum_{n=1}^{\infty}a_n(x)$ \textit{сходится абсолютно}, если
+\begin{equation*}
+    \forall x_0\in \sum_{n=1}^{\infty}a_n(x_0)\text{ — сходится абсолютно}
+\end{equation*}
+
+
+\subsection{Признак сравнения}
+\theorem Имеется $\left.\begin{aligned}
+    &\sum_{n=1}^{\infty}a_n(x)\text{ и }\sum_{n=1}^{\infty}b_n(x):\\
+    &\exists N\ \forall n>N\ \forall x\in D\ |a_n(x)|\leqslant b_n(x)\\
+    &\sum_{n=1}^{\infty}b_n(x)\overset{D}{\rightrightarrows}
+\end{aligned}\right\}\Longrightarrow \sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\text{ и }\sum_{n=1}^{\infty}a_n(x)\text{ сходится абсолютно }D$
+
+\proof Докажем по критерию Коши
+\begin{equation*}
+    (\star)\quad |a_{m+1}(x)+\ldots+a_k(x)|\leqslant |a_{m+1}(x)|+\ldots+|a_k(x)|\underset{\forall m,k>N\forall x\in D}{\leqslant}b_{m+1}(x)+\ldots+b_{k}(x)\underset{\forall m, k>N_1 \forall x\in D}{<}\ve 
+\end{equation*}
+Получаем, что 
+\begin{equation*}
+    \forall\ve>0\ \exists \overset{\sim}{N}=\max\{N,N_1\}: \forall k>m>\overset{\sim}{N}\ \forall x\in D\hookrightarrow|a_{m+1}(x)+\ldots+a_k(x)|<\ve\Longrightarrow\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}
+\end{equation*}
+
+Так как $(\star)$ выполняется для любого $x\in D$, то $\forall x_0\in D$ выполняется 
+\begin{equation*}
+    \forall\ve>0\ \exists \overset{\sim}{N}=\max\{N,N_1\}: \forall k>m>\overset{\sim}{N}\hookrightarrow |a_{m+1}(x)|+\ldots+|a_k(x)|<\ve,
+\end{equation*}
+то есть $\sum_{n=1}^{\infty}|a_n(x_0)|$ — сходится, а значит сходится абсолютно $\forall x_0\in D$\qed
+
+\subsection{Мажорантный признак Вейерштрасса о равномерной сходимости функционального ряда}
+\corollary $\left.\begin{aligned}
+    &\sum_{n=1}^{\infty}a_n(x):\\
+    &\exists N\ \forall n>N\ \sup\limits_{D}|a_n(x)|\leqslant M_n\\
+    &\sum_{n=1}^{\infty} M_n\text{ — сходится}
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &\sum_{n=1}^{\infty}a_n\overset{D}{\rightrightarrows}\\
+    &\sum_{n=1}^{\infty}a_n\text{ сходится абсолютно на }D
+\end{aligned}$
+
+\proof Если в признаке сравнения принять, что $\forall n\in \mathbb{N}\ b_n(x)=M_n=\text{const}(n)$, то условие теоремы выполняется\qed 
+
+\definition Частичные суммы ряда $\sum_{n=1}^{\infty}f_n(x):S_k(x)=\sum_{n=1}^{k}f_n(x)$ \textit{равномерно ограничены} на $D$, если
+\begin{equation*}
+    \exists c>0:\ \forall k\in\mathbb{N},\forall x\in D\hookrightarrow|S_k(x)|\leqslant c
+\end{equation*}
+
+\definition Последовательность функций $\{f_n(x)\}_{n=1}^{\infty}$ \textit{монотонна на} $D$ (по $n$), если $\forall x_0\in D$ соответствующая числовая последовательность $\{f_n(x_0)\}_{n=1}^{\infty}$ имеет ту же монотонность. То есть 
+\begin{equation*}
+    \forall x_0\in D\ b_n(x_0)\geqslant b_{n+1}(x_0)\text{ или }b_n(x_0)\leqslant b_{n+1}(x_0)
+\end{equation*}
+
+\subsection{Преобразование Абеля}
+Здесь обозначения $a_n$ и $a_n(x)$ эквивалентны
+
+\lemma Пусть $\{a_n(x)\}_{n=1}^{\infty}$ и $\{b_n(x)\}_{n=1}^{\infty}$, тогда $\forall k>m\in\mathbb{N}$ верно
+\begin{equation*}
+    \sum_{n=m+1}^{k}\left(a_n-a_{n-1}\right)b_n=a_kb_k-a_mb_{m+1}+\sum_{n=m+1}^{k-1}a_n\left(b_n-b_{n+1}\right)
+\end{equation*}
+
+\proof 
+\begin{equation*}
+    \begin{aligned}
+        \sum_{n=m+1}^{k}(a_n-a_{n-1})b_n&=\sum_{n=m+1}^{k}a_nb_n-\sum_{n=m+1}^k a_{n-1}b_n\\
+        &\text{сдвинем индексы на 1 во второй сумме}\\
+        &\sum_{n=m+1}^{k}a_nb_n-\sum_{n=m}^{k-1}a_nb_{n+1}\\
+        &\text{отщипнем лишнее, то есть вытащим из суммы }a_kb_k\\
+        &=a_kb_k+\sum_{n=m+1}^{k-1}a_nb_n-a_mb_{m+1}-\sum_{n=m+1}^{k-1}a_mb_{n+1}\\
+        &=a_kb_k-a_mb_{m+1}+\sum_{n=m+1}a_n(b_n-b_{n+1})
+    \end{aligned}
+\end{equation*}
+
+\subsection{Признак Дирихле}
+\theorem $\left.\begin{aligned}
+    &a_n,b_n:D\to\mathbb{R}\\
+    &\exists c>0:\forall k\in\mathbb{N},\forall x\in D\ |A_k(x)|\leqslant c\\
+    &\{b_n(x)\}_{n=1}^{\infty}\text{ — монотонна на }D\\
+    &b_n\overset{D}{\rightrightarrows} 0
+\end{aligned}\right\}\Longrightarrow \sum_{n=1}^{\infty}a_n(x)b_n(x)\overset{D}{\rightrightarrows}$
+
+\proof Докажем по критерию Коши. Пусть $A_k(x)=\sum_{n=1}^k a_n(x)$ и $a_n(x)=A_n(x)-A_{n-1}(x)$
+
+Рассмотрим
+\begin{equation*}
+    \begin{aligned}
+        \left|\sum_{n=m+1}^{k}a_n(x)b_n(x)\right|&=\left|\sum_{n=m+1}^{k}\left(A_n(x)-A_{n-1}(x)\right)b_n(x)\right|\\
+        &\text{выполним преобразование Абеля}\\
+        &=\left|A_k(x)b_k(x)-A_m(x)b_{m+1}(x)+\sum_{n=m+1}^{k-1}A_n(x)\left(b_n(x)-b_{n+1}(x)\right)\right|\\
+        &\leqslant\underbrace{|A_k(x)|}_{\leqslant c}\cdot|b_k(x)|+\underbrace{|A_m(x)|}_{\leqslant c}\cdot|b_{m+1}(x)|+\max\limits_{m+1\leqslant n\leqslant k-1}\underbrace{|A_n(x)|}_{\leqslant c}\cdot\left|\sum_{n=m+1}^{k-1}(b_n(x)-b_{n+1}(x))\right|\\
+        &\leqslant c\cdot\left(|b_k(x)|+|b_{m+1}(x)|+|b_{m+1}(x)-b_{k}(x)|\right)\\
+        &\leqslant \underbrace{c\cdot 4\cdot \max\{|b_k(x)|,|b_{m+1}(x)|\}}_{(\star)}
+    \end{aligned}
+\end{equation*}
+
+Знаем, что $b_n\overset{D}{\rightrightarrows} 0$, то есть $\forall \ve>0\ \exists N:\forall n>N\ \forall x\in D\hookrightarrow|b_n(x)|<\frac{\ve}{4c}$, тогда $(\star)<4c\cdot\displaystyle\frac{\ve}{4c}=\ve$
+
+Значит, выполняется критерий Коши равномерной сходимости функциональных рядов, то есть 
+\begin{equation*}
+    \left|\sum_{n=m+1}^{k}a_n(x)b_n(x)\right|<\ve\Longrightarrow\text{ ряд }\sum_{n=m+1}^{\infty}a_n(x)b_n(x)\overset{D}{\rightrightarrows}
+\end{equation*}\qed
+
+
+
+
+
+\newpage
+\section{Функциональные ряды—2. Степенные ряды—1}
+\subsection{Признак Абеля}
+\theorem Пусть $\left.\begin{aligned}
+    &a_n,b_n:D\to\mathbb{R}\\
+    &\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\\
+    &\{b_n(x)\}_{n=1}^{\infty}\text{ — монотонна на }D\\
+    &\exists c>0:\ \forall n>\mathbb{N},\forall x\in D\ |b_n(x)|\leqslant c
+\end{aligned}\right\}\Longrightarrow \sum_{n=1}^{\infty}a_n(x)b_n(x)\overset{D}{\rightrightarrows}$
+
+
+\proof Обозначим $\alpha_k^m(x)=A_k(x)-A_m(x)=\sum_{n=m+1}^{k}a_n(x)\Longrightarrow \alpha_m^m=0$
+
+Получаем, что $a_n(x)=\alpha_n^m(x)-\alpha_{n-1}^{m}(x)$
+
+Рассмотрим $\left|\sum_{n=m+1}^{k} a_n(x)b_n(x)\right|$:
+\begin{equation*}
+    \begin{aligned}
+        \left|\sum_{n=m+1}^{k} a_n(x)b_n(x)\right|&=\left|\sum_{n=m+1}^{k}(\alpha_n^m(x)-\alpha_{n-1}^{m}(x))b_n(x)\right|\\
+        &\leqslant |\alpha_{k}^m(x)b_k(x)|+|\alpha_{m}^m(x)b_{m+1}(x)|+\left|\sum_{n=m+1}^{k-1}\alpha_{n}^m(x)(b_n(x)-b_{n+1}(x))\right|\\
+        &\leqslant |\alpha_{k}^m(x)|\cdot|b_k(x)|+\left|\sum_{n=m+1}^{k-1}\alpha_{n}^m(x)(b_n(x)-b_{n+1}(x))\right|\\
+        &<\frac{\ve}{3c}\cdot c+\frac{\ve}{3c}\cdot|b_{m+1}(x)-b_k(x)|\\
+        &<3c\cdot\frac{\ve}{3c}
+    \end{aligned}
+\end{equation*}
+
+\begin{itemize}
+    \item $\{b_n(x)\}_{n=1}^{\infty}$ — монотонна на $D\Longrightarrow b_n(x)-b_{n+1}(x)$ одного знака $\forall n$
+    \item $|b_n(x)|\leqslant c\ \forall x\in D\ \forall n\in\mathbb{N}$
+    \item $\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\quad \forall\ve>0\ \exists N:\ \forall k>m>N:\ |\alpha_k^m(x)|<\frac{\ve}{3}$
+\end{itemize}
+
+Значит, $\forall\ve>0\ \exists N:\ \forall k>m>N\ \forall x\in D\hookrightarrow\left|\sum_{n=m+1}^{k}a_m(x)b_n(x)\right|<\ve$, следовательно ряд сходится равномерно на $D$ по критерию Коши\qed 
+
+\subsection{Теорема о почленном переходе к пределу}
+\theorem Пусть имеется $\left.\begin{aligned}
+    &a_n(x):D\to\mathbb{R}\\
+    &x_0\text{ — предельная точка } D\\
+    &\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\\
+    &\forall n\in\mathbb{N}\ \exists\lim\limits_{x\to x_0}a_n(x)=b_n
+\end{aligned}\right\}\Longrightarrow\begin{aligned}
+    &\sum_{n=1}^{\infty}b_n(x) - \text{сходится}\\
+    &\sum_{n=1}^{\infty}b_n(x)=\lim\limits_{x\to x_0}\sum_{n=1}^{\infty}a_n(x)
+\end{aligned}$
+
+\proof Для теоремы о переходе к пределу в последовательностях у нас было три условия
+\begin{equation*}
+    \begin{cases}
+        x_0\text{ — предельная т.}D\\
+        f_n(x)\overset{D}{\rightrightarrows}f(x)\\
+        \forall n\in\mathbb{N}\ \exists \lim\limits_{x\to x_0}f_n(x)=c_n
+    \end{cases}
+\end{equation*}
+
+Так как $\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}$, то $S_k(x)=\sum_{n=1}^{\infty}a_n(x)$ и $S_k(x)\overset{D}{\rightrightarrows}$
+
+Покажем, что $\forall k\in\mathbb{N}\ \exists \lim\limits_{x\to x_0}S_k(x):$
+\begin{equation*}
+    \begin{aligned}
+        \lim\limits_{x\to x_0}S_k(x)&=\lim\limits_{x\to x_0}\left(\sum_{n=1}^{k}a_n(x)\right)\\
+        &=\sum_{n=1}^k\left(\lim\limits_{x\to x_1}a_n(x)\right)\\
+        &=\sum_{n=1}^kb_n\\
+        &=B_k
+    \end{aligned}
+\end{equation*}
+Значит, выполняется третье условие для последовательностей
+
+Таким образом, по теореме о почленном переходе к пределу в функциональных последовательностях:
+\begin{equation*}
+    \sum_{k=1}^{\infty} B_k=\lim\limits_{k\to\infty}\left(\lim\limits_{x\to x_0}S_k(x)\right)=\lim\limits_{x\to x_0}\left(\lim\limits_{k\to\infty}S_k(x)\right)=\lim\limits_{x\to x_0}\left(\sum_{n=1}^{\infty}a_n(x)\right)
+\end{equation*}\qed
+
+\subsection{Теорема о непрерывности равномерно сходящегося ряда}
+\theorem $\left.\begin{aligned}
+    &a_n(x):D\to\mathbb{R}\\
+    &\sum_{n=1}^{\infty}a_n(x)\overset{D}{\rightrightarrows}\\
+    &a_n(x)\in C(D)
+\end{aligned}\right\}\Longrightarrow S(x)=\sum_{n=1}^{\infty}$
+
+\proof
+\begin{itemize}
+    \item $S_k(x)\overset{D}{\rightrightarrows}$, где $S_k(x)=\sum_{n=1}^{k}a_n(x)$
+    \item $S_k(x)\in C(D)$ как конечная сумма непрерывных функций на $D$
+\end{itemize}
+
+Тогда, $S(x)\in C(D)$ по теореме о непрерывности предельной функции \qed
+
+
+\subsection{Теорема о почленном интегрировании}
+\theorem $\left.\begin{aligned}
+    &a_n(x):D\to\mathbb{R}\\
+    &\sum_{n=1}^{\infty}a_n(x)\overset{[a;b]}{\rightrightarrows}\\
+    &\forall n\in\mathbb{N} a_n(x)\in\riman{[a;b]}
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &S(x)\sum_{n=1}^{\infty}a_n(x)\in\riman{[a;b]}\\
+    &\int\limits_{a}^bS(x)\d{x}=\sum_{n=1}^{\infty}\int\limits_{a}^ba_n(x)\d{x}
+\end{aligned}$
+
+\proof $S_k(x)=\sum_{n=1}^{\infty}a_n(x)$, $\forall a_n(x)\in\riman{[a;b]}\Longrightarrow S_k(x)\in\riman{[a;b]}$ как сумма конечного числа интегральных функций
+
+Тогда, выполняется теорема о почленном интегрировании функциональных последовательностей:
+\begin{equation*}
+    \exists S(x):\boxed{\begin{aligned}
+        &S_k(x)\overset{[a;b]}{\rightrightarrows}S(x)\\
+        &S_k(x)\in\riman{[a;b]}
+    \end{aligned}}\Longrightarrow\begin{aligned}
+        \int\limits_{a}^bS(x)\d{x}&=\int\limits_a^b\lim\limits_{k\to\infty}S_k(x)\d{x}\\
+        &=\lim\limits_{k\to\infty}\int\limits_a^b\sum_{n=1}^ka_n(x)\\
+        &=\lim\limits_{k\to\infty}\sum_{n=1}^{k}\int\limits_{a}^ba_n(x)\d{x}\\
+        &=\sum_{n=1}^{\infty}\int\limits_{a}^ba_n(x)\d{x}
+    \end{aligned}
+\end{equation*}\qed
+
+
+\subsection{Теорема о почленном дифференцировании}
+\theorem $\left.\begin{aligned}
+    &a_n(x):[a;b]\to\mathbb{R}\\
+    &a_n(x)\in D[a;b]\\
+    &\exists c\in[a;b]:\sum_{n=1}^{\infty}a_n(x)\text{ — сходится}\\
+    &\sum_{n=1}^{\infty}a^{\prime}_n(x)\overset{[a;b]}{\rightrightarrows}\\
+\end{aligned}\right\}\Longrightarrow \begin{aligned}
+    &\exists S(x):\sum_{n=1}^{\infty}a_n(x)\overset{[a;b]}{\rightrightarrows}S(x)\\
+    &S^{\prime}(x)=\sum_{n=1}^{\infty}a^{\prime}_n(x)
+\end{aligned}$
+
+\proof $S_k(x)=\sum_{n=1}^{k}a_n(x)$, тогда $\exists \lim\limits_{k\to\infty}S_k(c)$; $S_k(x)\in D[a;b]$; $S^{\prime}_k\overset{[a;b]}{\rightrightarrows}$
+
+Значит, условие теоремы о почленном дифференцировании функциональных последовательностей выполнено\qed
+
+
+\subsection{Степенные ряды}
+\definition Функциональный ряд вида $\sum_{n=1}^{\infty}a_n(x-x_0)^n$ будем называть степенным рядом
+
+\begin{itemize}
+    \item $x_0$ — центр степенного ряда
+    \item $a_n$ — коэффициенты степенного ряда
+\end{itemize}
+
+\comment При $x=x_0$ степенной ряд сходится
+
+\subsection{Радикальный признак Коши}
+\theorem Пусть $a_n\geqslant 0, \varlimsup\limits_{n\to\infty}\sqrt[n]{a}=q$, тогда степенной ряд $\sum_{n=1}^{\infty}a_n$ сходится при $q<1$, и расходится при $q>1$
+
+\subsection{Теорема Коши-Адамара}
+\theorem $\sum_{n=1}^{\infty}a_n(x-x_0)^n,R=[0;+\infty)$. Пусть $\frac{1}{R}=\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n|}$
+
+Тогда, $\sum_{n=1}^{\infty}a_n(x-x_0)^n$ сходится $\forall x:\ |x-x_0|<R$ и расходится $\forall x:\ |x-x_0|>R$
+
+\proof Зафиксируем $x\in\mathbb{R}$
+
+Рассмотрим 
+\begin{equation*}
+    \varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n(x-x_0)^n|}=\left(\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n|}\right)\cdot|x-x_0|=\frac{|x-x_0|}{R}
+\end{equation*}
+
+Получаем, что для любого фиксированного $x\in(x_0-R;x_0+R):\frac{|x-x_0|}{R}<1\Longrightarrow$ числовой ряд $$\sum_{n=1}^{\infty}|a_n(x-x_0)^n|$$ сходится по радикальному признаку Коши, а значит $\sum_{n=1}^{\infty}a_n(x-x_0)^n$ — сходится абсолютно
+
+Далее, для любого фиксированного $(-\infty;x_0-R)\cup(x_0+R;+\infty):\frac{|x-x_0|}{R}>1\Longrightarrow \varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n(x-x_0)^n|}>1$ и не выполняется необходимое условие сходимости числового ряда, так как $$\exists N\forall n>N:\sqrt[n]{|a_n(x-x_0)^n|}>1\Longrightarrow |a_n(x-x_0)|>1\not\longrightarrow0$$
+
+Значит, оба ряда $\sum_{n=0}^{\infty}|a_n(x-x_0)^n|$ и $\sum_{n=0}^{\infty}a_n(x-x_0)^n$ — расходятся\qed
+
+\definition $R$ будем называть радиусом сходимости степенного ряда 
+
+\comment $(x_0-R;x_0+R)$ — интервал сходимости степенного ряда
+
+
+
+\newpage
+\section{Степенные ряды—2}
+\subsection{Теорема о равномерной сходимости степенного ряда}
+\theorem Пусть $\sum_{n=1}^{\infty}a_n(x-x_0)^n$, $R$ — радиус сходимости степенного ряда, тогда 
+\begin{equation*}
+    \forall r>0:\ 0<r<R\text{ степенной ряд }\sum_{n=1}^{\infty}a_n(x-x_0)^n\overset{|x-x_0|\leqslant r}{\rightrightarrows}
+\end{equation*}
+
+\proof Используем признак Вейерштрасса: $|a_n(x-x_0)^n|=|a_n|\cdot|x-x_0|^n\leqslant |a_n|\cdot r^n$
+
+По радикальному признаку Коши ряд $\sum_{n=1}^{\infty}|a_n|r^n$ — сходится, а $\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n|r^n}=\frac{r}{R}<1$. Значит, по мажорантному признаку Вейерштрасса $\sum_{n=1}^{\infty}a_n(x-x_0)^n\overset{|x-x_0|\leqslant r}{\rightrightarrows}$\qed
+
+\subsection{Теорема о непрерывности суммы степенного ряда}
+\theorem $S(x)=\sum_{n=1}^{\infty}a_n(x-x_0)^n\ \in C(|x-x_0|<R)$
+
+\proof $\forall n\in\mathbb{N}\ a_n(x-x_0)^n\in C(|x-x_0|<R)$
+
+Зафиксируем $\overset{\sim}{x}:|\overset{\sim}{x}-x_0|<R$. Пусть $r:|\overset{\sim}{x}-x_0|\leqslant r<R$, тогда $\forall x:|x-x_0|\leqslant r \quad S(x)\overset{|x-x_0|\leqslant r}{\rightrightarrows}$
+
+То есть $S(x)\in C(x)$, так как $\overset{\sim}{x}$ — произвольная и $r$ — любой $<R\Longrightarrow S(x)\in C(|x-x_0|<R)$\qed
+
+
+\subsection{Теорема о почленном интегрировании степенного ряда}
+\theorem Пусть $R$ — радиус сходимости ряда $\sum_{n=0}^{\infty}a_nx^n=S(x)$, тогда $$\int\limits_{0}^{x}S(t)\d{t}=\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}\ \forall x\in (-R;R)$$
+
+\proof $\forall x\in(-R;R)\ a_nx^n\in\riman{[0;x]}$ и $S(x)\overset{[0;x]}{\rightrightarrows}$, тогда применима теорема о почленном интегрировании:
+\begin{equation*}
+    \int\limits_0^xS(t)\d{t}=\int\limits_{0}^x\sum_{n=0}^{\infty}a_nt^n\d{t}=\sum_{n=0}^{\infty}a_n\int\limits_{0}^xt^n\d{t}=\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}
+\end{equation*}
+
+Найдем его радиус сходимости с помощью формулы Коши-Адамара
+\begin{equation*}
+    \varlimsup\limits_{n\to\infty}\sqrt[n+1]{\left|\frac{a_n}{n+1}x^{n+1}\right|}=\varlimsup\limits_{n\to\infty}\frac{\sqrt[n+1]{|a_n|}}{\sqrt[n+1]{n+1}}|x|=\frac{|x|}{R}<1\Longleftrightarrow x\in (-R;R)
+\end{equation*}\qed
+
+\comment Любой степенной ряд вида $\sum_{n=0}^{\infty}a_n(x-x_0)^n$ можно путём сдвига $y=x-x_0$ свести к ряду $\sum_{n=0}^{\infty}a_ny^n$
+
+\subsection{Теорема о почленном дифференцировании степенного ряда}
+\theorem Пусть $R$ — радиус сходимости ряда $S(x)=\sum_{n=0}^{\infty}a_nx^n$, тогда
+\begin{equation*}
+    S^{\prime}(x)=\sum_{n=1}^{\infty}na_nx^{n-1}\ \forall x\in (-R;R)
+\end{equation*}
+
+\proof Для любого $x\in(-R;R)$:
+\begin{enumerate}
+    \item $a_n(x)^n\in D[0;x]$
+    \item $\exists 0: S(0)=0$ — сходится
+    \item \begin{equation*}
+        \varlimsup\limits_{n\to\infty}\sqrt[n-1]{n\cdot|a_n|\cdot|x^{n-1}|}=\varlimsup\limits_{n\to\infty}\sqrt[n-1]{n}\cdot|x|\cdot\sqrt[n-1]{|a_n|}=\frac{|x|}{R}<1\Longleftrightarrow |x|<R
+    \end{equation*}
+    то есть $\sum_{n=0}^{\infty}na_nx^{n-1}\overset{[0;x]}{\rightrightarrows}$
+\end{enumerate}
+
+Получаем, $S^{\prime}(x)=\sum_{n=0}^{\infty}na_nx^{n-1}\ \forall x\in(-R;R)$\qed
+
+\comment $\forall n\in\mathbb{N}\ \exists S^{(\star)}(x)=\sum_{n=k+1}^{\infty}n(n-1)\cdot\ldots\cdot(n-k+1)x^{n-k}$ с радиусом сходимости $R$ и $\forall r:\ 0<r<R\ S^{(\star)}_N(x)\overset{[-r;r]}{\rightrightarrows}$
+
+\subsection{Разложение функции в степенной ряд}
+\proposition Если $f(x)$ раскладывается в степенной ряд на $(-R;R)$, $R>0$, то $f(x)\in D(-R;R)$
+
+\proof $f(x)=\sum_{n=0}^{\infty}a_nx^n,\ x\in(-R;R)$, а далее по замечанию из предыдущей теоремы\qed
+
+\proposition Если $f(x)$ раскладывается в степенной ряд на $(-R;R)$, $R>0$, то это разложение единственно
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
