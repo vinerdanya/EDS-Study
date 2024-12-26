@@ -750,7 +750,7 @@ $$F_\xi(x)=\mathbb{P}(\{\omega\in\Omega:\xi(\omega)\leqslant x\}),x\in\mathbb{R}
 \begin{enumerate}
     \item $f_{\xi}\geqslant 0\ \forall x_1,x_2\in\mathbb{R}$
     \item $\displaystyle\iint\limits_{\mathbb{R}^2}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}=1$
-    \item $f_{\xi_1}(x_1)=\displaystyle\int\limits_{-\infty}\limits^{\infty}f_{\xi}(x_1,x_2)\d{x_1}\d{x_2}$
+    \item $f_{\xi_1}(x_1)=\displaystyle\int\limits_{-\infty}\limits^{\infty}f_{\xi}(x_1,x_2)\d{x_2}$
     
     $\begin{aligned}
         F_{\xi_1}(x_1)&=\prob{\xi_1\leqslant x_1\cap\xi_2\in\mathbb{R}}\\
@@ -982,6 +982,107 @@ $S=\xi_1+\ldots+\xi_\nu=g(\xi_1,\ldots,\xi_n;\nu)$ — элементы сумм
 \end{enumerate}
 
 % \subsection{ИНВЕСТ МОМЕНТ}
+
+\section{эту лекцию я скипанул хехе}
+\newpage
+
+
+\section{Лекция 09.12.2024}
+\definition Пусть $\{\xi_n\}_{1}^{\infty}$ на $(\Omega, \fk, \mathbb{P})$. Тогда, $\{\xi_n\}$ сходится почти наверное (сходимость с вероятностью 1) к $\xi:\Omega\to\mathbb{R}$, если 
+\begin{equation*}
+    \prob{\omega:\xi_n(\omega)\to\xi(\omega)}=0
+\end{equation*}
+
+\definition $\{\xi_n\}$ сходится в среднем порядка $s$ к $\xi$, если 
+\begin{equation*}
+    \matwait{|\xi_n-\xi|^s}\underset{n\to\infty}{\to}0
+\end{equation*}
+
+\definition $\{\xi_n\}$ сходится по вероятности к $\xi$, если 
+\begin{equation*}
+    \forall\varepsilon>0\ \prob{|\xi_n-\xi|>\varepsilon}\underset{n\to\infty}{\to}0
+\end{equation*}
+
+Пусть $\xi_n\overset{P}{\to}\xi$, $\eta_n\overset{P}{\to}\eta$, тогда 
+\begin{enumerate}
+    \item $\xi_n+\eta_n\overset{P}{\to}\xi+\eta$
+
+    \item $\xi_n\cdot\eta_n\overset{P}{\to}\xi\cdot\eta$
+    \item Если $g(x)$ — непрерывная функция, то $g(\xi_n)\overset{P}{\to}g(\xi)$
+\end{enumerate}
+
+\definition $\{\xi_n\}$ сходится по распределению к $\xi$, если для любой точки непрерывности $F_{\xi}(x)$ имеет место сходимость 
+\begin{equation*}
+    F_{\xi_n}(x)\underset{n\to\infty}{\to}F_{\xi}(x)
+\end{equation*}
+
+\comment Случайные ведичины $\xi_n,\xi$ могут быть определены на разных пространствах
+
+\theorem Пусть $(\Omega, \fk, \mathbb{P})$, $\{\xi_n\}, \{\eta_n\}, \{\xi,\eta:\Omega\to\mathbb{R}\}$. Тогда, если $\xi_n\overset{d}{\to}\xi,\eta_n\overset{P}{c},c\in\mathbb{R}$, то $\xi_n+\eta_n\overset{d}{\to}\xi+c$ и $\forall$ непрерывной $g(x, y)$ $g(\xi_n,\eta_n)\overset{d}{\to}g(\xi,c)$
+
+\comment Если $\xi_n\overset{d}{\to}c$, то $\xi_n\overset{P}{\to}c$
+
+\subsection{Биржевой парадокс}
+$K_0$ — стартовый капитал $U+V=1$
+
+депозит приносит $+b\cdot100\%$
+
+$X$ — доходность акций $+X\cdot100\%$
+
+$K_0(1+U\cdot b+V\cdot X);\matwait{X}>b>0$
+
+$\matwait{K_0(1+U\cdot b+V\cdot X)}\to\max\limits_{U,V}$
+
+$V=1$ $\matwait{K_0(1+X)^n}\underset{n\to\infty}{\to}\infty$
+
+Рисковый актив
+
+$\prob{X=-1}=\varepsilon_0>0$, $\prob{\text{разорение}}\underset{n\to\infty}{\to}1$
+
+$K_n=K_0(1+X_1)(1+X_2)\cdot\ldots\cdot(1+X_n)=K_0\Pi_{i=1}^{n}(1+X_i)$
+
+$\prob{\text{разорение}}=1-\prob{X_1>-1,\ldots,X_n>-1}=1-(1-\varepsilon_0)^n\underset{n\to\infty}{\to}1$
+
+
+\subsection{Неравенства Чебышёва и Маркова}
+\subsubsection*{Неравенство Маркова}
+Пусть $\xi\geqslant0$ почти наверное и $\exists \matwait{\xi}$, тогда 
+\begin{equation*}
+    \prob{\xi\geqslant\varepsilon}\leqslant\frac{\matwait{\xi}}{\varepsilon}
+\end{equation*}
+
+\proof Введем случайную величину $\eta=\begin{cases}
+    0,&\text{ если }\xi<\varepsilon\\
+    \varepsilon,&\text{ если }\geqslant\varepsilon
+\end{cases}$, тогда $\eta\leqslant\xi$ почти наверное, а также $\varepsilon\cdot\prob{\xi\geqslant\varepsilon}=\matwait{\eta}\leqslant\matwait{\xi}$
+
+\subsubsection*{Неравенство Чебышёва}
+\begin{equation*}
+    \forall\varepsilon>0\ \prob{|\xi-\matwait{\xi}|\geqslant\varepsilon}\leqslant\frac{\dispersia{\xi}}{\varepsilon^2}
+\end{equation*}
+
+\proof $\eta=|\xi-\matwait{\xi}|^2\geqslant0$ почти наверное
+
+$\prob{|\xi-\matwait{\xi}|\geqslant\varepsilon}=\prob{|\xi-\matwait{\xi}|^2\geqslant\varepsilon^2}\leqslant\frac{\matwait{\eta}}{\varepsilon^2}=\frac{\dispersia{\xi}}{\varepsilon^2}$
+
+\subsubsection*{Неравенство Чебышёва-Бьенели}
+$\sigma=\sqrt{\dispersia{\xi}},\varepsilon=3\sigma\quad\prob{|\xi-\matwait{\xi}|\geqslant 3\sigma}\leqslant\frac{\sigma^2}{9\sigma^2}=\frac{1}{9}$
+
+\subsubsection*{Обобщенное Неравенство Чебышёва}
+Пусть  возрастающая и $g(x)\geqslant0\forall x\in\mathbb{R}$, то $\matwait{g(\xi)}<\infty$,  то $\forall x\in\mathbb{R}$
+\begin{equation*}
+    \prob{\xi\geqslant x}\leqslant\frac{\matwait{g(\xi)}}{g(x)}
+\end{equation*}   
+
+\subsubsection*{ЗБЧ в форме Чебышёва}
+Пусть $\{\xi_n\}$ независимы и $\dispersia{\xi_n}\leqslant c,c\in\mathbb{R}$, Тогда
+\begin{equation*}
+    \frac{\xi_1+\ldots+\xi_n}{n}\overset{P}{n\to\infty}\frac{\matwait{\xi_1}+\ldots+\matwait{\xi_n}}{n}
+\end{equation*}
+
+\comment Пусть $\xi_n$ — норсв $\frac{\xi_1+\ldots+\xi_n}{n}\overset{P}{n\to\infty}\matwait{\xi_1}$
+
+\proof $\eta=\frac{\xi_1+\ldots+\xi_n}{n}$, $\matwait{\eta}=\frac{\matwait{\xi_1}+\ldots+\matwait{\xi_n}}{n}$, $\dispersia{\eta}=\frac{1}{n^2}(\dispersia{\xi_1}+\ldots+\dispersia{\xi_n})\leqslant\frac{n\cdot c}{n^2}=\frac{c}{n}\underset{n\to\infty}{0}0$
 
 
 
