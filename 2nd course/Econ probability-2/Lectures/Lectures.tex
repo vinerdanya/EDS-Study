@@ -1,0 +1,123 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{header}
+
+\title{\LARGE{Теория вероятностей и математическая статистика—2}}
+\author{Винер Даниил  \href{https://t.me/danya_vin}{@danya\_vin}}
+\date{Версия от \today}
+\begin{document}
+\maketitle
+\tableofcontents
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\setlist[itemize]{left=1cm}
+\setlist[enumerate]{left=1cm}
+\newpage
+\section{Лекция 13.01.2025}
+\subsection{Закон больших чисел в форме Бернулли}
+Пусть имеются некоторые случайные величины $\xi_i=\begin{cases}
+    1,&p\\
+    0,&1-p
+\end{cases}$, где $p$ — вероятность, что какое-то событие произошло. Тогда $\matwait{\xi}=p$, $\dispersia{\xi}=p(1-p)\leqslant \frac{1}{4}$
+
+\theorem Пусть $\hat{p}=\frac{1}{n}\sum_{i=1}^{n} \xi_i$ — доля успехов в $n$ испытаниях Бернулли, тогда $\hat{p}\overset{p}{\longrightarrow} p$
+
+\proof Распишем по неравенству Чебышёва: 
+\begin{equation*}
+    \prob{|\hat{p}-p|\geqslant\ve}\leqslant\frac{p(1-p)}{n\ve^2}\leqslant \frac{1}{4n\ve^2}\underset{n\to\infty}{\longrightarrow}0
+\end{equation*}
+
+\subsection*{Пример}
+Пусть 87\% новорожденных доживают до 50 лет. Тогда $p=0,87$ — вероятность дожить до 50. Рассмотрим $n=1000$ новорожденных
+
+Опредедлим с какой вероятностью данная случайная величина отклонится от своего математического ожидания не более, чем на $0,04$ — $\prob{|\hat{p}-0,87|\leqslant 0,04}$. По Чебышёву:
+\begin{equation*}
+    \prob{|\hat{p}-p|\leqslant 0,04}\geqslant1-\frac{\dispersia{\hat{p}}}{(0,04)^2}=1-\frac{0,87\cdot0,13}{0,0016\cdot1000}=0,929
+\end{equation*}
+
+\subsection{Центральная предельная теорема}
+Рассмотрим сумму независимых одинаково распределенных случайных величин:
+\begin{equation*}
+    S_n=\xi_1+\ldots+\xi_n,
+\end{equation*}
+при этом существует $\dispersia{\xi_i}\leqslant c$, $\matwait{\xi_i}=\mu$, $\dispersia{\xi_n}=\sigma^2$
+
+Тогда, $Z_n=\displaystyle\frac{S_n-n\mu}{\sqrt{n\sigma^2}}\overset{d}{\longrightarrow}Z$, где $Z\sim \mathcal{N}(0;1)$ — имеет стандартное нормальное распределение
+
+Функция плотности:
+\begin{equation*}
+    \varphi(z)=\frac{1}{\sqrt{2\pi}}e^{\frac{-z^2}{2}}
+\end{equation*}
+
+
+\subsection{Теорема Муавра-Лапласа}
+\theorem Имеется $\xi_i=\begin{cases}
+    1,&p\\
+    0,&1-p
+\end{cases}$. $S_n=\sum \xi_i$ — число успехов в $n$ испытаниях. Тогда
+\begin{equation*}
+    Z_n=\frac{S_n-np}{\sqrt{np(1-p)}}\overset{d}{\longrightarrow}Z\sim \mathcal{N}(0;1)
+\end{equation*}
+
+
+
+\subsection*{Пример}
+Проходит суд над Бенджамином Споком. Из 300 человек 90 — женщины, которые симпатизируют Споку, при этом 12 присяжных будут судить Спока. Требуется определить мог ли отбор присяжных быть случайным.
+
+Число успехов в данном случае — число женщин среди 300 присяжных. Будем считать, что $p=0.5$, то есть половина женщин.
+
+\begin{equation*}
+    \prob{\frac{S_{300}-150}{\sqrt{0.5\cdot0.5\cdot300}}\leqslant \frac{90-150}{\sqrt{75}}}\simeq\Phi(-6.93)\simeq2.3\cdot10^{-12}
+\end{equation*}
+
+Значит, практически невозможно случайным образом выбрать 90 или меньше женщин среди 300 присяжных при справедливом распределении, то есть отбор был предвзятым
+
+
+\subsection{Неравенство Берри-Эссена}
+\begin{equation*}
+    |F_n-\Phi|\leqslant\frac{C_0\cdot\matwait{|\xi_1-\mu|^3}}{\sigma^3\sqrt{n}},\text{ где }\begin{cases}
+        F_n\text{ — функция распределения стандартизированной СВ}\\
+        C_0\text{ — константа}\\
+        \matwait{|\xi_1-\mu|^3}\text{ — третий абсолютный центральный момент}
+    \end{cases}
+\end{equation*}
+
+
+
+\subsection*{Пример}
+Пусть имеется $n=1000$ заключенных договоров страхования с 1 января на 1 год. С вероятностью $p=0.05$ произойдет страховой случай, выплаты по каждому договору — 2000 у.е. $R$ — резерв страховой компании
+
+Требуется определить какой должен быть размер резерва, чтобы страховая компания выполнила свои обязательства с вероятностью $0.99$
+
+$S_n=2000(\xi_1+\ldots+\xi_n)$, $\xi_i\sim Bi(p=0.05)$
+
+\begin{equation*}
+    \prob{S_n\leqslant R}=\prob{\frac{\sum\xi_i-0.05\cdot1000}{\sqrt{1000\cdot0.05\cdot0.95}}\leqslant \frac{\frac{R}{2000}-0.05\cdot1000}{\sqrt{1000\cdot0.05\cdot0.95}}}\geqslant 0,99
+\end{equation*}
+Значит, требуется найти квантиль уровня $0.99$. Он равен $2.33$, тогда
+\begin{equation*}
+    \frac{\frac{R}{2000}-0.05\cdot1000}{\sqrt{1000\cdot0.05\cdot0.95}}=2.33\Longrightarrow R=132117
+\end{equation*}
+То есть, для покрытия 99\% страховых случаев у страховой компании резерв должен быть размером $132117$ у.е. Напротив, для покрытия всех случаев $R=2000000$
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
