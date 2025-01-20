@@ -102,6 +102,118 @@ $S_n=2000(\xi_1+\ldots+\xi_n)$, $\xi_i\sim Bi(p=0.05)$
 
 
 
+\newpage
+\section{Многомерное нормальное распределение}
+\subsection{Одномерное нормальное распределение}
+\definition Случайная величина имеет нормальное распределение $X\sim\mathcal{N}(\mu,\sigma^2)$, если функция плотности равна
+\begin{equation*}
+    f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+\end{equation*}
+
+
+\subsection{Многомерное нормальное распределение}
+\definition Пусть случайные величины $z_1,\ldots,z_n$ независимы и $\sim N(0,1)$. Тогда $z=\begin{pmatrix}
+    z_1\\
+    \vdots\\
+    z_n
+\end{pmatrix}$ имеет многомерное нормальное распределение $N(0,I)$, где $I$ — единичная матрица
+
+Функция плотности:
+\begin{equation*}
+    f_Z(z)=\frac{1}{(\sqrt{2\pi})^n}e^{-\frac{1}{2}\sum_{i=1}^n z_i^2}=\frac{1}{(\sqrt{2\pi})^n}e^{-0.5Z^TZ}
+\end{equation*}
+
+
+\comment Пусть $Z\sim N(0,I)$, $A\in\text{Mat}_{k\times n}$ — матрица полного ранга и $k<n$, то есть rank$A=k$. Тогда
+\begin{equation*}
+    Y=AZ+b\sim N(b,AA^T)
+\end{equation*}
+\begin{equation*}
+    \begin{aligned}
+        f_Y(y)&=\frac{1}{|\det A|}f_Z(A^{-1}(y-b))\\
+        &=\frac{1}{(\sqrt{2\pi})^n}\frac{1}{|\det A|}e^{-0.5(y-b)^T(A^{-1})^TA^{-1}(y-b)}\\
+        &\text{пусть }AA^T=C\\
+        &=\frac{1}{(\sqrt{2\pi})^n}\frac{1}{\sqrt{|C|}}e^{-0.5(y-b)^TC^{-1}(y-b)}
+    \end{aligned}
+\end{equation*}
+
+
+\begin{definition}
+    Случайная величина $Y\sim N(b,C)$, если
+    \begin{equation*}
+        f_Y(y)=\frac{1}{(\sqrt{2\pi})^n}\frac{1}{\sqrt{|C|}}e^{-0.5(y-b)^TC^{-1}(y-b)}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Случайный вектор $Y\sim N(0,C)$, если $\forall a_1,\ldots,a_n$
+    \begin{equation*}
+        a_1Y_1+a_2Y_2+\ldots+a_nY_n
+    \end{equation*}
+    либо $N(0,\dot)$ либо const
+\end{definition}
+
+
+\subsection{Свойства многомерного нормального распределения}
+Пусть $Y\sim N(b,C)$
+\begin{enumerate}
+    \item $\matwait{Y}=b,cov(Y)=C$
+    
+    \proof $Y=AZ+b$, $Z\sim N(0,I)$
+    \begin{equation*}
+        \begin{aligned}
+            cov(Y)=\matwait{(AZ+b-\matwait{AZ+b})(AZ+b-AEZ-b)^T}=AcovZA^T=AA^T=C
+        \end{aligned}
+    \end{equation*}
+    \item Любое линейное невырожденное преобразование многомерного нормаьного дает многомерный нормальный вектор
+    
+    $\forall B,a:$ $BY+a\sim N(Bb+a,BCB^T)$
+
+    \item $\forall$ подвектор нормального вектора нормален 
+    \item Если $Y\sim N(b,D)$, то его компоненты независимы
+    
+    \comment Некоррелированность = независимость
+
+    \proof 
+    \begin{equation*}
+        \begin{aligned}
+            f_Y(y)&=\frac{1}{(\sqrt{2\pi}^n)}e^{-0.5(y-b)^T D^{-1}(y-b)}\\
+            &=\frac{1}{(\sqrt{2\pi}^n)}e^{-0.5\sum \left(\frac{y_i-b_i}{\sigma_i}\right)^2}\\
+            &=\prod_{i=1}^n\frac{1}{\sqrt{2\pi}}e^{-0.5\left(\frac{y_i-b_i}{\sigma_i}\right)^2}
+        \end{aligned}
+    \end{equation*}
+\end{enumerate}
+
+\ex $Y_1\sim N(0,1),\ \lambda=\begin{cases}
+    1,&p=0.5\\
+    -1,&p=0.5
+\end{cases},\ Y_2=2Y_1$
+
+\begin{equation*}
+    \begin{aligned}
+        \prob{Y_2\leqslant y}&=\prob{Y_1\leqslant y|\alpha=1}\cdot\prob{\alpha=1}+\prob{-Y_1\leqslant y|\alpha=-1}\cdot\frac{1}{2}\\
+        &=\Phi(y)
+    \end{aligned}
+\end{equation*}
+
+$cov(Y_1,Y_2)=cov(Y_1,2Y_1)=\matwait{\alpha Y_1^2}-\matwait{Y}\matwait{\alpha Y_1}=0$. То есть они не коррелированы
+
+
+\subsection{Условное нормальное распределение}
+Имеется случайный вектор $\begin{pmatrix}
+    z_1\\
+    z_2
+\end{pmatrix}\sim N\left(\begin{pmatrix}
+    0\\
+    0
+\end{pmatrix},\begin{pmatrix}
+    1&\rho\\
+    \rho&1
+\end{pmatrix}\right)$, пишут $\Phi_2(z_1,z_2;\rho)$
+
+Допустим, что $z_2$ фиксирован, тогда $z_2|z_1=z\sim N(\rho z,1-\rho^2)$
+
+$z_2=\rho z_1+u$, где $z_1$ и $u$ независимы и $u\sim N(.,.)$
 
 
 
