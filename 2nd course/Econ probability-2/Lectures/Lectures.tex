@@ -111,7 +111,7 @@ $S_n=2000(\xi_1+\ldots+\xi_n)$, $\xi_i\sim Bi(p=0.05)$
 \end{equation*}
 
 
-\subsection{Многомерное нормальное распределение}
+\subsection{Многомерное нормальное распределение—1}
 \definition Пусть случайные величины $z_1,\ldots,z_n$ независимы и $\sim N(0,1)$. Тогда $z=\begin{pmatrix}
     z_1\\
     \vdots\\
@@ -211,10 +211,70 @@ $cov(Y_1,Y_2)=cov(Y_1,2Y_1)=\matwait{\alpha Y_1^2}-\matwait{Y}\matwait{\alpha Y_
     \rho&1
 \end{pmatrix}\right)$, пишут $\Phi_2(z_1,z_2;\rho)$
 
-Допустим, что $z_2$ фиксирован, тогда $z_2|z_1=z\sim N(\rho z,1-\rho^2)$
+Допустим, что $z_1$ фиксирован, тогда $z_2|z_1=z\sim N(\rho z,1-\rho^2)$
 
 $z_2=\rho z_1+u$, где $z_1$ и $u$ независимы и $u\sim N(.,.)$
 
+\newpage
+\section{Многомерное нормальное распределение—2}
+\subsection{Условное нормальное распределение}
+%\begin{enumerate}
+    %\item 
+    $\begin{pmatrix}
+        z_1\\
+        z_2
+    \end{pmatrix}\sim N\left(\begin{pmatrix}
+        0\\
+        0
+    \end{pmatrix},\begin{pmatrix}
+        1&\rho\\
+        \rho&1
+    \end{pmatrix}\right)$, пишут $\Phi_2(z_1,z_2;\rho)$
+    
+    Допустим, что $z_1$ фиксирован, тогда $z_2|z_1=z\sim N(\rho z,1-\rho^2)$
+
+    \state $z_2=\rho z_1+u$, где $z_1$ и $u$ независимы и $(u,z_1)\sim N(.,.)$
+
+    \proof $u=z_1-\rho z_1\Longrightarrow (z_1, u)=(z_1, z_2-\rho z_1)=\begin{pmatrix}
+        1&0\\
+        -\rho & 1
+    \end{pmatrix}\begin{pmatrix}
+        z_1\\
+        z_2
+    \end{pmatrix}\sim N\left(\begin{pmatrix}
+        0\\
+        0
+    \end{pmatrix},\begin{pmatrix}
+        1&0\\
+        0&1-\rho^2
+    \end{pmatrix}\right)$
+
+    $cov(z_1, u)=A\cdot cov(z_1,z_2)\cdot A^T=\begin{pmatrix}
+        1&0\\
+        0&1-\rho^2
+    \end{pmatrix}$\qed
+
+    \textbf{Доказательство свойства.} $\matwait{z_2}=\rho\matwait{z_1}+\matwait{u}=0$, $\dispersia{z_2}=\rho^2\dispersia{z_1}+\dispersia{u}=\rho^2+1-\rho^2=1$
+
+    $(z_2\vert z_1=z)=\rho z+u\Longrightarrow \begin{cases}
+        \matwait{z_2\vert z_1=z}=\rho z+\matwait{u}=\rho z\\
+        \dispersia{z_2\vert z_1=z}=\dispersia{u}=1-\rho^2
+    \end{cases}$\qed
+
+    \comment Пусть вектор $Y$ такой, что $AY\sim N(.,.)$ (многомерное нормальное), меньшей размерности, чем $Y$, тогда говорят, что $Y$ имеет обобщенное нормальное распределение
+
+
+%\end{enumerate}
+
+\comment Двумерная Гауссова копула представима в виде $\Phi_2(\Phi^{-1}(F_1(u_1)),\Phi^{-1}(F_2(u_2));\rho)$
+
+
+\subsection{Многомерная центральная предельная теорема}
+\theorem Пусть $\xi^{(1)}_1,\ldots,\xi^{(n)}_n$ — последовательность независимых одинаково распределенных случайных векторов, у каждого из которых $\matwait{\xi^{(k)}}=b\ \forall k$, $cov(\xi^{(k)})=c,\ \det C>0$. 
+
+Обозначим $S_n=\xi^{(1)}_1+\ldots+\xi^{(n)}_n$ — вектор частичных сумм. Тогда, при $n\to\infty$ последовательность $\eta^{(n)}$, где $\eta^{(n)}=\frac{S_n-nb}{\sqrt{n}}$ сходится по распределению к вектору $\eta\sim N\left(\overrightarrow{0},C\right)$
+
+% Для одномерного: $S_n=\xi_1+\ldots+\xi_n$, $\frac{S_n-n\mu}{\sqrt{n\sigma^2}}\sim N(0,\sigma^2)$
 
 
 
