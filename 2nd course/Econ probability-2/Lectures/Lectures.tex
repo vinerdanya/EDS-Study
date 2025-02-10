@@ -276,20 +276,178 @@ $z_2=\rho z_1+u$, где $z_1$ и $u$ независимы и $u\sim N(.,.)$
 
 % Для одномерного: $S_n=\xi_1+\ldots+\xi_n$, $\frac{S_n-n\mu}{\sqrt{n\sigma^2}}\sim N(0,\sigma^2)$
 
+\newpage
+\section{TBA}
+
+\newpage
+\section{Введение в математическую статистику}
+\begin{itemize}
+    \item Имеется $n$ независимых случайных величин $X_1,\ldots,X_n$, которые имеют одинаковые функции распределения: $F_{X_1}(x)=\ldots=F_{X_n}(x)=F(x)$
+    \item Пусть функция распределения $F(x)$ зависит от некоторого вектора неизвестных параметров $\theta=(\theta_1,\ldots,\theta_r)$
+    \item $F(x)=F(x;\theta)$, где $x$ — переменная, а $\theta$ — вектор неизвестных параметров
+    \item $\Theta$ — множество допустимых значений вектора $\theta$
+    
+    \ex Если $X_i\sim N(\mu,\sigma^2)$, то $\theta=(\mu,\sigma^2)\in(-\infty,+\infty)\times(0;+\infty)$
+\end{itemize}
+
+\definition Случайной выборкой объема $n$ наблюдений из распределения с функицей распределения $F(x;\theta)$ называется случайный вектор $X=(X_1,\ldots,X_n)$, компоненты которого удовлетворяют следующим условиям
+\begin{itemize}
+    \item случайные величины $X_1,\ldots,X_n$ — независимы 
+    \item случайные величины $X_1,\ldots,X_n$ имеют одну и ту же функцию распределения $F(x;\theta)$:
+    \begin{equation*}
+        F_{X_1}(x;\theta)=\ldots=F_{X_n}(x;\theta)=F(x;\theta)
+    \end{equation*}
+\end{itemize}
+
+\comment Продифференцировав эти равенства, получаем, что все функции плотностей распределения равны
+
+\comment Если все величины $X_1,\ldots,X_n$ дискретны, то они должны иметь одинаковые таблицы распределения
+
+\comment При $i\ne j:\ cov(X_i,X_j)=\matwait{X_iX_j}-\matwait{X_i}\cdot\matwait{X_j}=0$, так как $X_i$ и $X_j$ независимы
+
+Имеются случайные величины $X_1(\omega),\ldots,X_n(\omega)$. Пусть произошел вероятностый эксперимент, в результате которого реализовался исход $\omega_0\in\Omega$. То есть 
+\begin{equation*}
+    X_1(\omega_0),\ldots,X_n(\omega_0)
+\end{equation*}
+Тогда, вектор $x=(X_1(\omega_0),\ldots,X_n(\omega_0))$ называется \textit{реализацией случайной выборки}
+
+\ex $\Omega=\{a,b,c,d,e,f,g,h\},\ \fk =$ все подмножества $\Omega$
+
+% \begin{equation*}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+        $\omega$ & a & b& c &d &e &f &g &h\\
+        \hline
+        $\prob{\omega}$ & $p^3$ & $p^2q$ & $p^2q$ & $pq^2$ & $p^2q$ & $pq^2$ & $pq^2$ & $q^3$\\
+        \hline 
+        $X_1(\omega)$ & 1 &1& 1& 1& 0& 0& 0& 0\\
+        \hline
+        $X_2(\omega) $& 1 &1& 0& 0& 1& 1& 0& 0\\
+        \hline
+        $X_3(\omega)$ &1& 0& 1& 0& 1 &0 &1 &0
+    \end{tabular}
+% \end{equation*}
+\begin{itemize}
+    \item $\prob{X_1=1}=p^3+p^2q+p^2q+pq^2=p(p^2+pq+pq+q^2)=p\Longrightarrow X_1\sim Be(p)$
+
+    \item $\prob{X_2=1}=p^3+p^2q+p^2q+pq^2=p(p^2+pq+pq+q^2)=p\Longrightarrow X_2\sim Be(p)$
+    
+    \item $\prob{X_3=1}=p^3+p^2q+p^2q+pq^2=p(p^2+pq+pq+q^2)=p\Longrightarrow X_3\sim Be(p)$
+\end{itemize}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathbb{P}(\{X_1=1\}\cap\{X_2=1\}\cap\{X_3=1\})&=p^3\\
+        \prob{X_1=1}\cdot\prob{X_2=1}\cdot\prob{X_3=1}&=p^3
+    \end{aligned}
+\end{equation*}
+Рассуждая аналогично, перебираем оставшиеся 7 случаев и получаем, что $X_1,X_2,X_3$ — независимы
+
+Пусть $\omega_0=c$, тогда $\left(X_1(\omega_0),X_2(\omega_0),X_3(\omega_0)\right)=(1,0,1)$
+
+\begin{itemize}
+    \item Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка
+    \item Для каждого $\omega\in\Omega$ расположим числа $X_1(\omega),\ldots,X_n(\omega)$ в порядке возрастания
+    \item Получим набор чисел $X_{(1)}(\omega)\leqslant\ldots\leqslant X_{(n)}(\omega)$, где $(i)$ означает уже отсортированный номер
+    
+    При этом $X_{(1)}(\omega)=\min(X_1(\omega),\ldots,X_n(\omega))$, а $X_{(n)}(\omega)=\max(X_1(\omega),\ldots,X_n(\omega))$
+\end{itemize}
+
+\definition Набор случайных величин $X_{(1)},\ldots,X_{(n)}$ называется вариационным рядом
+
+\definition $\overline{X}:=\displaystyle\frac{X_1+\ldots+X_n}{n}$ — выборочное среднее
+
+\definition $s^2:=\displaystyle\frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$ — выборочная дисперсия
+
+\definition $\hat{\sigma^2}:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$ — исправленная выброчная дисперсия
+
+\definition \begin{equation*}
+    \begin{aligned}
+        \hat{F_n}(x)&=\displaystyle\frac{\text{число элементов случайной выборки, которые нестрого меньше } x}{n}\\
+        &=\frac{\#\{i\in\{1,\ldots,n\}:\ X_i\leqslant x\}}{n}
+        % &=\frac{1}{n}\sum_{i=1}^n 
+    \end{aligned}
+\end{equation*}
+
+\ex Рассмотрим $\hat{F_3}(x;\omega=c)$ и выборку $(1,0,1)$. Тогда график будет выглядеть так
+
+% \includegraphics[width=0.6\linewidth]{intro-to-stat.jpg}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.6\linewidth]{intro-to-stat.jpg}
+% \end{figure}
+
+\state Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, компоненты которой имеют конечное матожидание. Тогда 
+\begin{equation*}
+    \matwait{\overline{X}}=\matwait{X_i}
+\end{equation*}
+
+\state Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, компоненты которой имеют конечные дисперсии. Тогда 
+\begin{equation*}
+    \dispersia{\overline{X}}=\frac{\dispersia{X_i}}{n}
+\end{equation*}
+
+\proof \begin{equation*}
+    \begin{aligned}
+        \dispersia{\overline{X}}&=\dispersia{\frac{1}{n}\sum_{i=1}^nX_i}\\
+        &=\frac{1}{n^2}\dispersia{\sum_{i=1}^nX_i}\\
+        &=\frac{1}{n^2}\sum_{i=1}^n\dispersia{X_i}\\
+        &=\frac{1}{n^2}n\dispersia{X_i}\\
+        &=\frac{\dispersia{X_i}}{n}
+    \end{aligned}
+\end{equation*}
+
+\definition Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка из распределения с функцией распределения $F(x;\theta)$, где $\theta$ — неизвестный параметр
+
+Оценкой параметра $\theta$ называется случайная величина $\hat{\theta}$, которая является произвольной борелевской функцией от элементов случайной выборки, то есть
+\begin{equation*}
+    \hat{\theta}=g(X_1,\ldots,X_n),
+\end{equation*}
+где $d:\mathbb{R}^2\longrightarrow\mathbb{R}$ — произвольная борелевская функция
+
+\ex  $X=(X_1,\ldots,X_n)$ — случайная выборка из распределения Бернулли с параметром $p\in(0;1)$
+
+$\hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}$ — оценка параметра $p$
+
+\definition Оценка $\hat{\theta}$ неизвестного параметра $\theta\in\Theta$ называется \textit{несмещенной}, если 
+\begin{equation*}
+    \matwait{\hat{\theta}}=\theta\ \forall\theta\in\Theta
+\end{equation*}
+
+\ex  $X=(X_1,\ldots,X_n)$ — случайная выборка из распределения Бернулли с параметром $p\in(0;1)$. Определим, является ли $\hat{p}=\frac{X_1+\ldots+X_n}{n}$ несмещенной оценкой для параметра $p$
+
+\begin{equation*}
+    \begin{aligned}
+        \matwait{\hat{p}}&=\frac{\matwait{X_1+\ldots+X_n}}{n}\\
+        &=\frac{\matwait{X_1}+\ldots+\matwait{X_n}}{n}\\
+        &=\frac{np}{p}\\
+        &=p
+    \end{aligned}
+\end{equation*}
+
+То есть $\hat{p}$ — несмещенная оценка
+
+\definition Говорят, что последовательность случайных величин $(X_n)_{n=1}^{\infty}$ сходится по вероятности к случайной величине $X$, если
+\begin{equation*}
+    \forall \varepsilon>0\ \lim\limits_{n\to\infty}\prob{|X_n-X|>\varepsilon}=0
+\end{equation*}
+Обозначение: $X_n\overset{\mathbb{P}}{\longrightarrow}X$ при $n\to\infty$ ИЛИ $p\lim\limits_{n\to\infty} X_n=x$
+
+\definition Оценка $\hat{\theta}_n$ называется \textit{состоятельной оценкой} неизвестного параметра $\theta\in\Theta$, если
+\begin{equation*}
+    \forall \theta\in\Theta\ \hat{\theta}_n\overset{\mathbb{P}}{\longrightarrow}\theta\text{ при }n\to\infty
+\end{equation*}
+
+\ex Проверим, что $\hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}$ является состоятельной. По ЗБЧ:
+\begin{equation*}
+    \begin{aligned}
+        \hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}\overset{\mathbb{P}}{\longrightarrow}\matwait{X_i}=p
+    \end{aligned}
+\end{equation*}
+Значит, $\hat{p}$ — состоятельная оценка
+
+
+
 
 
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
