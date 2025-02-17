@@ -1,0 +1,171 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{header}
+
+\title{\LARGE{Макроэкономика—1 (углубленный курс)}\\[2mm]
+\large{Семинар}}
+\author{Винер Даниил  \href{https://t.me/danya_vin}{@danya\_vin}}
+\date{17 февраля 2025 г.}
+\begin{document}
+\maketitle
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\setlist[itemize]{left=1cm}
+\setlist[enumerate]{left=1cm}
+
+\section*{№1}
+Пусть $Y=K^{\alpha}(AL)^{1-\alpha}$, $\displaystyle\frac{\dot{A}}{A}=g, \frac{\dot{L}}{L}=n, \dot{K}=sY-\delta K$
+
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    \textbf{a)} Характеризуется ли данная производственная функция постоянной отдачей от масштаба по труду и капиталу? Какая отдача от масштаба у данной производственной функции по труду, капиталу и технологии?
+\end{tcolorbox}
+Производственная функция обладает постоянной отдачей от масштаба, если 
+\begin{equation*}
+    F(\lambda K,\lambda AL)=\lambda F(K, AL)
+\end{equation*}
+
+В нашем случае, эта производственная функция \textit{обладает} постоянной отдачей от масштаба по труду и капиталу:
+\begin{equation*}
+    \begin{aligned}
+        F(\lambda K,\lambda AL)&=\lambda F(K, AL)\\
+        (\lambda K)^{\alpha}(\lambda AL)^{1-\alpha}&=\lambda K^{\alpha}(AL)^{\alpha}\\
+        \lambda^{\alpha}K^{\alpha}\lambda^{1-\alpha}A^{1-\alpha}L^{1-\alpha}&=\lambda K^{\alpha}(AL)^{\alpha}\\
+        \lambda K^{\alpha}(AL)^{1-\alpha}&=\lambda K^{\alpha}(AL)^{\alpha}
+    \end{aligned}
+\end{equation*}
+
+Рассмотрим, как изменяется выпуск при пропорциональном увеличении капитала, труда и технологии при $\lambda>0$:
+\begin{equation*}
+    \begin{aligned}
+        F(\lambda K, \lambda A\lambda L)&= (\lambda K)^\alpha (\lambda A \lambda L)^{1-\alpha}\\
+        &=\lambda^{2-\alpha}K^{\alpha}(AL)^{1-\alpha}>\lambda K^{\alpha}(AL)^{1-\alpha}
+    \end{aligned}
+\end{equation*}
+Это означает, что функция показывает \textit{возрастающую} отдачу от масштаба
+
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    \textbf{b)} Запишите производственную функцию в интенсивной форме и основное уравнение динамики модели Солоу.
+\end{tcolorbox}
+\begin{equation*}
+    \begin{aligned}
+        y&=\frac{Y}{AL}\\
+        &=\frac{K^{\alpha}(AL)^{1-\alpha}}{AL}\\
+        &=\frac{K^{\alpha}}{(AL)^{\alpha}}\\
+        &=\left(\frac{K}{AL}\right)^{\alpha}\\
+        &=k^{\alpha}
+    \end{aligned}
+\end{equation*}
+$y=k^{\alpha}$ — производственная функция в \textit{интенсивной} форме
+
+\begin{equation*}
+    \begin{aligned}
+        \dot{k}&=\dot{\left(\frac{K}{AL}\right)}\\
+        &=\frac{\dot{K}\cdot AL-K\cdot \dot{(AL)}}{(AL)^2}\\
+        &=\frac{\dot{K}}{AL}-\frac{K}{AL}\cdot\frac{\dot{AL}}{AL}\\
+        &=\frac{sy-\delta k}{AL}-\frac{K}{AL}\left(\frac{\dot{A}}{A}+\frac{\dot{L}}{L}\right)\\
+        &=sy-\delta k - k(g+n)\\
+        &=sy-(n+g+\delta)k
+    \end{aligned}
+\end{equation*}
+$\dot{k}=sy-(n+g+\delta)k$ — основное уравнение динамики модели Солоу
+
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    \textbf{c)} Найдите капиталовооруженность эффективного труда на траектории сбалансированного роста (ТСР). Проверьте, что в модели существует единственно глобально устойчивое стационарное состояние. Найдите выпуск и потребление в расчете на одного эффективного работника на ТСР
+\end{tcolorbox}
+
+На ТСР переменная $k$ находится в стационарном состоянии, то есть темп её изменения равен нулю:
+\begin{equation*}
+    \dot{k}=0
+\end{equation*}
+Из основного уравнения динамики модели Солоу получаем
+\begin{equation*}
+    \begin{aligned}
+        sk^{\alpha}&=(n+g+\delta)k\quad\vert :k\\
+        sk^{\alpha-1}&=n+g_\delta\\
+        k^{*}&=\left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}}
+    \end{aligned}
+\end{equation*}
+
+
+На ТСР выпуск на одного эффективного работника определяется как:
+\begin{equation*}
+    \begin{aligned}
+        y^{*}&=(k^{*})^{\alpha}\\
+        &=\left(\frac{s}{n+g+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+    \end{aligned}
+\end{equation*}
+
+Потребление на одного эффективного работника:
+\begin{equation*}
+    \begin{aligned}
+        c^{*}&=(1-s)y^{*}\\
+        &=(1-s)=\left(\frac{s}{n+g+\delta}\right)^{\frac{\alpha}{1-\alpha}}
+    \end{aligned}
+\end{equation*}
+
+\begin{tcolorbox}[colback=blue!20!white, colframe=black!100!black]
+    \textbf{d)} Найдите капитал $(K)$, выпуск $(Y)$ и потребление $(С)$ на ТСР, а также темпы их роста.
+\end{tcolorbox}
+
+\begin{equation*}
+    \begin{aligned}
+        y&=\frac{Y}{AL}\\
+        Y&=y\cdot AL\text{ — прологарифмируем}\\
+        \ln Y&=\ln y+\ln A+\ln L\quad\vert\frac{\partial }{\partial t}\\
+        \left(\ln Y\right)^{\prime}_t&=\frac{1}{y}\cdot y^{\prime}_t,\text{ при этом} \left(\ln Y\right)^{\prime}_t=\dot{\ln Y}=\frac{\dot{Y}}{Y}\\
+        \frac{\dot{Y}}{Y}&=\frac{\dot{y}}{y}+\frac{\dot{A}}{A}+\frac{\dot{L}}{L}\\
+        &=g+n
+    \end{aligned}
+\end{equation*}
+То есть, темпы роста ВВП равны $g+n$
+
+По условию
+\begin{equation*}
+    \begin{aligned}
+        \frac{\dot{A}}{A}&=g\\
+        \frac{\frac{dA}{dt}}{A}&=g\\
+        \int\frac{1}{A}dA&=\int gdt\\
+        \ln A&=gt+C\\
+        A&=e^{gt}\cdot e^{C}
+    \end{aligned}
+\end{equation*}
+Положим, что в начальный момент времени $A(t=0)=e^c=A_0$, тогда 
+\begin{equation*}
+    \begin{aligned}
+        A&=A_0 e^{gt}
+    \end{aligned}
+\end{equation*}
+Рассуждая аналогично, получим $L=L_0e^{nt}$, тогда выпуск
+\begin{equation*}
+    Y^{*}(t)=\underbrace{\left(\frac{s}{n+g+\delta}\right)^{\frac{\alpha}{1-\alpha}}}_{y^{*}}\cdot\underbrace{A_0e^{gt}}_{A(t)}\cdot\underbrace{L_0e^{nt}}_{L(t)}
+\end{equation*}
+
+Рассмотрим для капитала
+\begin{equation*}
+    \begin{aligned}
+        k&=\frac{K}{AL}\\
+        K&=kAL\\
+        \ln K&=\ln k+\ln A+\ln L\\
+        \frac{\dot{K}}{K}&=\frac{\dot{k}}{k}+\frac{\dot{A}}{A}+\frac{\dot{L}}{L}\\
+        &=g+n
+    \end{aligned}
+\end{equation*}
+\begin{equation*}
+    \boxed{K^{*}(t)=\left(\frac{s}{n+g+\delta}\right)^{\frac{1}{1-\alpha}}A_0e^{gt}\cdot L_0e^{nt}}
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
