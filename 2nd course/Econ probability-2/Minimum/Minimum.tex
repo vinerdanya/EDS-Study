@@ -147,6 +147,15 @@ $$
     \forall\varepsilon>0:\ \lim\limits_{n\to\infty}\mathbb{P}(|\hat{\theta}_n-\theta|\geqslant\varepsilon)=0
 \end{equation*}
 
+\theorem Если оценка асимптотически несмещенная и её дисперсия стремится к нулю, то такая оценка будет состоятельной. То есть должны выполняться такие условия:
+\begin{itemize}
+    \item Асимптотическая несмещённость — $\lim\limits_{n\to\infty}\matwait{\widehat{\theta}_n}=\theta$
+    \item Сходимость дисперсии к нулю — $\lim\limits_{n\to\infty}\dispersia{\widehat{\theta}_n}=0$
+\end{itemize}
+
+
+
+
 \subsection{Дайте определение эффективности оценки $\widehat{\theta}$ среди множества оценок $\widehat{\Theta}_n$}
 \definition Оценка $\hat{\Theta}$ называется эффективной в классе $K$, если $\forall\ \widetilde{\Theta}\in K$
 \begin{equation*}
