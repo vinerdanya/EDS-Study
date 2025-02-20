@@ -8,8 +8,8 @@ x = np.linspace(0, 20, 1000)
 
 plt.figure(figsize=(8, 5))
 
-for k in degrees_of_freedom:
-    plt.plot(x, chi2.pdf(x, k), label=fr'$k={k}$')
+for m in degrees_of_freedom:
+    plt.plot(x, chi2.pdf(x, m), label=fr'$m={m}$')
 
 plt.xlabel('$x$')
 plt.ylabel('$f_X(x)$')

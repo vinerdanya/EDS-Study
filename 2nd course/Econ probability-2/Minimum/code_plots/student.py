@@ -10,7 +10,7 @@ x = np.linspace(-5, 5, 1000)
 plt.figure(figsize=(8, 5))
 
 for df in df_values:
-    plt.plot(x, t.pdf(x, df), label=fr'$m={df}$')
+    plt.plot(x, t.pdf(x, df), label=fr'$k={df}$')
 
 plt.plot(x, norm.pdf(x, 0, 1), 'k--', label=r'$\mathcal{N}(0,1)$')
 
