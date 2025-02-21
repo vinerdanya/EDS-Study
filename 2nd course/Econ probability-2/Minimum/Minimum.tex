@@ -157,22 +157,29 @@ $$
 
 
 \subsection{Дайте определение эффективности оценки $\widehat{\theta}$ среди множества оценок $\widehat{\Theta}_n$}
-\definition Оценка $\hat{\Theta}$ называется эффективной в классе $K$, если $\forall\ \widetilde{\Theta}\in K$
+\definition Пусть $\mathcal{K}$ — некоторый класс оценок параметра $\theta$. Оценка $\widehat{\theta}\in\mathcal{K}$ неизвестного параметра $\theta$ называется наиболее эффективной в классе $\mathcal{K}$, если для любого конкурента $\widetilde{\theta}\in\mathcal{K}\ \forall \theta\in\Theta$
 \begin{equation*}
     \begin{aligned}
-        \matwait{\hat{\Theta}-\Theta}^2&\leqslant\matwait{\widetilde{\Theta}-\Theta}^2\text{причем }\exists \Theta_0:\\
-        \matwait{\hat{\Theta}-\Theta_0}^2&<\matwait{\widetilde{\Theta}-\Theta_0}^2
+        \matwait{(\widehat{\theta}-\theta)^2}\leqslant\matwait{(\widetilde{\theta}-\theta)^2}
     \end{aligned}
 \end{equation*}
-Класс $K$ обладает смещением $b(\Theta)$
 
-\definition Оценка $\hat{\Theta}$ называется эффективной в классе несмещенных оценок, если $\forall\ \widetilde{\Theta}\in K$
-\begin{equation*}
-    \begin{aligned}
-        \dispersia{\hat{\Theta}}&\leqslant \dispersia{\widetilde{\Theta}},\text{причем }\exists \Theta_0:\\
-        \dispersia{\hat{\Theta}}&< \dispersia{\widetilde{\Theta}}\text{для }\Theta_0
-    \end{aligned}
-\end{equation*}
+% \definition Оценка $\hat{\Theta}$ называется эффективной в классе $K$, если $\forall\ \widetilde{\Theta}\in K$
+% \begin{equation*}
+%     \begin{aligned}
+%         \matwait{\hat{\Theta}-\Theta}^2&\leqslant\matwait{\widetilde{\Theta}-\Theta}^2\text{причем }\exists \Theta_0:\\
+%         \matwait{\hat{\Theta}-\Theta_0}^2&<\matwait{\widetilde{\Theta}-\Theta_0}^2
+%     \end{aligned}
+% \end{equation*}
+% Класс $K$ обладает смещением $b(\Theta)$
+
+% \definition Оценка $\hat{\Theta}$ называется эффективной в классе несмещенных оценок, если $\forall\ \widetilde{\Theta}\in K$
+% \begin{equation*}
+%     \begin{aligned}
+%         \dispersia{\hat{\Theta}}&\leqslant \dispersia{\widetilde{\Theta}},\text{причем }\exists \Theta_0:\\
+%         \dispersia{\hat{\Theta}}&< \dispersia{\widetilde{\Theta}}\text{для }\Theta_0
+%     \end{aligned}
+% \end{equation*}
 
 
 
@@ -373,7 +380,7 @@ $\rho=\displaystyle\frac{cov(X,Y)}{\sigma_X\sigma_Y}=\frac{28}{\sqrt{49\cdot36}}
             axis x line=middle, axis y line=middle,
             xtick={-1,0,1}, ytick={0,0.25,0.5,0.75,1},
             ymin=0, ymax=1.1, xmin=-1.5, xmax=1.5,
-            xlabel={$a$}, ylabel={$F_X(a)$},
+            xlabel={$a$}, ylabel={$\widehat{F}_n(a)$},
             samples=100, domain=-2:2,
             grid=major
         ]
@@ -411,7 +418,7 @@ $\rho=\displaystyle\frac{cov(X,Y)}{\sigma_X\sigma_Y}=\frac{28}{\sqrt{49\cdot36}}
     \item[\textbf{a)}] \begin{equation*}
         \begin{aligned}
             \matwait{\widehat{\theta}}&=\matwait{\frac{\overline{X}+2}{5}}\\
-            &=\frac{1}{5}\left(\overline{X}+2\right)\\
+            &=\frac{1}{5}\left(\matwait{\overline{X}}+2\right)\\
             &=\frac{1}{5}\left((-3)\cdot\left(\frac{2}{3}-\theta\right)+0\cdot\frac{1}{3}+2\theta+2\right)\\
             &=\theta
         \end{aligned}
@@ -473,7 +480,7 @@ $\rho=\displaystyle\frac{cov(X,Y)}{\sigma_X\sigma_Y}=\frac{28}{\sqrt{49\cdot36}}
     
     $\matwait{\hat{p}_1}=\displaystyle\frac{1}{2}\matwait{X_1+X_3}=\frac{1}{2}\cdot2\matwait{X_1}=p\Longrightarrow$ \textit{несмещенная}
 
-    $\dispersia{\hat{p}_1}=\displaystyle\frac{1}{4}X_1+\frac{1}{4}X_3+2\underbrace{cov(X_1,X_3)}_{=0,\text{т.к.независ.}}=\frac{1}{4}\cdot\dispersia{X_1}=\frac{1}{2}p(1-p)$
+    $\dispersia{\hat{p}_1}=\displaystyle\frac{1}{4}X_1+\frac{1}{4}X_3+2\cdot\frac{1}{2}\cdot\frac{1}{2}\underbrace{cov(X_1,X_3)}_{=0,\text{т.к.независ.}}=\frac{1}{4}\cdot\dispersia{X_1}=\frac{1}{2}p(1-p)$
 
     \item $\hat{p}_2=\displaystyle\frac{1}{4}X_1+\frac{1}{2}X_2+\frac{1}{4}X_3$
     

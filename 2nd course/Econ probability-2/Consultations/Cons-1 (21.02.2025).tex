@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage{header} % Required for inserting images
+% \newcommand{\p}[1]{$\mathbb{P}(#1)$}
+
+
+\title{\LARGE{Теория вероятностей и математическая статистика—2}\\
+Консультация Борзых Д.А.\\
+ФЭН НИУ ВШЭ}
+\author{Винер Даниил  \href{https://t.me/danya_vin}{@danya\_vin}}
+\date{21 февраля 2025г.}
+
+\begin{document}
+\maketitle
+% \tableofcontents
+% \newpage
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\setlist[itemize]{left=1cm}
+\setlist[enumerate]{left=1cm}
+\section*{23} 
+\definition Говорят, что случайная величина $X$ имеет нормальное распределение с параметрами $\mu\in\mathbb{R}$ и $\sigma^2>0$ пишут $X\sim N(\mu,\sigma^2)$, если
+\begin{equation*}
+    f_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\end{equation*} 
+
+Множество значений случайной величины $X$: $(-\infty;+\infty)$
+
+\theorem Если $X\sim N(\mu,\sigma^2)$, то 
+\begin{equation*}
+    \matwait{X}=\mu,\ \dispersia{X}=\sigma^2
+\end{equation*}
+
+
+\section*{24}
+\definition Случайная величина $W$ имеет $\chi^2$-распределение с $m$ степенями свободы, пишут\\
+$W\sim\chi^2(m)$, если $W$ представима в виде
+\begin{equation*}
+    W=X_1^2+\ldots+X_m^2,
+\end{equation*}
+где $X_1,\ldots,X_n\sim iidN(0;1)$ 
+
+Множество значений случайной величины $W$: $(0;+\infty)$
+
+\theorem Если $W\sim\chi^2(m)$, то $\matwait{W}=m$, $\dispersia{W}=2m$
+
+
+\section*{25}
+\definition Случайная величина $W$ имеет $t$-распределение (распределение Стьюдента) с $m$ степенями свободы, пишут $W\sim t(m)$, если $W$ представима в виде
+\begin{equation*}
+    W=\frac{X}{\sqrt{\frac{Y_1^2+\ldots+Y_m^2}{m}}},
+\end{equation*}
+где $X,Y_1,\ldots,Y_m\sim iidN(0;1)$
+
+Множество значений случайной величины: $(-\infty;+\infty)$
+
+\section*{26}
+\definition Случайная величина $W$ имеет $F$-распределение (распределение Фишера) с $m$ и $n$ степенями свободы, пишут $W\sim F(m,n)$, если $W$ представима в виде
+\begin{equation*}
+    W=\frac{(X_1+\ldots+X_m^2)/m}{(Y_1^2+\ldots+Y_n^2)/n},
+\end{equation*}
+где $X_1,\ldots,X_m,Y_1,\ldots,Y_n\sim iidN(0;1)$ и независимы
+
+Множество значений: $(0;+\infty)$
+
+\section*{27}
+Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка
+
+\definition Выборочное среднее — $\overline{X}:=\displaystyle\frac{X_1+\ldots+X_n}{n}$
+
+\definition Неисправленная выборочная дисперсия — $s^2:=\displaystyle\frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$
+
+% \definition Исправленная выборочная дисперсия — $\widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$
+
+\section*{28}
+Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, тогда 
+
+\definition Выборочным \textit{начальным} моментом порядка $k$ называется число 
+\begin{equation*}
+    \widehat{\mu}_k:=\frac{1}{n}\sum_{i=1}^{k}(X_i)^k
+\end{equation*}
+
+\definition Выборочным \textit{центральным} моментом порядка $k$ называется число
+\begin{equation*}
+    \widehat{\nu}_k:=\frac{1}{n}\sum_{i=1}^{k}(X_i-\overline{X})^k
+\end{equation*}
+
+
+\section*{29}
+\definition Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, тогда выборочной функцией распределения случайной выборки $X$ называется функция от действительного переменного $X$, которая определяется как
+\begin{equation*}
+    \widehat{F}_n(x,\omega):=\frac{1}{n}\sum_{i=1}^{n}\mathbb{I}\{X_i(\omega)\leqslant x\},
+\end{equation*}
+где $\mathbb{I}\{X_i(\omega)\leqslant x\}$ равна 1, если $X_i(\omega)\leqslant x$ и равна 0 в противном случае
+
+\section*{30}
+\theorem Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, причем $\dispersia{X_i}=\sigma^2$, тогда 
+\begin{equation*}
+    \widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2
+\end{equation*}
+является несмещённой оценкой параметра $\sigma^2$, то есть $\matwait{\widehat{\sigma}^2}=\sigma^2$
+
+\section*{31}
+Оценка $\hat{\theta}$ неизвестного параметра $\theta\in\Theta$ называется \textit{несмещённой}, если 
+\begin{equation*}
+    \matwait{\hat{\theta}}=\theta\ \forall\theta\in\Theta,
+\end{equation*}
+где $\Theta$ — множество всех допустимых значений параметра $\theta$
+
+\section*{32}
+\definition Последовательность оценок $\hat{\theta}_n$ называется \textit{состоятельной оценкой} неизвестного параметра $\theta\in\Theta$, если
+\begin{equation*}
+    \forall \theta\in\Theta\ \hat{\theta}_n\underset{n\to\infty}{\overset{\mathbb{P}}{\longrightarrow}}\theta,
+\end{equation*}
+то есть $\hat{\theta}_n$ сходится по вероятности к $\theta$
+\begin{equation*}
+    \forall\varepsilon>0:\ \lim\limits_{n\to\infty}\mathbb{P}(|\hat{\theta}_n-\theta|\geqslant\varepsilon)=0
+\end{equation*}
+
+
+\theorem Пусть 
+\begin{itemize}
+    \item $forall\theta\Theta\ \matwait{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}\theta$
+    \item $forall\theta\Theta\ \dispersia{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}0$
+\end{itemize}
+Тогда, $\widehat{\theta}_n\overset{\mathbb{P}}{\longrightarrow}\theta$, то есть $\widehat{\theta}_n$ является состоятельной оценкой  неизвестного параметра $\theta$
+
+\section*{33}
+\definition Пусть $\mathcal{K}$ — некоторый класс оценок параметра $\theta$. Оценка $\widehat{\theta}\in\mathcal{K}$ неизвестного параметра $\theta$ называется наиболее эффективной в классе $\mathcal{K}$, если для любого конкурента $\widetilde{\theta}\in\mathcal{K}\ \forall \theta\in\Theta$
+\begin{equation*}
+    \begin{aligned}
+        \matwait{(\widehat{\theta}-\theta)^2}\leqslant\matwait{(\widetilde{\theta}-\theta)^2}
+    \end{aligned}
+\end{equation*}
+
+
+
+
+
+
+
+
+\end{document}
