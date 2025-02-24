@@ -531,6 +531,133 @@ $\hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}$ — оценка парамет�
     Гистограмма — тоже своего рода функция плотности
 \end{enumerate}
 
+\newpage
+\section{Lecture 24.02.2025}
+\subsection{Характеристики выборок}
+\definition Элементы вариационного ряда называются порядковыми статистиками
+
+\definition Выборочная функция распределения:
+\begin{equation*}
+    \widehat{F_n}:=\frac{1}{n}\sum_{i=1}^{n}I\{X_i\leqslant x\}
+\end{equation*}
+
+\definition Выборочные (эмпирические) моменты 
+\begin{equation*}
+    \widehat{\alpha}_k:=\frac{1}{n}\sum_{i=1}^{n}X_i^k
+\end{equation*}
+
+\definition Выборочное среднее — $\overline{X}=\alpha_1=\displaystyle\frac{1}{n}\sum_{i=1}^{n}X_i$
+
+\definition Выборочная дисперсия — $s^2:=\displaystyle\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^2$
+
+\definition $\widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$ — несмещенная (скорректированная) дисперсия
+
+\definition Выборочный центральный момент $k$-го порядка
+\begin{equation*}
+    \frac{1}{n}\sum_{i=1}^n(X_i-\overline{X})^k
+\end{equation*}
+
+\definition Выборочная ковариация
+\begin{equation*}
+    \widehat{cov}(X,Y):=\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})(Y_i-\overline{X})
+\end{equation*}
+
+\definition Выборочная ковариация
+\begin{equation*}
+    \widehat{corr}(X,Y):=\frac{\sum (X_i-\overline{X})(Y_i-\overline{Y})}{\sqrt{\sum (X_i-\overline{X})^2\sum (Y_i-\overline{Y})^2}}
+\end{equation*}
+
+\subsection{Свойства эмпиричесой (выборочной) функции распределения}
+\theorem Пусть $X_1,\ldots,X_n\sim F(x;\theta)\equiv F(x)$, $\widehat{F}_n=\displaystyle\frac{1}{n}\sum I\{X_i\leqslant x\}$, где
+\begin{equation*}
+    I\{X_i\leqslant x\}=\begin{cases}
+        1,&X_i\leqslant x\\
+        0,&\text{иначе}
+    \end{cases}
+\end{equation*}
+Тогда, для $\forall x\in\mathbb{R}$ $\widehat{F}_n(x)\overset{\mathbb{P}}{\underset{n\to\infty}{\longrightarrow}}F(x)$
+
+\proof 
+\begin{equation*}
+    \begin{aligned}
+        \matwait{\widehat{F}_n(x)}&=\frac{1}{n}\sum_{i=1}^{n}F(x)=F(x)\\
+        \dispersia{\widehat{F}_n}&=\frac{F(x)(1-F(x))}{n}
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \mathbb{P}\left(\left|\widehat{F}_n-F(x)\right|\geqslant\varepsilon\right)\leqslant\frac{\dispersia{\widehat{F}_n(x)}}{\varepsilon^2}
+\end{equation*}
+то есть $\widehat{F}_n\overset{\mathbb{P}}{\underset{n\to\infty}{\longrightarrow}}F(x)$\qed
+
+\theorem (Гливенко-Кантелли) 
+\begin{equation*}
+    \sup\limits_{x\in\mathbb{R}}\left|\widehat{F}_n(x)-F(x)\right|\overset{\mathbb{P}}{\underset{n\to\infty}{\longrightarrow}}0
+\end{equation*}
+При этом, \textit{почти наверное} тоже верно
+
+\ex Чему должно быть равно $n$, чтобы $\mathbb{P}\left(\left|\widehat{F}_n(x)-F(x)\right|\geqslant0.01\right)\leqslant0.01$?
+
+\textit{Способ 1. Используем Чебышёва}
+\begin{equation*}
+    \begin{aligned}
+        \mathbb{P}(|\widehat{F}_n(x)-F(x)|\geqslant0.01)\leqslant\frac{F(x)(1-F(x))}{n\cdot(0.01)^2}\leqslant\frac{1}{4n\cdot0.0001}\leqslant0.01
+    \end{aligned}
+\end{equation*}
+Получается, что $n\geqslant250000$
+
+\textit{Способ 2. По теореме Муавра-Лапласа}
+\begin{equation*}
+    \begin{aligned}
+        \frac{\widehat{F}_n(x)-F(x)}{\sqrt{\frac{F(x)(1-F(x))}{n}}}\overset{d}{\underset{n\to\infty}{\longrightarrow}}\mathcal{N}(0;1)
+    \end{aligned}
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \mathbb{P}(|\widehat{F}_n(x)-F(x)|\geqslant0.01)&=\mathbb{P}\left(\frac{|\widehat{F}_n(x)-F(x)|}{\sqrt{\frac{F(x)(1-F(x))}{n}}}\geqslant\frac{0.01}{\sqrt{\frac{F(x)(1-F(x))}{n}}}\right)\leqslant0.01\\
+        \frac{0.01}{\sqrt{\frac{F(x)(1-F(x))}{n}}}&\geqslant2.58\\
+        \sqrt{n}\cdot0.01&\geqslant2.58\sqrt{F(x)(1-F(x))}\\
+        \sqrt{n}&\geqslant\frac{2.58\cdot0.5}{0.01}\approx129\\
+        n&\geqslant16641
+    \end{aligned}
+\end{equation*}
+
+\subsection{Теорема Колмогорова}
+\theorem Пусть $X_1,\ldots,X_n\sim F(x;\theta)\equiv F(x)$, $\widehat{F}_n=\displaystyle\frac{1}{n}\sum_{i=1}^n I\{X_i\leqslant x\}$, есть случайная величина $D_n$:
+\begin{equation*}
+    \sqrt{n}\cdot\sup\limits_{x}|\widehat{F}_n(x)-F(x)|\overset{d}{\underset{n\to\infty}{\longrightarrow}}\mu\sim K(x),
+\end{equation*}
+где $K(x)$ — распределение Колмогорова, определенная как
+\begin{equation*}
+    \mathbb{P}(D_n\leqslant x)=K(x)=\sum_{j=-\infty}^{\infty}(-1)^j\exp\left(-2j^2x^2\right)
+\end{equation*}
+
+\subsection{Свойства выборочной функции распределения}
+\begin{enumerate}
+    \item состоятельная оценка
+    \item несмещенная оценка $F(x):\ \matwait{\widehat{F}_n(x)}=F()x$
+    \item $\dispersia{\widehat{F}_n(x)}=\displaystyle\frac{F(x)(1-F(x))}{n}\underset{n\to\infty}{\longrightarrow}0$
+    \item $\displaystyle\frac{\widehat{F}_n(x)-F(x)}{\sqrt{\displaystyle\frac{F(x)(1-F(x))}{n}}}\overset{d}{\underset{n\to\infty}{\longrightarrow}}\mathcal{N}(0;1)\Longrightarrow \widehat{F}_n(x)$ — асимптотически (в пределе) нормаьная оценка $F(x)$
+    \item $n\cdot\widehat{F}_n(x)\sim Bi(n,F(x))$
+\end{enumerate}
+
+\subsection{Свойства выборочных моментов}
+\theorem 
+\begin{enumerate}
+    \item Если $\exists \matwait{|X_1|^k}<\infty$, тогда $\matwait{\widehat{\alpha}_k}=\alpha_k$ (несмещенность)
+    \item $\widehat{\alpha}_k\overset{P}{\underset{n\to\infty}{\longrightarrow}}\alpha_k$ (состоятельность)
+    \item Если $\dispersia{X_1^k}\ne0,<\infty$, то $\frac{\widehat{\alpha}_k-\alpha_k}{\sqrt{\frac{\dispersia{X_1^k}}{n}}}\overset{d}{\underset{n\to\infty}{\longrightarrow}}\mathcal{N}(0;1)$
+\end{enumerate}
+
+
+
+
+
+
+
+
+
 
 
 
