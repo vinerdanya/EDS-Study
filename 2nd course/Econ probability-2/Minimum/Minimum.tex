@@ -21,7 +21,7 @@
 % \comment Обозначение $\exp\left(\text{equation}\right)$ равносильно $e^{\text{equation}}$
 
 \subsection{Дайте определение нормально распределённой случайной величины. Для неё укажите диапазон возможных значений, функцию плотности, ожидание, дисперсию. Нарисуйте функцию плотности}
-\definition Случайная величина имеет нормальное распределение $X\sim\mathcal{N}(\mu,\sigma^2)$, если функция плотности равна
+\definition Говорят, что случайная величина $X$ имеет нормальное распределение с параметрами $\mu\in\mathbb{R}$ и $\sigma^2>0$, пишут $X\sim N(\mu,\sigma^2)$, если
 \begin{equation*}
     f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)
 \end{equation*}
@@ -39,15 +39,15 @@
 
 \newpage
 \subsection{С помощью нормальных случайных величин дайте определение случайной величины, имеющей хи-квадрат распределение. Для хи-квадрат распределённой случайной величины укажите диапазон возможных значений, математическое ожидание и дисперсию. Нарисуйте функцию плотности при разных степенях свободы}
-\definition Случайная величина $X$ имеет $\chi^2$-распределение с $m$ степенями свободы, $H\sim\chi^2(m)$, если $X$ представима в виде
+\definition Случайная величина $W$ имеет $\chi^2$-распределение с $m$ степенями свободы, $W\sim\chi^2(m)$, если $W$ представима в виде
 \begin{equation*}
-    X=X_1^2+\ldots+X_m^2,
+    W=X_1^2+\ldots+X_m^2,
 \end{equation*}
 где $X_1,\ldots,X_m\sim iidN(0,1)$ (independent identically distributed normal — независимые одинаково распределенные нормально распределенные случайные величины)
 \begin{itemize}
-    \item Принимает значения $x\in[0;+\infty]$
-    \item $\matwait{X}=m$
-    \item $\dispersia{X}=2m$
+    \item Принимает значения $x\in(0;+\infty)$
+    \item $\matwait{W}=m$
+    \item $\dispersia{W}=2m$
 \end{itemize}
 \begin{figure}[h]
     \centering
@@ -56,18 +56,20 @@
 
 \newpage
 \subsection{С помощью нормальных случайных величин дайте определение случайной величины, имеющей распределения Стьюдента. Для случайной величины, распределённой по Стьюденту, укажите диапазон возможных значений. Нарисуйте функцию плотности распределения Стьюдента при разных степенях свободы на фоне нормальной стандартной функции плотности.}
-\definition Пусть $\xi_0, \xi_1, \ldots, \xi_k$ независимы и имеют стандартное нормальное распределение. Распределение случайной величины
-$$
-t_k=\frac{\xi_0}{\sqrt{\frac{\xi_1^2+\ldots+\xi_k^2}{k}}}
-$$
-называется распределением Стьюдента с $k$ степенями свободы и обозначается $\mathrm{T}_k$.
+\definition Случайная величина $W$ имеет $t$-распределение (распределение Стьюдента) с $m$ степенями свободы, пишут $W\sim t(m)$, если $W$ представима в виде
+\begin{equation*}
+    W=\frac{X}{\sqrt{\frac{Y_1^2+\ldots+Y_m^2}{m}}},
+\end{equation*}
+где $X,Y_1,\ldots,Y_m\sim iidN(0;1)$
 
-Распределение Стьюдента совпадает с распределением случайной величины $t_k=\frac{\xi}{\sqrt{\chi_k^2 / k}}$, где $\xi \in \mathcal{N}(0,1)$ и $\chi_k^2 \in \mathrm{H}_k$ независимы.
-\begin{itemize}
-    \item Принимает значения в диапазоне $(-\infty;+\infty)$
-    \item $\matwait{t_k}=0$ при $k>1$, а при $k=1$ матожидание не существует, так как интеграл расходится (распределение Коши)
-    \item $\dispersia{t_k}=\displaystyle\frac{k}{k-2}$, $\exists$ только при $k>2$
-\end{itemize}
+Множество значений случайной величины: $(-\infty;+\infty)$
+
+% Распределение Стьюдента совпадает с распределением случайной величины $t_k=\frac{\xi}{\sqrt{\chi_k^2 / k}}$, где $\xi \in \mathcal{N}(0,1)$ и $\chi_k^2 \in \mathrm{H}_k$ независимы.
+% \begin{itemize}
+    % \item Принимает значения в диапазоне $(-\infty;+\infty)$
+    % \item $\matwait{W}=0$ при $k>1$, а при $k=1$ матожидание не существует, так как интеграл расходится (распределение Коши)
+    % \item $\dispersia{W}=\displaystyle\frac{k}{k-2}$, $\exists$ только при $k>2$
+% \end{itemize}
 
 \begin{figure}[h]
     \centering
@@ -77,14 +79,14 @@ $$
 
 \newpage
 \subsection{С помощью нормальных случайных величин дайте определение случайной величины, имеющей распределение Фишера. Для случайной величины, распределённой по Фишеру, укажите диапазон возможных значений. Нарисуйте возможную функцию плотности}
-\definition Случайная величина $F\sim F(k,m)$ имеет распределение Фишера с параметрами $k$ и $m$ (степени свободы), если она может быть представлена в виде:
+\definition Случайная величина $W$ имеет $F$-распределение (распределение Фишера) с $m$ и $n$ степенями свободы, пишут $W\sim F(m,n)$, если $W$ представима в виде:
 \begin{equation*}
-    F = \frac{X_k/k}{X_m/m}
+    W = \frac{(X_1^2+\ldots+X_m^2)/m}{(Y_1^2+\ldots+Y_n^2)/n}
 \end{equation*}
-где $X_k\sim\chi^2(k),\ X_m\sim\chi^2(m)$ и $X_k,\ X_m$ — независимы
+где $X_1,\ldots,X_m,Y_1,\ldots,Y_n\sim iidN(0;1)$
 
 \begin{itemize}
-    \item $F$ принимает значения из диапазона $[0;+\infty]$
+    \item $W\sim F(m,n)$ принимает значения из диапазона $(0;+\infty)$
 \end{itemize}
 
 \begin{figure}[h]
@@ -93,30 +95,36 @@ $$
 \end{figure}
 
 \subsection{Дайте определение выборочного среднего и выборочной дисперсии}
+Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, тогда
+
 \definition Выборочное среднее — $\overline{X}:=\displaystyle\frac{X_1+\ldots+X_n}{n}$
 
 \definition Неисправленная выборочная дисперсия — $s^2:=\displaystyle\frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$
 
-\definition Исправленная выборочная дисперсия — $\widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$
+% \definition Исправленная выборочная дисперсия — $\widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$
 
 
 \subsection{Дайте определение выборочного начального и выборочного центрального момента порядка $k$}
-Пусть дана выборка $X=(X_1,\ldots,X_n)$
+Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, тогда 
 
 \definition Выборочным \textit{начальным} моментом порядка $k$ называется число 
 \begin{equation*}
-    \frac{1}{n}\sum_{i=1}^{n}(X_i)^k
+    \widehat{\mu}_k:=\frac{1}{n}\sum_{i=1}^{k}(X_i)^k
 \end{equation*}
 
 \definition Выборочным \textit{центральным} моментом порядка $k$ называется число
 \begin{equation*}
-    \frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^k
+    \widehat{\nu}_k:=\frac{1}{n}\sum_{i=1}^{k}(X_i-\overline{X})^k
 \end{equation*}
 
 
 
 \subsection{Дайте определение выборочной функции распределения}
-\definition Выборочная (эмпирическая) функция распределения — это $$\hat{F}_n(x)=\frac{1}{n}\sum_{i=1}^{n}I\{X_i\leqslant x\},$$ где $I\{X_i\leqslant x\}$ — индикаторная функция, равная 1, если $X_i\leqslant x$, и 0 в противном случае
+\definition Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, тогда выборочной функцией распределения случайной выборки $X$ называется функция от действительного переменного $X$, которая определяется как
+\begin{equation*}
+    \widehat{F}_n(x,\omega):=\frac{1}{n}\sum_{i=1}^{n}\mathbb{I}\{X_i(\omega)\leqslant x\},
+\end{equation*}
+где $\mathbb{I}\{X_i(\omega)\leqslant x\}$ равна 1, если $X_i(\omega)\leqslant x$ и равна 0 в противном случае
 
 % \definition Выборочной функцией распределения называется \begin{equation*}
 %     \begin{aligned}
@@ -127,37 +135,39 @@ $$
 % \end{equation*}
 
 \subsection{Выпишите формулу несмещённой оценки дисперсии}
-\definition $\widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2$
+\theorem Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка, причем $\dispersia{X_i}=\sigma^2$, тогда 
+\begin{equation*}
+    \widehat{\sigma}^2:=\displaystyle\frac{1}{n-1}\sum_{i=1}^n (X_i-\overline{X})^2
+\end{equation*}
+является несмещённой оценкой параметра $\sigma^2$, то есть $\matwait{\widehat{\sigma}^2}=\sigma^2$
 
 
 \subsection{Дайте определение несмещённой оценки $\widehat{\theta}$ параметра $\theta$}
-\definition Оценка $\hat{\theta}$ неизвестного параметра $\theta\in\Theta$ называется \textit{несмещённой}, если 
+Оценка $\hat{\theta}$ неизвестного параметра $\theta\in\Theta$ называется \textit{несмещённой}, если 
 \begin{equation*}
     \matwait{\hat{\theta}}=\theta\ \forall\theta\in\Theta,
 \end{equation*}
-где $\Theta$ — множество всех параметров $\theta$
+где $\Theta$ — множество всех допустимых значений параметра $\theta$
+
 
 \subsection{Дайте определение состоятельной последовательности оценок $\widehat{\theta}_n$; Укажите условия на $\matwait{\widehat{\theta}_n}$ и $\dispersia{\widehat{\theta}_n}$, достаточные для состоятельности}
 \definition Последовательность оценок $\hat{\theta}_n$ называется \textit{состоятельной оценкой} неизвестного параметра $\theta\in\Theta$, если
 \begin{equation*}
-    \forall \theta\in\Theta\ \hat{\theta}_n\underset{n\to\infty}{\overset{\mathbb{P}}{\longrightarrow}}\theta,
-\end{equation*}
-то есть $\hat{\theta}_n$ сходится по вероятности к $\theta$
-\begin{equation*}
-    \forall\varepsilon>0:\ \lim\limits_{n\to\infty}\mathbb{P}(|\hat{\theta}_n-\theta|\geqslant\varepsilon)=0
+    \hat{\theta}_n\underset{n\to\infty}{\overset{\mathbb{P}}{\longrightarrow}}\theta\ \forall \theta\in\Theta,
 \end{equation*}
 
-\theorem Если оценка асимптотически несмещенная и её дисперсия стремится к нулю, то такая оценка будет состоятельной. То есть должны выполняться такие условия:
+\theorem Пусть 
 \begin{itemize}
-    \item Асимптотическая несмещённость — $\lim\limits_{n\to\infty}\matwait{\widehat{\theta}_n}=\theta$
-    \item Сходимость дисперсии к нулю — $\lim\limits_{n\to\infty}\dispersia{\widehat{\theta}_n}=0$
+    \item $\forall\theta\Theta\ \matwait{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}\theta$
+    \item $\forall\theta\Theta\ \dispersia{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}0$
 \end{itemize}
+Тогда, $\widehat{\theta}_n\overset{\mathbb{P}}{\longrightarrow}\theta$, то есть $\widehat{\theta}_n$ является состоятельной оценкой  неизвестного параметра $\theta$
 
 
 
 
 \subsection{Дайте определение эффективности оценки $\widehat{\theta}$ среди множества оценок $\widehat{\Theta}_n$}
-\definition Пусть $\mathcal{K}$ — некоторый класс оценок параметра $\theta$. Оценка $\widehat{\theta}\in\mathcal{K}$ неизвестного параметра $\theta$ называется наиболее эффективной в классе $\mathcal{K}$, если для любого конкурента $\widetilde{\theta}\in\mathcal{K}\ \forall \theta\in\Theta$
+\definition Пусть $\mathcal{K}$ — некоторый класс оценок параметра $\theta$. Оценка $\widehat{\theta}\in\mathcal{K}$ неизвестного параметра $\theta$ называется наиболее эффективной в классе $\mathcal{K}$, если $\forall\widetilde{\theta}\in\mathcal{K}\ \forall \theta\in\Theta$
 \begin{equation*}
     \begin{aligned}
         \matwait{(\widehat{\theta}-\theta)^2}\leqslant\matwait{(\widetilde{\theta}-\theta)^2}

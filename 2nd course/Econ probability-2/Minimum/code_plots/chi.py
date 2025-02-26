@@ -12,7 +12,7 @@ for m in degrees_of_freedom:
     plt.plot(x, chi2.pdf(x, m), label=fr'$m={m}$')
 
 plt.xlabel('$x$')
-plt.ylabel('$f_X(x)$')
+plt.ylabel('$f_W(x)$')
 plt.ylim(0, 1)
 plt.title('Функция плотности хи-квадрат распределения')
 plt.legend()
