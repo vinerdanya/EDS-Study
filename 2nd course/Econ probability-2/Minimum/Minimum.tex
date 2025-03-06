@@ -109,12 +109,12 @@
 
 \definition Выборочным \textit{начальным} моментом порядка $k$ называется число 
 \begin{equation*}
-    \widehat{\mu}_k:=\frac{1}{n}\sum_{i=1}^{k}(X_i)^k
+    \widehat{\mu}_k:=\frac{1}{n}\sum_{i=1}^{n}(X_i)^k
 \end{equation*}
 
 \definition Выборочным \textit{центральным} моментом порядка $k$ называется число
 \begin{equation*}
-    \widehat{\nu}_k:=\frac{1}{n}\sum_{i=1}^{k}(X_i-\overline{X})^k
+    \widehat{\nu}_k:=\frac{1}{n}\sum_{i=1}^{n}(X_i-\overline{X})^k
 \end{equation*}
 
 
@@ -158,8 +158,8 @@
 
 \theorem Пусть 
 \begin{itemize}
-    \item $\forall\theta\Theta\ \matwait{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}\theta$
-    \item $\forall\theta\Theta\ \dispersia{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}0$
+    \item $\forall\theta\in\Theta\ \matwait{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}\theta$
+    \item $\forall\theta\in\Theta\ \dispersia{\widehat{\theta}_n}\underset{n\to\infty}{\longrightarrow}0$
 \end{itemize}
 Тогда, $\widehat{\theta}_n\overset{\mathbb{P}}{\longrightarrow}\theta$, то есть $\widehat{\theta}_n$ является состоятельной оценкой  неизвестного параметра $\theta$
 
