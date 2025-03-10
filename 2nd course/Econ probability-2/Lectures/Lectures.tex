@@ -2,7 +2,7 @@
 \usepackage{header}
 
 \title{\LARGE{Теория вероятностей и математическая статистика—2}}
-\author{Винер Даниил  \href{https://t.me/danya_vin}{@danya\_vin}}
+\author{Винер Даниил  \href{https://t.me/danya_vin}{@danya\_vin}\\Рейтман Яна}
 \date{Версия от \today}
 \begin{document}
 \maketitle
@@ -650,21 +650,147 @@ $\hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}$ — оценка парамет�
     \item Если $\dispersia{X_1^k}\ne0,<\infty$, то $\frac{\widehat{\alpha}_k-\alpha_k}{\sqrt{\frac{\dispersia{X_1^k}}{n}}}\overset{d}{\underset{n\to\infty}{\longrightarrow}}\mathcal{N}(0;1)$
 \end{enumerate}
 
+\newpage
+\section{Информации Фишера}
+\subsection{Количество информации Фишера}
+Имеется выборка с неизвестным параметром — $X_1,\ldots,X_n\sim F(x;\theta)$
+
+\definition Информацией Фишера называется 
+\begin{equation*}
+    I(\theta;X)=\matwait{\left(\frac{\partial \ln\mathcal{L}}{\partial\theta}\right)^2},
+\end{equation*}
+где $\mathcal{L}$ — функция правдоподобия
+
+\comment Определние применимо для регулярного случая, то есть область значений $X$ не зависит от $\theta$
+
+\definition Также информацией Фишера называется
+\begin{equation*}
+    I(\theta;X)=-\matwait{\frac{\partial^2\ln\mathcal{L}}{\partial\theta^2}}
+\end{equation*}
+
+\begin{equation*}
+    \ln\mathcal{L}=\sum_{i=1}^{n}\ln f_i,\quad f_i=f(x_i;\theta)
+\end{equation*}
+
+Также существует малая информация Фишера
+\begin{equation*}
+    i(\theta)=\matwait{\left(\frac{\partial \ln f}{\partial\theta}\right)^2}
+\end{equation*}
+
+\subsection{Эквивалентность определений}
+Докажем, что определения эквивалентны, то есть 
+\begin{equation*}
+    -\matwait{\frac{\partial^2\ln\mathcal{L}}{\partial\theta^2}}=\matwait{\left(\frac{\partial \ln\mathcal{L}}{\partial\theta}\right)^2},
+\end{equation*}
+
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial\ln f}{\partial\theta}&=\frac{1}{f}\frac{\partial f}{\partial\theta}\Longrightarrow\frac{\partial f}{\partial \theta}=f\frac{\partial \ln f}{\partial\theta}
+        % \frac{\partial\ln \mathcal{L}}{\partial\theta}&=\sum_i\frac{\partial\ln f_i}{\partial\theta}=0\Longrightarrow\widehat{\theta}=T(X_1,\ldots,X_n)
+    \end{aligned}
+\end{equation*}
+
+Покажем, что $\matwait{\frac{\partial \ln f}{\partial\theta}}=0$
+\begin{equation*}
+    \begin{aligned}
+        \matwait{\frac{\partial \ln f}{\partial\theta}}&=\int\limits_{-\infty}^{+\infty}\frac{\partial\ln f}{\partial \theta}\cdot f\cdot \d{x}\\
+        &=\int\limits_{-\infty}^{+\infty}\frac{\partial f}{\partial \theta}\d{x}\\
+        &=\frac{\partial}{\partial\theta}\int\limits_{\infty}^{+\infty}f\d{x}\\
+        &=0
+    \end{aligned}
+\end{equation*}
+
+Теперь покажем эквивалентность определений
+\begin{equation*}
+    \begin{aligned}
+        \int\limits_{-\infty}^{+\infty}\frac{\partial\ln f}{\partial \theta}\cdot f\cdot \d{x}&=0\\
+        \int\limits_{-\infty}^{+\infty}\left(\frac{\partial^2\ln f}{\partial\theta^2}f+\frac{\partial \ln f}{\partial\theta}\frac{\partial f}{\partial\theta}\right)\d{x}&=0\\
+        \int\limits_{-\infty}^{+\infty}\frac{\partial^2\ln f}{\partial\theta^2}f\d{x}+\int\limits_{-\infty}^{+\infty}\left(\frac{\partial\ln f}{\partial\theta}\right)^2f\d{x}&=0\\
+        \matwait{\frac{\partial^2\ln f}{\partial\theta^2}}+\matwait{\left(\frac{\partial\ln f}{\partial\theta}\right)^2}&=0
+    \end{aligned}
+\end{equation*}
+
+Значит, $\matwait{\frac{\partial^2\ln f}{\partial\theta^2}}=-\matwait{\left(\frac{\partial\ln f}{\partial\theta}\right)^2}$\qed
+
+\comment Если $X=\frac{\partial \ln f}{\partial\theta}$ — случайная величина, то 
+\begin{equation*}
+    \begin{aligned}
+        \matwait{X}&=0\\
+        \dispersia{X}&=i(\theta)
+    \end{aligned}
+\end{equation*}
+
+\proof Покажем, что $I(\theta)=n\cdot i(\theta)$
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial\ln f}{\partial\theta}&=\sum_{i=1}^{n}\frac{\partial\ln f_i}{\partial\theta}\text{ — сумма независимых сл. величин}
+    \end{aligned}
+\end{equation*}
+Отсюда, очевидно следует, что $I(\theta)=n\cdot i(\theta)$\qed
+
+\subsection{Пример}
+Пусть имеется выборка $X_1,\ldots,X_n\sim N(\mu,\sigma^2)$, причем дисперсия известна
+
+\begin{equation*}
+    \begin{aligned}
+        f(x)&=\frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right)\\
+        \ln f&=-\ln \sigma-\ln\sqrt{2\pi}-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\\
+        \frac{\partial\ln f}{\partial\mu}&=\frac{x-\mu}{\sigma}\cdot\frac{1}{\sigma}\\
+        i(\theta)&=\matwait{\left(\frac{\partial\ln\mathcal{L}}{\partial\mu}\right)^2}\\
+        &=\frac{1}{\sigma^4}\matwait{(x-\mu)^2}\\
+        &=\frac{1}{\sigma^2}
+    \end{aligned}
+\end{equation*}
+Теперь воспользуемся второй формулой
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial^2\ln f}{\partial\mu^2}&=-\frac{1}{\sigma^2}\Longrightarrow i(\mu)=-\matwait{\frac{\partial^2\ln f}{\partial\theta^2}}=\frac{1}{\sigma^2}
+    \end{aligned}
+\end{equation*}
+
+\subsection{Неравенство Рао-Крамера-Фреше}
+\definition Считаем, что выполняются все условия гладкости и регулярности
+\begin{equation*}
+    \dispersia{\widehat{\theta}}\geqslant\frac{1}{I(\theta)}\left(1+\frac{\partial b(\theta)}{\partial\theta}\right)^2,
+\end{equation*}
+где $b(\theta)=\matwait{\widehat{\theta}-\theta}$
+
+Для несмещенных оценок:
+\begin{equation*}
+    \dispersia{\widehat{\theta}}\geqslant\frac{1}{I(\theta)}
+\end{equation*}
+
+\proof $\matwait{\widehat{\theta}}=\theta,\matwait{\widehat{\theta}-\theta}=0$
+
+\begin{equation*}
+    \begin{aligned}
+        \int\widehat{\theta}f\d{x}&=0\\
+        \int\widehat{\theta}\frac{\partial f}{\partial\theta}\d{x}&=1\\
+        \int\widehat{\theta}\frac{\partial\ln f}{\partial\theta}f\d{x}&=1\\
+        \matwait{\widehat{\theta}\frac{\partial \ln f}{\partial\theta}}&=1\\
+        E\left(\widehat{\theta}-\theta\right)\left(\frac{\partial \ln f}{\partial\theta}-0\right)&=1\Longrightarrow cov\left(\widehat{\theta},\frac{\partial\ln f}{\partial\theta}\right)=1
+    \end{aligned}
+\end{equation*}
+Получается, что
+\begin{equation*}
+    1\leqslant\dispersia{\widehat{\theta}}\underbrace{\dispersia{\frac{\partial\ln\mathcal{L}}{\partial\theta}}}_{I(\theta)}
+\end{equation*}
 
 
+\subsection{Критерии эффективности}
+Если $ \dispersia{\widehat{\theta}}=\frac{1}{I(\theta)}\left(1+\frac{\partial b(\theta)}{\partial\theta}\right)^2$, то оценка эффективна в классе оценок со смещением $b(\theta)$
 
+\definition $\widehat{\theta}$ асимптотически нормальна, если $\exists\sigma^2(\theta)$, что 
+\begin{equation*}
+    \sqrt{\pi}(\widehat{\theta}-\theta)\overset{d}{\longrightarrow} N(0,\sigma^2(\theta))
+\end{equation*}
 
+\definition Если $\widehat{\theta}$ — асимптотически нормальная, то $\frac{\sigma^2(\theta)}{n}$ называется асимптотической дисперсией
 
-
-
-
-
-
-
-
-
-
-
+\definition Оценка $\widehat{\theta}$ — асимптотически эффективна, если ее асимптотическая дисперсия 
+\begin{equation*}
+    \frac{\sigma^2(\theta)}{n}=\frac{1}{I(\theta)}\text{ для несмещенных}
+\end{equation*}
 
 
 
