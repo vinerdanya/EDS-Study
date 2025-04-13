@@ -794,4 +794,184 @@ $\hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}$ — оценка парамет�
 
 
 
+\newpage
+\section{Lecture 24.03.2025}
+\subsection{Полезные асимптотические свойства}
+\begin{itemize}
+    \item \textbf{Состоятельность.} $\widehat{\theta}\underset{n\to\infty}{\overset{\mathbb{P}}{\longrightarrow}}\theta$
+    \item \textbf{Асимптотическая несмещенность.} $b(\theta)=\mathbb{E}[\widehat{\theta}]-\theta\underset{n\to\infty}{\longrightarrow}0$
+    \item \textbf{Асимптотическая нормальность.} Нужно для доверительных интервалов и гипотез
+    \begin{equation*}
+        \begin{aligned}
+            \sqrt{n}(\widehat{\theta}-\theta) &\overset{d}{\longrightarrow} \mathcal{N}\left(0; \sigma^{2}(\theta)\right)\\
+            \frac{\widehat{\theta}-\theta}{\sqrt{\frac{\sigma^{2}}{n}}} &\overset{d}{\longrightarrow} \mathcal{N}(0;1)
+        \end{aligned}
+    \end{equation*}
+    \item \definition Если $\widehat{\theta}$ — асимптотически нормальна, то $\displaystyle\frac{\sigma^2}{n}=\text{AsVar}(\widehat{\theta})$ называется \textit{асимптотической дисперсией}
+\end{itemize}
+
+\subsection{Критерий асимптотической эффективности}
+Оценка $\widehat{\theta}$ асимптотически эффективна, если
+\begin{equation*}
+    \frac{\sigma^{2}}{n}=\frac{1}{I(\theta)},
+\end{equation*}
+где $I(\theta)$ — информация Фишера. То есть $\text{AsVar}=\mathrm{I}^{-1}(\theta)$
+
+\subsection{Свойства оценки максимального правдоподобия}
+\begin{itemize}
+    \item состоятельность
+    \item асимптотическая несмещенность
+    \item асимптотическая нормальность
+    \item асимптотическая эффективность — $\sqrt{n}(\widehat{\theta}-\theta) \overset{d}{\longrightarrow} \mathcal{N}\left(0; I^{-1}(\theta)\right)$
+\end{itemize}
+
+\subsection{Дельта-метод}
+\theorem Положим, что выполняются такие условия:
+\begin{equation*}
+    \left.\begin{aligned}
+        &\bullet\widehat{\theta}\text{ — асимптотически нормальна }(\sqrt{n}(\widehat{\theta}-\theta) \overset{d}{\longrightarrow} \mathcal{N}\left(0; \sigma^{2}(\theta)\right))\\
+        &\bullet\Theta\text{ — множество значений — есть открытый интервал}\\
+        &\bullet g(t)\text{ непрерывно дифференцируема }\forall t \in \Theta\\
+        &\bullet g^{\prime}(t) \neq 0 \forall t \in \Theta
+    \end{aligned}\right\}\Longrightarrow\sqrt{n}(g(\hat{\theta})-g(\theta)) \overset{d}{\longrightarrow} N\left(0,\left(g^{\prime}(\theta)\right)^{2} \sigma^{2}(\theta)\right)
+\end{equation*}
+
+\comment $\widehat{g(\theta)}_{\text{МП}}=g(\widehat{\theta}_{\text{МП}})$, то есть ОМП инвариантны
+
+\proof По теореме Лагранжа $\widetilde{\theta}\in(\theta;\widehat{\theta})$:
+\begin{equation*}
+    \sqrt{n}(g(\hat{\theta})-g(\theta))=\sqrt{n}\cdot g^{\prime}(\widetilde{\theta})(\widehat{\theta}-\theta)
+\end{equation*}
+Тогда, при $n\to\infty$:
+\begin{equation*}
+    \begin{aligned}
+        g^{\prime}(\widetilde{\theta})\underset{n\to\infty}{\overset{\mathbb{P}}{\longrightarrow}} g^{\prime}(\theta),\ \widetilde{\theta}\underset{n\to\infty}{\overset{\mathbb{P}}{\longrightarrow}}\theta
+    \end{aligned}
+\end{equation*}
+Тогда,
+\begin{equation*}
+    \sqrt{n}(g(\hat{\theta})-g(\theta))\overset{d}{\longrightarrow}\mathcal{N}(0;\sigma^2(\theta))
+\end{equation*}\qed 
+
+\subsection{Лемма Фишера}
+\theorem Пусть $X_{1}, X_{2}, \ldots X_{n} \sim N(0,1)$ и независимы; $Y=C X$, ($C^{T}C=I\Longleftrightarrow C$ — ортог). Тогда:
+\begin{equation*}
+    \gamma=\sum_{i=1}^{n} X_{i}^{2}-\sum_{i=1}^{k} Y_{i}^{2} \sim \chi^{2}_{n-k}
+\end{equation*}
+и $\gamma$ не зависит от $Y_{1}, \ldots Y_{k} $
+
+\proof $Y=C X \sim N(0, I)$, $cov(Y)=C\cdot \underbrace{cov(X)}_{=I}C^T=CC^T=I$
+\begin{equation*}
+    \begin{aligned}
+        \sum_{i=1}^{n} X_{i}^{2}&=\left(X^{T} X\right)\\
+        \sum_{i=1}^{n} Y_{i}^{2}&=Y^TY=X^T\underbrace{C^TC}_{=I}X=X^TX=\sum_{i=1}^{n} X_{i}^{2}
+    \end{aligned}
+\end{equation*}
+Тогда,
+\begin{equation*}
+    \begin{aligned}
+        \sum_{i=1}^{n} X_{i}^{2}-\sum_{i=1}^{K} Y_{i}^{2}&=\sum_{i=1}^{n} Y_{i}^{2}-\sum_{i=1}^{k} Y_{i}^{2}\\
+        &=Y^2_{k+1}+\ldots+Y^2_{n}\sim\chi^2_{n-k}
+    \end{aligned}
+\end{equation*}\qed
+
+\subsection{Основная теорема статистики}
+\theorem Пусть $X_{1}, X_{2}, \ldots X_{n} \sim\left(\mu, \sigma^{2}\right)$ выборка, $\mathbb{E}\left[X_{i}\right]=\mu,\ \operatorname{\mathbb{D}}\left[X_{i}\right]=\sigma^{2}$. Тогда
+\begin{itemize}
+    \item $\overline{X}\sim \mathcal{N}\left(\frac{\sigma^{2}}{n}\right)$
+    \item $\displaystyle\frac{\widehat{\sigma}^2}{\sigma^2}(n-1)\sim\chi^2_{n-1}$, при этом $\widehat{\sigma}^2$ и $\overline{X}$ независимы
+    \item $\frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{n}}} \sim t_{n-1}$ 
+\end{itemize}
+
+
+\newpage
+\section{Доверительные интервалы}
+\subsection{Определение}
+Пусть имеются $X_1,\ldots,X_n\sim F(x, \theta)$, $\alpha\in(0;1)$, $T_1(x), T_2(x)$ — случайные величины статистики (функции от выборки).
+
+\definition Интервал $(T_1;T_2)$ называется \textit{доверительным интревалом} для параметра $\theta$ уровня доверия $1-\alpha$, если $\forall\theta\in\Theta$:
+\begin{equation*}
+    \mathbb{P}\left(T_1(x)<\theta<T_2(x)\right)\geqslant1-\alpha,
+\end{equation*}
+где $\alpha$ — уровень значимости, $1-\alpha$ — уровень доверия. При этом, чем меньше интервал, тем лучше
+
+\subsection{Доверительные интервалы для математического ожидания}
+\subsubsection{$\sigma$ известна}
+Дана выборка $X_{1}, \ldots X_{n} \sim N\left(\mu, \sigma^{2}\right)$. Нам нужна оценка для $\mu$ в нормальном распределении, если известна $\sigma^{2}$ :
+$$
+\begin{gathered}
+\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim \mathcal{N}(0,1) \\
+\mathbb{P}\left(-z_{\frac{\alpha}{2}}<\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}<z_{\frac{\alpha}{2}}\right)=1-\alpha \\
+\mathbb{P}\left(\bar{X}-\frac{z_{\frac{\alpha}{2}}}{\sqrt{n}}<\mu<\frac{z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}\right)=1-\alpha \\
+\triangle=T_{2}-T_{1}=\frac{2 z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}
+\end{gathered}
+$$
+$\Longrightarrow$ конфликт точности и надёжности (уровня доверия)
+
+\subsection{Компенсация морального вреда за неправильный вес чайных пакетиков}
+Дано:
+\begin{itemize}
+    \item $n=25$
+    \item $\overline{X}=2.2$ гр
+    \item $\sigma=0.2$ г
+    \item $1-\alpha=0,95$
+\end{itemize}
+
+Заявлено, что $\mu=2.5$, тогда
+\begin{equation*}
+    2,2-1,96 \cdot \frac{0,2}{5}<\mu<2,2+1,96
+\end{equation*}
+
+\comment Нельзя утверждать, что истинное $\mu\in(2.13;2.27)$ с вероятностью $0.95$. $\mu$ либо лежит в границах, либо нет.
+
+Получается, что $\alpha=0.05$, а значит с соответствующей вероятностью чай не докладывают в пакетики
+
+\subsubsection{$\sigma$ неизвестна}
+\begin{equation*}
+    \begin{gathered}
+        \frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{n}}} \sim t_{n-1} \\
+        \mathbb{P}\left(-z_{\frac{\alpha}{2}}<\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}<z_{\frac{\alpha}{2}}\right)<t_{\frac{\alpha}{2}, n-1}=1-\alpha
+        \end{gathered}
+\end{equation*}
+
+\subsection{Пример с расходом топлива}
+Дана выборка 
+\begin{equation*}
+    X=(18.6,18.4,19.2,20.8,19.4,20.5)
+\end{equation*}
+по литрам бензина в среднем. Определим, обманывают ли нас производители, сообщая, что среднее значение — 19 литров
+
+\begin{equation*}
+    \begin{aligned}
+        \overline{X}&=\frac{1}{n}\sum_{i=1}^nX_i=\frac{1}{6}\sum_{i=1}^6X_i=19.48
+        \widehat{\sigma}^{2}&=\frac{1}{5} \sum_{i=1}^{6}\left(X_{i}-19.48\right)^{2}=0.96=(0.98)^{2}
+    \end{aligned}
+\end{equation*}
+
+$\alpha=0.1,\ t_{0,05;5}=2.015$
+
+\begin{equation*}
+\begin{aligned}
+    19.48-2.015 \cdot \frac{0.98}{\sqrt{6}}&<\mu<19.48+2.015 \cdot \frac{0.98}{\sqrt{6}}\\
+    18,67&<\mu<20,29
+\end{aligned}
+\end{equation*}
+
+\comment При больших $n$ почти всегда имеет место интервал:
+\begin{equation*}
+    \overline{X}-\frac{z_{\frac{\alpha}{2}}}{\sqrt{n}}<\mu<\frac{z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}
+\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
