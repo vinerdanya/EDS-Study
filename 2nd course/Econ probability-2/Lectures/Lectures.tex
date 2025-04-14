@@ -943,8 +943,8 @@ $\Longrightarrow$ конфликт точности и надёжности (у�
 
 \begin{equation*}
     \begin{aligned}
-        \overline{X}&=\frac{1}{n}\sum_{i=1}^nX_i=\frac{1}{6}\sum_{i=1}^6X_i=19.48
-        \widehat{\sigma}^{2}&=\frac{1}{5} \sum_{i=1}^{6}\left(X_{i}-19.48\right)^{2}=0.96=(0.98)^{2}
+        \overline{X}&=\frac{1}{n}\sum_{i=1}^nX_i=\frac{1}{6}\sum_{i=1}^6X_i=19.48\\
+        \widehat{\sigma}^{2}&=\frac{1}{6} \sum_{i=1}^{6}\left(X_{i}-19.48\right)^{2}=0.96=(0.98)^{2}
     \end{aligned}
 \end{equation*}
 
@@ -963,10 +963,122 @@ $\alpha=0.1,\ t_{0,05;5}=2.015$
 \end{equation*}
 
 
+\newpage
+\section{Lecture 14.04.2025}
+Пусть $X=(X_1,\ldots,X_n)\sim N(0;\sigma^2)$. Если $\sigma^2$ известна, то доверительный интервал 
+\begin{equation*}
+    \overline{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}<\mu<\overline{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
+\end{equation*}
+Если $\sigma^2$ неизвестна, то 
+\begin{equation*}
+    \overline{X}-t_{n-1;\alpha/2}\frac{\widehat{\sigma}}{\sqrt{n}}<\mu<\overline{X}+t_{n-1;\alpha/2}\frac{\widehat{\sigma}}{\sqrt{n}}
+\end{equation*}
+
+\comment При больших $n$ почти всегда имеет место интервал:
+\begin{equation*}
+    \mathbb{P}\left(\overline{X}-\frac{z_{\frac{\alpha}{2}}}{\sqrt{n}}<\mu<\frac{z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}\right)\approx1-\alpha
+\end{equation*}
+
+\theorem $\frac{\bar{X}-\mu}{\frac{\widehat{\sigma}}{\sqrt{n}}} \overset{d}{\longrightarrow} \mathcal{N}(0,1)$
+
+\proof 
+\begin{equation*}
+    \begin{aligned}
+        \frac{\bar{X}-\mu}{\frac{\widehat{\sigma}}{\sqrt{n}}}&=\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\cdot\frac{\sigma}{\widehat{\sigma}}\\
+        \frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}} &\overset{d}{\longrightarrow} \mathcal{N}(0,1)\text{ по ЦПТ}\\
+        \frac{\sigma}{\widehat{\sigma}}&\overset{\mathbb{P}}{\longrightarrow}1
+    \end{aligned}
+\end{equation*}
 
 
+\subsection{Доверительный интервал для вероятности}
+Пусть $X_1,\ldots,X_n\sim Bi(1,p)$. $\matwait{X_i}=p,\ \dispersia{X_i}=p(1-p),\ \overline{X}=\widehat{p}$
+
+\begin{equation*}
+    \frac{\widehat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}\overset{d}{\longrightarrow}N(0;1)\text{ по ЦПТ(Муавра-Лапласа)}
+\end{equation*}
+Тогда,
+\begin{equation*}
+    \frac{\widehat{p}-p}{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}}\overset{d}{\longrightarrow}N(0;1)
+\end{equation*}
+\begin{equation*}
+    \begin{aligned}
+        \frac{\widehat{p}-p}{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}}=\frac{\widehat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}\cdot\frac{\sqrt{\frac{p(1-p)}{n}}}{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}},
+    \end{aligned}
+\end{equation*}
+где первый множитель $\overset{d}{\longrightarrow}N(0;1)$, а второй — $\overset{\mathbb{P}}{\longrightarrow}1$. При этом, $\widehat{p}\overset{\mathbb{P}}{\longrightarrow}p$ по ЗБЧ
+
+\begin{equation*}
+    \mathbb{P}\left(-Z_{\alpha/2}<\frac{\widehat{p}-p}{\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}}<Z_{\alpha/2}\right)\simeq-\alpha
+\end{equation*}
+
+\subsection{Пример с подарками}
+Провели опрос, $n=344$, и задали вопрос <<могут ли принимать подарки сотрудники отдела закупок>>. 83 ответило, что на усмотрение сотрудников. Надо построить доверительный интервал
+
+Пусть $p$ — вероятность, что подарки принимать можно. $\widehat{p}=\displaystyle\frac{83}{344}=0.241$. $1-\alpha=0.9,\ Z_{\alpha/2}=1.645$
+
+\begin{equation*}
+    \begin{aligned}
+        0.241-1.645\cdot\sqrt{\frac{0.241\cdot0.759}{244}}&<p<0.241+1.645\cdot\sqrt{\frac{0.241\cdot0.759}{244}}\\
+        0.203&<p<0.279
+    \end{aligned}
+\end{equation*}
 
 
+\subsection{Доверительные интервалы для разности двух средних}
+\subsubsection{Связанные пары}
+Наблюдение состоит из 2 характеристик — $(X_1,Y_1),\ldots,(X_n,Y_n)$. Тогда доверительный интервал — $?<\mu_X-\mu_Y<?$
+
+Для небольших $n$ предполагаем, что $X_i\sim N,Y_i\sim N$. Для больших предполагаем существование дисперсий $\sigma^2_X,\sigma^2_Y$
+\begin{equation*}
+    \overline{X}-\overline{Y}\sim N(\mu_X-\mu_Y;\sigma^2_{X-Y})
+\end{equation*}
+\begin{equation*}
+    \widehat{\sigma^2_{\Delta}}=\widehat{\sigma^2_{X-Y}}=\frac{1}{n-1}\sum_{i=1}^n\left(\left(X_i-Y_i\right)-\left(\overline{X}-\overline{Y}\right)\right)^2
+\end{equation*}
+\begin{equation*}
+    \overline{X}-\overline{Y}-t_{n-1;\alpha/2}\frac{\widehat{\sigma_{\Delta}}}{\sqrt{n}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+t_{n-1;\alpha/2}\frac{\widehat{\sigma_{\Delta}}}{\sqrt{n}}
+\end{equation*}
+
+\subsubsection{Независимые выборки, известные дисперсии}
+$X_1,\ldots,X_n\sim N(\mu_X;\sigma^2_X),\ Y_1,\ldots,Y_n\sim N(\mu_Y;\sigma^2_Y)$, где $X_i,Y_i$ — независимы
+
+$\overline{X}-\overline{Y}\sim N(\mu_X-\mu_Y,\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y})$
+
+\begin{equation*}
+    \frac{\overline{X}-\overline{Y}-(\mu_X-\mu_Y)}{\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}}\sim N(0;1)
+\end{equation*}
+\begin{equation*}
+    \mathbb{P}\left(\overline{X}-\overline{Y}-Z_{\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+Z_{\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}\right)\simeq1-\alpha
+\end{equation*}
+
+\comment Если $\sigma^2_X,\sigma^2_Y$ неизвестны, но $n_X$ и $n_Y$ велики, то 
+\begin{equation*}
+    \overline{X}-\overline{Y}-Z_{\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+Z_{\alpha/2}\sqrt{\frac{\sigma^2_X}{n_X}+\frac{\sigma^2_Y}{n_Y}}
+\end{equation*}
+
+\subsubsection{Пример с курильщиками}
+$n_X=96$ курильщиков и $n_Y=206$ некурящих. $\overline{X}=2.15$ ч., а $\overline{Y}=1.69$ ч. $\widehat{\sigma_X}=2.09,\ \widehat{\sigma_Y}=1.91$. Рассмотрим интервал $1-\alpha=0.99$, тогда $Z_{\alpha/2}=2.575$
+\begin{equation*}
+    \begin{aligned}
+        2.15-1.69-2.575\sqrt{\frac{(2.09)^2}{96}+\frac{(1.91)^2}{206}}&<\mu_X-\mu_Y<2.15-1.69+2.575\sqrt{\frac{(2.09)^2}{96}+\frac{(1.91)^2}{206}}\\
+        -0.19&<\mu_X-\mu_Y<1.11
+    \end{aligned}
+\end{equation*}
+0 попал, значит разницы между курильщиками и некурящими нет
+
+
+\subsubsection{$\sigma^2_X=\sigma^2_Y=\sigma^2_0$, но неизвестны}
+$X_1,\ldots,X_{n_X}\sim N(\mu_X;\sigma^2_X),\ Y_1,\ldots,Y_{n_Y}\sim N(\mu_Y;\sigma^2_Y)$
+\begin{equation*}
+    \frac{\overline{X}-\overline{Y}-(\mu_X-\mu_Y)}{\sqrt{\sigma^2_0\left(\frac{1}{n_X}+\frac{1}{n_Y}\right)}}\sim t_{n_X+n_y-2}
+\end{equation*}
+\begin{equation*}
+    \widehat{\sigma^2_0}=\frac{\sum_{i=1}^{n_X}\left(X_i-\overline{X}\right)^2+\sum_{i=1}^{n_Y}\left(Y_i-\overline{Y}\right)^2}{n_X+n_Y-2}
+\end{equation*}
+\begin{equation*}
+    \overline{X}-\overline{Y}-t_{n_X+n_Y-2;\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+t_{n_X+n_Y-2;\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}
+\end{equation*}
 
 
 
