@@ -1080,6 +1080,105 @@ $X_1,\ldots,X_{n_X}\sim N(\mu_X;\sigma^2_X),\ Y_1,\ldots,Y_{n_Y}\sim N(\mu_Y;\si
     \overline{X}-\overline{Y}-t_{n_X+n_Y-2;\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+t_{n_X+n_Y-2;\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n_X}+\frac{1}{n_Y}}
 \end{equation*}
 
+\newpage
+\section{[TBD] Lecture 21.04.2025}
+
+\newpage
+\section{Тестирование гипотез}
+\definition Статистическая гипотеза — утверждение о виде/свойствах распределения выборки $X=(X_1,\ldots,X_n)\sim F(x)$, где величины независимые и одинаково распределенные
+
+\definition Статистический критерий — правило, позволяющее принять или отвергнуть проверяемую гипотезу
+
+\subsection{Виды гипотез}
+\subsubsection{Гипотеза о виде распределения} 
+Можно выделить два вида основных гипотез
+\begin{itemize}
+    \item $H_0:F(x)=F_0(x)$
+    \item $H_0:F(x)\in\mathcal{F}(x;\theta)$, то есть принадлежит некоторому семейству
+\end{itemize}
+
+\subsubsection{Гипотеза об однородности}
+Есть несколько выборок — $X_1^{(1)},\ldots,X_n^{(1)}$, $X_1^{(2)},\ldots,X_n^{(2)}$, $\ldots$, $X_1^{(k)},\ldots,X_n^{(k)}$. И мы хотим проверить, что распределения каждой выборки равны:
+\begin{equation*}
+    F_1(x)=F_2(x)=\ldots=F_k(x)
+\end{equation*}
+
+\subsubsection{Гипотеза о независимости}
+Допустим, мы наблюдаем пары признаков — $(X_1,Y_1),\ldots,(X_n,Y_n)$. Тогда,
+\begin{equation*}
+    F(x,y)=F_{X}(x)\cdot F_{Y}(y)
+\end{equation*}
+
+\subsubsection{Гипотеза о случайности (независимые и одинаково распределенные)}
+\begin{equation*}
+    F(x_1,\ldots,x_n)=\prod_{i=1}^n F_i(x_i)
+\end{equation*}
+
+\subsection{Параметрические гипотезы}
+При таких гипотезах предполагается параметризация распределения, то есть выборка берется из какого-то семейства распределений:
+\begin{equation*}
+    X_1,\ldots,X_n\sim F(x;\theta)
+\end{equation*}
+\begin{itemize}
+    \item $H_0:\theta\in\Theta_0$
+    \item $H_1:\theta\not\in\Theta_0$
+\end{itemize}
+
+\definition Если $\Theta_0$ состоит из одной точки, то гипотеза $H_0$ называется \textit{простой}
+
+\ex $X_1,\ldots,X_n\sim N(\mu,\sigma^2).$ Допустим, что $H_0:\mu=0$, тогда гипотеза сложная, так как дисперсия может быть любой
+
+А если записать, что $\theta=\begin{pmatrix}
+    \mu\\
+    \sigma^2
+\end{pmatrix}=\begin{pmatrix}
+    0\\
+    1
+\end{pmatrix}$, тогда гипотеза простая
+
+\subsection{Критерий проверки гипотез}
+Есть выборка $X_1,\ldots,X_n$, а множество значений $\mathcal{X}\in\mathbb{R}^n$
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{X}&=\mathcal{X}_0\cup\mathcal{X}_1\\
+        \mathcal{X}_0&\cap\mathcal{X}_1=0
+    \end{aligned}
+\end{equation*}
+$\mathcal{X}_1$ — критическая область, где $H_0$ отвергается, а в $\mathcal{X}_0$ — не отвергается
+
+\subsection{Ошибки}
+\begin{tabular}{c|c|c}
+    &accepted $H_0$&accepted $H_1$\\
+    \hline
+    real $H_0$&OK&ошибка 1 рода\\
+    \hline
+    real $H_1$&ошибка 2 рода&OK
+\end{tabular}
+
+\subsection{Функция мощности критерия}
+\definition Функцией мощности критерия $\mathcal{X}_1$ называется
+\begin{equation*}
+    W(\theta)=W(\mathcal{X}_1;\theta)=\mathbb{P}\left(X\in\mathcal{X}_1\right),
+\end{equation*}
+где $X=(X_1,\ldots,X_n)^T$
+
+\begin{itemize}
+    \item Если $\theta\in\Theta_0$ — $W(\theta)=\mathbb{P}\left(X\in\mathcal{X}_1;\theta\in\Theta_0\right)=\mathbb{P}(\text{ошибка 1 рода})$
+    \item Если $\theta\in\Theta_1$ — $W(\theta)=\mathbb{P}\left(X\in\mathcal{X}_1;\theta\in\Theta_1\right)=1-\mathbb{P}(\text{ошибка 2 рода})$
+\end{itemize}
+
+\definition Мощностью критерия называется $1-\mathbb{P}(\text{ошибка 2 рода})$
+
+\subsection{Равномерно наиболее мощный критерий}
+\begin{enumerate}
+    \item $W(\theta)\leqslant\alpha,\theta\in\Theta_0$. То есть $\mathbb{P}(\text{ошибка 1 рода})\leqslant\alpha$. $\alpha$ — уровень значимости критерия
+    \item $W^{*}(\theta)=1-\mathbb{P}(\text{ошибка 2 рода})\geqslant W(\theta)$, причем $\exists\theta_1\in\Theta_1: W^{*}(\theta)>W(\theta)$
+\end{enumerate}
+
+
+
+
+
 
 
 
