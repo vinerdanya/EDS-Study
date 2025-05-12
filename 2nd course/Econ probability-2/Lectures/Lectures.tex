@@ -878,7 +878,7 @@ $\hat{p}=\displaystyle\frac{X_1+\ldots+X_n}{n}$ — оценка парамет�
 \subsection{Основная теорема статистики}
 \theorem Пусть $X_{1}, X_{2}, \ldots X_{n} \sim\left(\mu, \sigma^{2}\right)$ выборка, $\mathbb{E}\left[X_{i}\right]=\mu,\ \operatorname{\mathbb{D}}\left[X_{i}\right]=\sigma^{2}$. Тогда
 \begin{itemize}
-    \item $\overline{X}\sim \mathcal{N}\left(\frac{\sigma^{2}}{n}\right)$
+    \item $\overline{X}\sim \mathcal{N}\left(\mu,\frac{\sigma^{2}}{n}\right)$
     \item $\displaystyle\frac{\widehat{\sigma}^2}{\sigma^2}(n-1)\sim\chi^2_{n-1}$, при этом $\widehat{\sigma}^2$ и $\overline{X}$ независимы
     \item $\frac{\bar{X}-\mu}{\frac{\hat{\sigma}}{\sqrt{n}}} \sim t_{n-1}$ 
 \end{itemize}
@@ -902,7 +902,7 @@ $$
 \begin{gathered}
 \frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim \mathcal{N}(0,1) \\
 \mathbb{P}\left(-z_{\frac{\alpha}{2}}<\frac{\bar{X}-\mu}{\frac{\sigma}{\sqrt{n}}}<z_{\frac{\alpha}{2}}\right)=1-\alpha \\
-\mathbb{P}\left(\bar{X}-\frac{z_{\frac{\alpha}{2}}}{\sqrt{n}}<\mu<\frac{z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}\right)=1-\alpha \\
+\mathbb{P}\left(\bar{X}-z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}<\mu<\bar{X}+z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}\right)=1-\alpha \\
 \triangle=T_{2}-T_{1}=\frac{2 z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}
 \end{gathered}
 $$
@@ -959,7 +959,7 @@ $\alpha=0.1,\ t_{0,05;5}=2.015$
 
 \comment При больших $n$ почти всегда имеет место интервал:
 \begin{equation*}
-    \overline{X}-\frac{z_{\frac{\alpha}{2}}}{\sqrt{n}}<\mu<\frac{z_{\frac{\alpha}{2}} \sigma}{\sqrt{n}}
+    \overline{X}-z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}<\mu<\overline{X}+z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}
 \end{equation*}
 
 
