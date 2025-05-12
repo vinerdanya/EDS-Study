@@ -19,4 +19,140 @@
 \setlist[enumerate]{left=1cm}
 \section{Теоретический минимум}
 
+\subsection{Сформулируйте неравенство Крамера - Рао для несмещённых оценок}
+Пусть $\widehat{\theta}$ — несмещенная оценка параметра $\theta$, а также выполняются все условия гладкости и регулярности, тогда для несмещённых оценок верно:
+\begin{equation*}
+    \dispersia{\widehat{\theta}}\geqslant \frac{1}{I(\theta)}
+\end{equation*}
+
+\subsection{Дайте определение функции правдоподобия и логарифмической функция правдоподобия}
+\definition Пусть задана случайная выборка $X=\left(X_{1}, \ldots, X_{n}\right)$, компоненты которой имеют функцию распределения $F(x; \theta)$, зависящую от неизвестного параметра $\theta \in \Theta$
+\begin{itemize}
+    \item Для абсолютно непрерывных величин: $\mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=f\left(x_{1}, \ldots, x_{n} ; \theta\right)=\displaystyle\prod_{i=1}^n f(x_i;\theta)$
+    \item Для дискретных величин: $\mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=\mathbb{P}\left(X_1=x_1,\ldots,X_n=x_n;\theta\right)=\displaystyle\prod_{i=1}^n\mathbb{P}\left(x_i;\theta\right)$
+\end{itemize}
+% \begin{itemize}
+%     \item Если случайный вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ имеет дискретное распределение, то его функцией правдоподобия называется совместная вероятность
+%     \begin{equation*}
+%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right):=\mathbb{P}_{\theta}\left(\left\{X_{1}=x_{1}\right\} \cap \ldots \cap\left\{X_{n}=x_{n}\right\}\right),
+%     \end{equation*}
+%     Вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ является случайной выборкой, тогда его компоненты являются независимыми случайными величинами. Следовательно, в этом случае
+%     \begin{equation*}
+%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=\mathbb{P}_{\theta}\left(\left\{X_{1}=x_{1}\right\}\right) \cdot \ldots \cdot \mathbb{P}_{\theta}\left(\left\{X_{n}=x_{n}\right\}\right)
+%     \end{equation*}
+
+%     \item  Если же случайный вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ имеет абсолютно непрерывное распределение, то его функцией правдоподобия называется совместная плотность
+%     \begin{equation*}
+%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right):=f_{X_{1}, \ldots, X_{n}}\left(x_{1}, \ldots, x_{n} ; \theta\right)
+%     \end{equation*}
+%     Вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ является случайной выборкой, тогда его компоненты являются независимыми случайными величинами. Следовательно, в этом случае
+%     \begin{equation*}
+%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=f_{X_{1}}\left(x_{1} ; \theta\right) \cdot \ldots \cdot f_{X_{n}}\left(x_{n} ; \theta\right)
+%     \end{equation*}
+% \end{itemize}
+
+\definition Логарифмической функцией правдоподобия называется функция
+\begin{equation*}
+    l\left(x_{1}, \ldots, x_{n} ; \theta\right):=\ln \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)
+\end{equation*}
+
+\subsection{Дайте определение информации Фишера о параметре $\theta$, содержащейся в одном наблюдении}
+Имеется выборка с неизвестным параметром — $X_1,\ldots,X_n\sim F(x;\theta)$
+
+\definition Информацией Фишера называется 
+\begin{equation*}
+    I(\theta;X)=\matwait{\left(\frac{\partial \ln\mathcal{L}}{\partial\theta}\right)^2},
+\end{equation*}
+где $\mathcal{L}$ — функция правдоподобия
+
+\comment Определние применимо для регулярного случая, то есть область значений $X$ не зависит от $\theta$
+
+\definition Равносильное определение информации Фишера:
+\begin{equation*}
+    I(\theta;X)=-\matwait{\frac{\partial^2\ln\mathcal{L}}{\partial\theta^2}}
+\end{equation*}
+
+\subsection{Дайте определение оценки метода моментов параметра $\theta$ с использованием первого момента, если $\mathrm{E}\left(X_{i}\right)=g(\theta)$ и существует обратная функция $g^{-1}$}
+Оценка ММ параметра $\theta$ определяется как:
+\begin{equation*}
+    \hat{\theta}_{MM} = g^{-1}\left( \bar{X} \right),
+\end{equation*}
+где $\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i$ — выборочное среднее, $g(\theta) = \mathbb{E}(X_i)$, а $g^{-1}$ — обратная функция к $g$, существующая по условию\footnote{стр.23 учебника Черновой — тоже самое, только в общем виде}
+
+\subsection{Дайте определение оценки метода максимального правдоподобия параметра $\theta$}
+\definition Оценкой $\hat{\theta}_{ML}$ неизвестного параметра $\theta \in \Theta$ по ММП называется точка глобального максимума функции правдоподобия по переменной $\theta \in \Theta$ при фиксированных значениях переменных $x_{1}, \ldots, x_{n}$, т.е.
+\begin{equation*}
+    \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \hat{\theta}_{ML}\right)=\max _{\theta \in \Theta} \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)
+\end{equation*}
+
+\subsection{Укажите закон распределения выборочного среднего, величины $\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}$, величины $\frac{\bar{X}-\mu}{\hat{\sigma} / \sqrt{n}}$, величины $\frac{\hat{\sigma}^{2}(n-1)}{\sigma^{2}}$}
+Пусть $X_{1}, \ldots, X_{n}$ — независимые нормальные случайные величины с параметрами $\mu$ и $\sigma^{2}, \bar{X}:=\frac{X_{1}+\ldots+X_{n}}{n}$ - выборочное среднее, а $\widehat{\sigma^{2}}:=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}$ исправленная выборочная дисперсия. Тогда
+\begin{itemize}
+    \item $\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n} \right)$
+    \item $\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}\sim\mathcal{N}(0;1)$
+    \item $\frac{\bar{X}-\mu}{\hat{\sigma} / \sqrt{n}}\sim t_{n-1}$
+    \item $\frac{\hat{\sigma}^{2}(n-1)}{\sigma^{2}} \sim \chi^{2}(n-1)$
+\end{itemize}
+\subsection{Укажите формулу доверительного интервала с уровнем доверия $(1-\alpha)$ для $\mu$ при известной дисперсии, для $\mu$ при неизвестной дисперсии, для $\sigma^{2}$}
+Дана выборка $X_{1}, \ldots X_{n} \sim N\left(\mu, \sigma^{2}\right)$
+\begin{itemize}
+    \item Если известна $\sigma^{2}$:
+    \begin{equation*}
+        \left( \bar{X} - z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}},\; \bar{X} + z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \right),
+    \end{equation*}
+    где $z_{\alpha/2}$ — квантиль стандартного нормального распределения
+    \item Если $\sigma^2$ неизвестна:
+    \begin{equation*}
+        \left( \bar{X} - t_{\alpha/2,\,n-1} \cdot \frac{\hat{\sigma}}{\sqrt{n}},\; \bar{X} + t_{\alpha/2,\,n-1} \cdot \frac{\hat{\sigma}}{\sqrt{n}} \right),
+    \end{equation*}
+    где $t_{\alpha/2,\,n-1}$ — квантиль распределения Стьюдента с $n - 1$ степенями свободы
+    \item Для $\sigma^2$:
+    \begin{equation*}
+        \left( \frac{(n - 1)\hat{\sigma}^2}{\chi^2_{1 - \alpha/2}},\; \frac{(n - 1)\hat{\sigma}^2}{\chi^2_{\alpha/2}} \right),
+    \end{equation*}
+    где $\chi^2_{\alpha/2}$, $\chi^2_{1 - \alpha/2}$ — квантили хи-квадрат распределения с $n - 1$ степенями свободы.
+\end{itemize}
+
+\subsection{Дайте определение ошибки первого и второго рода, критической области}
+\definition Есть выборка $X_1,\ldots,X_n$, а множество значений $\mathcal{X}\in\mathbb{R}^n$
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{X}&=\mathcal{X}_0\cup\mathcal{X}_1\\
+        \mathcal{X}_0&\cap\mathcal{X}_1=0
+    \end{aligned}
+\end{equation*}
+$\mathcal{X}_1$ — критическая область, где $H_0$ отвергается, а в $\mathcal{X}_0$ — не отвергается
+
+\definition Ошибка первого рода — вероятность отвергнуть $H_0$, когда она на самом деле верна:
+\begin{equation*}
+    \mathbb{P}(X \in \mathcal{X}_1 \mid H_0 \text{ верна})
+\end{equation*}
+
+\definition Ошибка второго рода — вероятность не отвергнуть $H_0$, когда на самом деле верна $H_1$:
+\begin{equation*}
+    \mathbb{P}(X \in \mathcal{X}_0 \mid H_1 \text{ верна})
+\end{equation*}
+
+\definition Говорят, что произошла ошибка $i$-го рода критерия $\delta$, если критерий отверг верную гипотезу $H_i$. Вероятностью ошибки $i$-го рода критерия $\boldsymbol{\delta}$ называется число
+\begin{equation*}
+    \alpha_i(\boldsymbol{\delta})=\mathrm{P}_{H_i}\left(\boldsymbol{\delta}(\vec{X}) \neq H_i\right)
+\end{equation*}
+\subsection{Укажите формулу доверительного интервала с уровнем доверия $(1-\alpha)$ для вероятности успеха, построенного по случайной выборке большого размера из распределения Бернулли $\operatorname{Bin}(1, p)$}
+При больших $n$ почти всегда имеет место интервал:
+\begin{equation*}
+    \overline{X}-z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}<\mu<\overline{X}+z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}
+\end{equation*}
+Тогда, для выборки из распределения Бернулли $\operatorname{Bin}(1, p)$:
+\begin{equation*}
+    \left( \hat{p} - z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}},\; \hat{p} + z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} \right),
+\end{equation*}
+где
+\begin{itemize}
+    \item  $\hat{p} = \dfrac{1}{n} \sum_{i=1}^n X_i$ — выборочная доля успехов,
+    \item $z_{\alpha/2}$ — квантиль стандартного нормального распределения
+\end{itemize}
+
+\newpage
+\section{Задачный минимум}
+
 \end{document}
