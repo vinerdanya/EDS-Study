@@ -11,6 +11,9 @@
 
 \begin{document}
 \maketitle
+\begin{flushright}
+    \textit{Спасибо Яне Рейтман за эстетик конспект}
+\end{flushright}
 \tableofcontents
 \newpage
 \setlength{\parindent}{15pt}
@@ -20,37 +23,40 @@
 \section{Теоретический минимум}
 
 \subsection{Сформулируйте неравенство Крамера-Рао для несмещённых оценок}
-Пусть $\widehat{\theta}$ — несмещенная оценка параметра $\theta$, а также выполняются все условия гладкости и регулярности, тогда для несмещённых оценок верно:
+\definition Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка и $\ell(x_1,\ldots,x_m;\theta)$ — логарифмическая функция правдоподобия. Тогда, величина 
 \begin{equation*}
-    \dispersia{\widehat{\theta}}\geqslant \frac{1}{I_n(\theta)},
+    I_n(\theta)=\matwait{\left(\frac{\partial}{\partial\theta}\ell(x_1,\ldots,x_n\theta)\right)^2}
 \end{equation*}
-где $I_n(\theta)=n\cdot I(\theta)$
+называется \textit{информацией Фишера} о параметре $\theta$, содержащейся в $n$ наблюдениях случайной выборки $X$
+
+\theorem Пусть $\widehat{\theta}$ — несмещенная оценка параметра $\theta$, а также выполнены некоторые условия регулярности. Тогда, имеет место неравенство (\textit{Рао-Крамера}):
+\begin{equation*}
+    I_n^{-1}(\theta)\leqslant \dispersia{\widehat{\theta}}
+\end{equation*}
+
+\definition Несмещенная оценка $\widehat{\theta}$ называется \textit{эффективной} оценкой параметра $\theta$, если для нее неравенство Рао-Крамера обращается в равенство
+\begin{equation*}
+    I_n^{-1}(\theta)= \dispersia{\widehat{\theta}}
+\end{equation*} 
 
 \subsection{Дайте определение функции правдоподобия и логарифмической функция правдоподобия}
 \definition Пусть задана случайная выборка $X=\left(X_{1}, \ldots, X_{n}\right)$, компоненты которой имеют функцию распределения $F(x; \theta)$, зависящую от неизвестного параметра $\theta \in \Theta$
 \begin{itemize}
-    \item Для абсолютно непрерывных величин: $\mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=f\left(x_{1}, \ldots, x_{n} ; \theta\right)=\displaystyle\prod_{i=1}^n f(x_i;\theta)$
-    \item Для дискретных величин: $\mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=\mathbb{P}\left(X_1=x_1,\ldots,X_n=x_n;\theta\right)=\displaystyle\prod_{i=1}^n\mathbb{P}\left(x_i;\theta\right)$
-\end{itemize}
-% \begin{itemize}
-%     \item Если случайный вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ имеет дискретное распределение, то его функцией правдоподобия называется совместная вероятность
-%     \begin{equation*}
-%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right):=\mathbb{P}_{\theta}\left(\left\{X_{1}=x_{1}\right\} \cap \ldots \cap\left\{X_{n}=x_{n}\right\}\right),
-%     \end{equation*}
-%     Вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ является случайной выборкой, тогда его компоненты являются независимыми случайными величинами. Следовательно, в этом случае
-%     \begin{equation*}
-%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=\mathbb{P}_{\theta}\left(\left\{X_{1}=x_{1}\right\}\right) \cdot \ldots \cdot \mathbb{P}_{\theta}\left(\left\{X_{n}=x_{n}\right\}\right)
-%     \end{equation*}
+    \item Если случайный вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ имеет дискретное распределение, то его функцией правдоподобия называется совместная вероятность
+    \begin{equation*}
+        \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right):=\mathbb{P}_{\theta}\left(\left\{X_{1}=x_{1}\right\} \cap \ldots \cap\left\{X_{n}=x_{n}\right\}\right),
+    \end{equation*}
+    которая рассматривается как функция от переменной $\theta$ при фиксированных значениях переменных $x_1,\ldots,x_n$
 
-%     \item  Если же случайный вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ имеет абсолютно непрерывное распределение, то его функцией правдоподобия называется совместная плотность
-%     \begin{equation*}
-%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right):=f_{X_{1}, \ldots, X_{n}}\left(x_{1}, \ldots, x_{n} ; \theta\right)
-%     \end{equation*}
-%     Вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ является случайной выборкой, тогда его компоненты являются независимыми случайными величинами. Следовательно, в этом случае
-%     \begin{equation*}
-%         \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=f_{X_{1}}\left(x_{1} ; \theta\right) \cdot \ldots \cdot f_{X_{n}}\left(x_{n} ; \theta\right)
-%     \end{equation*}
-% \end{itemize}
+    \item  Если случайный вектор $X=\left(X_{1}, \ldots, X_{n}\right)$ имеет абсолютно непрерывное распределение, то его функцией правдоподобия называется совместная плотность
+    \begin{equation*}
+        \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right):=f_{X_{1}, \ldots, X_{n}}\left(x_{1}, \ldots, x_{n} ; \theta\right)
+    \end{equation*}
+    В независимом случае:
+    \begin{equation*}
+        \mathcal{L}\left(x_{1}, \ldots, x_{n} ; \theta\right)=f_{X_{1}}\left(x_{1} ; \theta\right) \cdot \ldots \cdot f_{X_{n}}\left(x_{n} ; \theta\right)
+    \end{equation*}
+\end{itemize}
 
 \definition Логарифмической функцией правдоподобия называется функция
 \begin{equation*}
@@ -58,27 +64,20 @@
 \end{equation*}
 
 \subsection{Дайте определение информации Фишера о параметре $\theta$, содержащейся в одном наблюдении}
-Имеется выборка с неизвестным параметром — $X_1,\ldots,X_n\sim F(x;\theta)$
-
-\definition Информацией Фишера называется 
+\definition Информацией Фишера за одно наблюдение называется
 \begin{equation*}
-    I(\theta;X)=\matwait{\left(\frac{\partial \ln\mathcal{L}}{\partial\theta}\right)^2},
-\end{equation*}
-где $\mathcal{L}$ — функция правдоподобия
-
-\comment Определние применимо для регулярного случая, то есть область значений $X$ не зависит от $\theta$
-
-\definition Равносильное определение информации Фишера:
-\begin{equation*}
-    I(\theta;X)=-\matwait{\frac{\partial^2\ln\mathcal{L}}{\partial\theta^2}}
+    \underbrace{I_1(\theta)}_{i(\theta)}=\matwait{\left(\frac{\partial}{\partial\theta}\ell(x_1;\theta)\right)^2}
 \end{equation*}
 
 \subsection{Дайте определение оценки метода моментов параметра $\theta$ с использованием первого момента, если $\mathrm{E}\left(X_{i}\right)=g(\theta)$ и существует обратная функция $g^{-1}$}
-Оценка ММ параметра $\theta$ определяется как:
+$\mu_1=\widehat{\mu}_1$ — моментное тождество, где $\mu_1=\matwait{X_i}=g(\theta)$, $\widehat{\mu}_1=\overline{X}$, $g(\theta)=\overline{X}$
+
+$g(\theta)$ имеет обратную функцию $\theta=g^{-1}(\overline{X})$
+
+\definition Оценка метода моментов параметра $\theta$ определяется как:
 \begin{equation*}
-    \hat{\theta}_{MM} = g^{-1}\left( \overline{X} \right),
+    \hat{\theta}_{MM} = g^{-1}\left( \overline{X} \right)
 \end{equation*}
-где $\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i$ — выборочное среднее, $g(\theta) = \mathbb{E}(X_i)$, а $g^{-1}$ — обратная функция к $g$, существующая по условию\footnote{стр.23 учебника Черновой — тоже самое, только в общем виде}
 
 \subsection{Дайте определение оценки метода максимального правдоподобия параметра $\theta$}
 \definition Оценкой $\hat{\theta}_{ML}$ неизвестного параметра $\theta \in \Theta$ по ММП называется точка глобального максимума функции правдоподобия по переменной $\theta \in \Theta$ при фиксированных значениях переменных $x_{1}, \ldots, x_{n}$, т.е.
@@ -87,71 +86,128 @@
 \end{equation*}
 
 \subsection{Укажите закон распределения выборочного среднего, величины $\frac{\overline{X}-\mu}{\sigma / \sqrt{n}}$, величины $\frac{\overline{X}-\mu}{\hat{\sigma} / \sqrt{n}}$, величины $\frac{\hat{\sigma}^{2}(n-1)}{\sigma^{2}}$}
-Пусть $X_{1}, \ldots, X_{n}$ — независимые нормальные случайные величины с параметрами $\mu$ и $\sigma^{2}, \overline{X}:=\frac{X_{1}+\ldots+X_{n}}{n}$ - выборочное среднее, а $\widehat{\sigma^{2}}:=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2}$ исправленная выборочная дисперсия. Тогда
+Пусть $X_{1}, \ldots, X_{n}$ — независимые случайные величины, $X_i\sim(\mu,\sigma^2)$%, $\overline{X}:=\frac{X_{1}+\ldots+X_{n}}{n}$ - выборочное среднее, а $\widehat{\sigma^{2}}:=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2}$ исправленная выборочная дисперсия. Тогда
 \begin{itemize}
-    \item $\overline{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n} \right)$
-    \item $\frac{\overline{X}-\mu}{\sigma / \sqrt{n}}\sim\mathcal{N}(0;1)$
-    \item $\frac{\overline{X}-\mu}{\hat{\sigma} / \sqrt{n}}\sim t_{n-1}$
+    \item $\frac{\overline{X}-\mu}{\sqrt{\frac{\sigma^2}{n}}}\sim\mathcal{N}(0;1)$
+    \item $\frac{\overline{X}-\mu}{\sqrt{\frac{\hat{\sigma}}{n}}}\sim t_{n-1}$, $\widehat{\sigma^{2}}:=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2}$
     \item $\frac{\hat{\sigma}^{2}(n-1)}{\sigma^{2}} \sim \chi^{2}(n-1)$
+    \item $\overline{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n} \right)$, $\overline{X}:=\frac{X_{1}+\ldots+X_{n}}{n}$
 \end{itemize}
 \subsection{Укажите формулу доверительного интервала с уровнем доверия $(1-\alpha)$ для $\mu$ при известной дисперсии, для $\mu$ при неизвестной дисперсии, для $\sigma^{2}$}
-Дана выборка $X_{1}, \ldots X_{n} \sim N\left(\mu, \sigma^{2}\right)$
-\begin{itemize}
-    \item Если известна $\sigma^{2}$:
-    \begin{equation*}
-        \left( \overline{X} - z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}},\; \overline{X} + z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \right),
-    \end{equation*}
-    где $z_{\alpha/2}$ — квантиль стандартного нормального распределения
-    \item Если $\sigma^2$ неизвестна:
-    \begin{equation*}
-        \left( \overline{X} - t_{\alpha/2,\,n-1} \cdot \frac{\hat{\sigma}}{\sqrt{n}},\; \overline{X} + t_{\alpha/2,\,n-1} \cdot \frac{\hat{\sigma}}{\sqrt{n}} \right),
-    \end{equation*}
-    где $t_{\alpha/2,\,n-1}$ — квантиль распределения Стьюдента с $n - 1$ степенями свободы
-    \item Для $\sigma^2$:
-    \begin{equation*}
-        \left( \frac{(n - 1)\hat{\sigma}^2}{\chi^2_{1 - \alpha/2}},\; \frac{(n - 1)\hat{\sigma}^2}{\chi^2_{\alpha/2}} \right),
-    \end{equation*}
-    где $\chi^2_{\alpha/2}$, $\chi^2_{1 - \alpha/2}$ — квантили хи-квадрат распределения с $n - 1$ степенями свободы.
-\end{itemize}
+Пусть $X=(X_1,\ldots,X_n)$ — независимые случайные величины, $X_i\sim(\mu,\sigma^2)$
+\subsubsection{Для $\mu$ при известной дисперсии}
+Доверительный интервал для $\mu$ при известной дисперсии $\sigma^2$ уровня доверия $\gamma=1-\alpha$
 
-\subsection{Дайте определение ошибки первого и второго рода, критической области}
-\definition Есть выборка $X_1,\ldots,X_n$, а множество значений $\mathcal{X}\in\mathbb{R}^n$
+$T(\text{статистика})=\displaystyle\frac{\overline{X}-\mu}{\sqrt{\frac{\sigma^2}{n}}}\sim\mathcal{N}(0;1)$
+\begin{center}
+    \includegraphics[width=0.5\linewidth]{confidence_interval.png}
+\end{center}
+С вероятностью $\gamma$ выполняется событие:
 \begin{equation*}
     \begin{aligned}
-        \mathcal{X}&=\mathcal{X}_0\cup\mathcal{X}_1\\
-        \mathcal{X}_0&\cap\mathcal{X}_1=0
+        A\leqslant T\leqslant B&\Longleftrightarrow A\leqslant \frac{\overline{X}-\mu}{\sqrt{\frac{\sigma^2}{n}}}\leqslant B\\
+        &\Longleftrightarrow A\sqrt{\frac{\sigma^2}{n}}\leqslant\overline{X}-\mu\leqslant B\sqrt{\frac{\sigma^2}{n}}\\
+        &\Longleftrightarrow-\overline{X}+A\sqrt{\frac{\sigma^2}{n}}\leqslant-\mu\leqslant-\overline{X}+B\sqrt{\frac{\sigma^2}{n}}\\
+        &\Longleftrightarrow\overline{X}-B\sqrt{\frac{\sigma^2}{n}}\leqslant\mu\leqslant\overline{X}-A\sqrt{\frac{\sigma^2}{n}}\\
+        &-z_{\alpha/2}=z_{1-\alpha/2}\\
+        &\Longleftrightarrow\overline{X}-z_{1-\alpha/2}\sqrt{\frac{\sigma^2}{n}}\leqslant\mu\leqslant\overline{X}-z_{\alpha/2}\sqrt{\frac{\sigma^2}{n}}\\
+        &-z_{1-\alpha/2}=z_{\alpha/2}\\
+        &\Longleftrightarrow\underbrace{\overline{X}+z_{\alpha/2}\sqrt{\frac{\sigma^2}{n}}}_{T_1(X)}\leqslant\mu\leqslant\underbrace{\overline{X}+z_{1-\alpha/2}\sqrt{\frac{\sigma^2}{n}}}_{T_2(X)}
     \end{aligned}
 \end{equation*}
-$\mathcal{X}_1$ — критическая область, где $H_0$ отвергается, а в $\mathcal{X}_0$ — не отвергается
 
-\definition Ошибка первого рода — вероятность отвергнуть $H_0$, когда она на самом деле верна:
+\subsubsection{Для $\mu$ при неизвестной дисперсии}
+Доверительный интервал для $\mu$ при неизвестной дисперсии $\sigma^2$ уровня доверия $\gamma=1-\alpha$
+
+$T=\displaystyle\frac{\overline{X}-\mu}{\sqrt{\frac{\widehat{\sigma}^2}{n}}}\sim t_{n-1}$, где $\widehat{\sigma^{2}}:=\displaystyle\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\overline{X}\right)^{2}$
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth]{confidence_interval4.png}
+\end{center}
+С вероятностью $\gamma$ выполняется событие:
 \begin{equation*}
-    \mathbb{P}(X \in \mathcal{X}_1 \mid H_0 \text{ верна})
+    \begin{aligned}
+        A\leqslant T\leqslant B&\Longleftrightarrow A\leqslant \frac{\overline{X}-\mu}{\sqrt{\frac{\widehat{\sigma}^2}{n}}}\leqslant B\\
+        &\Longleftrightarrow A\sqrt{\frac{\widehat{\sigma}^2}{n}}\leqslant\overline{X}-\mu\leqslant B\sqrt{\frac{\widehat{\sigma}^2}{n}}\\
+        &\Longleftrightarrow-\overline{X}+A\sqrt{\frac{\widehat{\sigma}^2}{n}}\leqslant-\mu\leqslant-\overline{X}+B\sqrt{\frac{\widehat{\sigma}^2}{n}}\\
+        &\Longleftrightarrow\overline{X}-B\sqrt{\frac{\widehat{\sigma}^2}{n}}\leqslant\mu\leqslant\overline{X}-A\sqrt{\frac{\widehat{\sigma}^2}{n}}\\
+        &\Longleftrightarrow\overline{X}-t_{n-1,1-\alpha/2}\sqrt{\frac{\widehat{\sigma}^2}{n}}\leqslant\mu\leqslant\overline{X}-t_{n-1,\alpha/2}\sqrt{\frac{\widehat{\sigma}^2}{n}}\\
+        &\Longleftrightarrow\underbrace{\overline{X}+t_{n-1,\alpha/2}\sqrt{\frac{\widehat{\sigma}^2}{n}}}_{T_1(X)}\leqslant\mu\leqslant\underbrace{\overline{X}+t_{n-1,1-\alpha/2}\sqrt{\frac{\widehat{\sigma}^2}{n}}}_{T_2(X)}
+    \end{aligned}
 \end{equation*}
 
-\definition Ошибка второго рода — вероятность не отвергнуть $H_0$, когда на самом деле верна $H_1$:
+\subsection{Для $\sigma^2$}
+Доверительный интервал для $\sigma^2$ при неизветсном математическом ожидании уровня доверия $\gamma=1-\alpha$
+
+$T=\displaystyle\frac{\widehat{\sigma}^2(n-1)}{\sigma^2}\sim\chi^2(n-1)$
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth]{confidence_interval2.png}
+\end{center}
+С вероятностью $\gamma$ выполняется событие:
 \begin{equation*}
-    \mathbb{P}(X \in \mathcal{X}_0 \mid H_1 \text{ верна})
+    \begin{aligned}
+        A\leqslant T\leqslant B&\Longleftrightarrow A\leqslant \frac{\widehat{\sigma}^2(n-1)}{\sigma^2}\leqslant B\\
+        &\Longleftrightarrow \begin{cases}
+            A\leqslant\frac{\widehat{\sigma}^2(n-1)}{\sigma^2}\\
+            \frac{\widehat{\sigma}^2(n-1)}{\sigma^2}\leqslant B
+        \end{cases}\\
+        &\Longleftrightarrow\begin{cases}
+            \sigma^2\leqslant\frac{\widehat{\sigma}^2(n-1)}{A}\\
+            \frac{\widehat{\sigma}^2(n-1)}{B}\leqslant\sigma^2
+        \end{cases}\\
+        &\Longleftrightarrow\frac{\widehat{\sigma}^2(n-1)}{B}\leqslant\sigma^2\leqslant\frac{\widehat{\sigma}^2(n-1)}{A}\\
+        &\Longleftrightarrow\underbrace{\frac{\widehat{\sigma}^2(n-1)}{\chi^2_{1-\alpha/2}(n-1)}}_{T_1(X)}\leqslant\sigma^2\leqslant\underbrace{\frac{\widehat{\sigma}^2(n-1)}{\chi^2_{\alpha/2}(n-1)}}_{T_2(X)}
+    \end{aligned}
 \end{equation*}
 
-\definition Говорят, что произошла ошибка $i$-го рода критерия $\delta$, если критерий отверг верную гипотезу $H_i$. Вероятностью ошибки $i$-го рода критерия $\boldsymbol{\delta}$ называется число
-\begin{equation*}
-    \alpha_i(\boldsymbol{\delta})=\mathrm{P}_{H_i}\left(\boldsymbol{\delta}(\vec{X}) \neq H_i\right)
-\end{equation*}
-\subsection{Укажите формулу доверительного интервала с уровнем доверия $(1-\alpha)$ для вероятности успеха, построенного по случайной выборке большого размера из распределения Бернулли $\operatorname{Bin}(1, p)$}
-При больших $n$ почти всегда имеет место интервал:
-\begin{equation*}
-    \overline{X}-z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}<\mu<\overline{X}+z_{\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt{n}}
-\end{equation*}
-Тогда, для выборки из распределения Бернулли $\operatorname{Bin}(1, p)$:
-\begin{equation*}
-    \left( \hat{p} - z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}},\; \hat{p} + z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1 - \hat{p})}{n}} \right),
-\end{equation*}
-где
+\subsection{Дайте определение ошибки первого и второго рода, критической области}
+Пусть $X=(X_1,\ldots,X_n)$ — случайная выборка с плотностью распределения $f_{X_1,\ldots,X_n}(x_1,\ldots,x_n)$
+
+Пусть $f_0(x_1,\ldots,x_n)$ и $f_1(x_1,\ldots,x_n)$ — две конкретные функции плотности, при этом $$f_0(x_1,\ldots,x_n)\ne f_1(x_1,\ldots,x_n)$$
+
+Мы хотим проверить две гипотезы:
 \begin{itemize}
-    \item  $\hat{p} = \dfrac{1}{n} \sum_{i=1}^n X_i$ — выборочная доля успехов,
-    \item $z_{\alpha/2}$ — квантиль стандартного нормального распределения
+    \item $H_0:$ $f_{X_1,\ldots,X_n}(x_1,\ldots,x_n)=f_0(x_1,\ldots,x_n)$
+    \item $H_1:$ $f_{X_1,\ldots,X_n}(x_1,\ldots,x_n)=f_1(x_1,\ldots,x_n)$
 \end{itemize}
+Рассмотрим множество $S\in\mathbb{R}^n$ — критическую область. Тогда, $S$-критерием называется правило
+\begin{itemize}
+    \item если $(x_1,\ldots,x_n)\in S$, то мы принимаем $H_1$
+    \item если $(x_1,\ldots,x_n)\not\in S$, то мы принимаем $H_0$
+\end{itemize}
+
+При этом, возможны такие 4 ситуации:
+\begin{center}
+    \begin{tabular}{c|c|c}
+        &accepted $H_0$&accepted $H_1$\\
+        \hline
+        real $H_0$&OK&ошибка 1 рода\\
+        \hline
+        real $H_1$&ошибка 2 рода&OK
+    \end{tabular}
+\end{center}
+
+\subsection{Укажите формулу доверительного интервала с уровнем доверия $(1-\alpha)$ для вероятности успеха, построенного по случайной выборке большого размера из распределения Бернулли $\operatorname{Be}(p)$}
+Дана выборка $X_1,\ldots,X_n$ — независимые случайные величины, $X_i\sim Be(p)$, $p\in(0;1)$
+
+Доверительный интервал для $p$ уровня доверия $\gamma=1-\alpha$
+
+$T=\displaystyle\frac{\overline{X}-p}{\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}}\sim \mathcal{N}(0;1)$
+
+\begin{center}
+    \includegraphics[width=0.5\linewidth]{confidence_interval3.png}
+\end{center}
+С вероятностью $\gamma$ выполняется событие:
+\begin{equation*}
+    \begin{aligned}
+        A\leqslant p\leqslant B&\Longleftrightarrow A\leqslant \frac{\overline{X}-p}{\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}}\leqslant B\\
+        &\Longleftrightarrow A\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\leqslant \overline{X}-p\leqslant B\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\\
+        &\Longleftrightarrow-\overline{X}+A\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\leqslant-p\leqslant-\overline{X}+B\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\\
+        &\Longleftrightarrow\overline{X}-A\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\leqslant p\leqslant\overline{X}-B\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\\
+        &\Longleftrightarrow\overline{X}-z_{\alpha/2}\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}\leqslant p\leqslant\overline{X}-z_{1-\alpha/2}\sqrt{\frac{\overline{X}(1-\overline{X})}{n}}
+    \end{aligned}
+\end{equation*}
 
 \newpage
 \section{Задачный минимум}
