@@ -1,0 +1,56 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{standart-header}
+\usepackage{textcomp}
+\fancyhead[R]{Винер Даниил. БЭАД232}
+\fancyfoot [C] {\thepage}
+\usepackage{pgfplots}
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+% \setlist[itemize]{left=1cm}
+% \setlist[enumerate]{left=1cm}
+\fancyhead[L]{ТВиМС—1. Семинар 04.10.2024}
+
+\begin{document}
+\definition Последовательность случацных величин  $(X_n)_{n=1}^{\infty}$ сходится по вероятности к случайной величине $X$, если 
+\begin{equation*}
+    \forall\varepsilon>0\ \lim\limits_{n\to\infty}\prob{|X_n-X|>\varepsilon}=0
+\end{equation*}
+
+Обозначение: $X_n\overset{\mathbb{P}}{\longrightarrow}X$ при $n\to\infty$
+
+Свойства сходимости по вероятности:
+\begin{enumerate}
+    \item Если $X_n\byprob a,Y_n\byprob b$, то $X_n+Y_n\byprob a+b$
+    \item Если $X_N$
+\end{enumerate}
+
+\theorem  (Слуцкого) Пусть $X_n\byprob a$ и $g(x)$ — непрерывная функция в точке $a$, тогда $g(X_n)\byprob g(a)$
+
+\theorem Пусть $X_n\byprob a, Y_n\byprob b$ и $g(x,y)$ — непрерывная в точке $(x,y)=(a,b)$, тогда $g(X_n,Y_n)\byprob g(a,b)$
+
+\theorem Закон больщих чисел. Пусть $(X_n)_{n=1}^{\infty}$ — последовательность одинаково распределенных с конечным математическим ожиданием, тогда 
+\begin{equation*}
+    \overline{X_n}\byprob \matwait{X_i}\text{ при }n\to\infty\text{, где }\overline{X_n}=\frac{X_1+\ldots+X_n}{n}
+\end{equation*}
+
+\section*{Задача 1.2}
+
+
+\theorem (достаточное условие сходимости по вероятности)
+
+Пусть выполнено
+\begin{enumerate}
+    \item $\matwait{X_n}\to a$
+    \item $\dispersia{X_n}\to0$
+\end{enumerate}
+
+Тогда, $X_n\byprob a$
+
+
+
+
+
+
+
+
+\end{document}

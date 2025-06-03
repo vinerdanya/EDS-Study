@@ -1,0 +1,88 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{header}
+
+\title{\LARGE{Макроэкономика—1 (углубленный курс)}\\[2mm]
+\large{Семинар}}
+\author{Винер Даниил  \href{https://t.me/danya_vin}{@danya\_vin}}
+\date{20 января 2025 г.}
+\begin{document}
+\maketitle
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\setlist[itemize]{left=1cm}
+\setlist[enumerate]{left=1cm}
+\section{Методы подсчета ВВП}
+\subsection{ВВП по расходам}
+\definition Основное макроэкономическое тождество:
+\begin{equation*}
+    \text{ВВП}=C+I+G+Xn,
+\end{equation*}
+где $C$ — потребление, $I$ — инвестиции, $G$ — государственные расходы, $Xn=Ex-Im$ — чистый экспорт
+
+Например, в Россию ввезли Audi за $20000\$$, при этом ничего нового в стране не было произведено, то есть ВВП не должен измениться. Тогда, в $Im$ мы добавим $20000\$$. Так как мы вычитаем импорт, то его нужно куда-то прибавить, он пойдет в потребление (consumption). Машина будет продана по цене, большей $20000\$$, например $30000\$$. Тогда, ВВП России увеличится на $10000\$$
+
+
+\subsection{ВВП по доходам}
+\begin{equation*}
+    \text{ВВП}=\underbrace{\underbrace{\text{ЗП}+\%+\text{рента}+\text{прибыль}}_{\text{нац.доход}}+Tx_{\text{косвенные}}-\text{subsidies}+\text{amortization}}_{\text{ВНД}}+NFFI
+\end{equation*}
+
+Рассмотрим страну $A$, в ней живут и работают иностранные граждане, обозначим их как $B$. Также, чать граждан страны $A$ живет и работает зарубежом. Тогда, верны такие суждения
+\begin{equation*}
+    \left.\begin{aligned}
+        \text{ВВП}&=A+B\\
+        \text{ВНД}&=A+C\\
+    \end{aligned}\right\}\Longrightarrow\text{ВВП}=\text{ВНД}+\underbrace{B-C}_{NFFI}
+\end{equation*}
+
+\definition $NFFI$ — Net Foreign Factor Income или же чистый доход иностранных факторов, то есть доходы иностранных граждан на территории нашей страны
+
+\subsection{ВВП по добавленным стоимостям}
+\definition \textit{Добавленная стоимость} = $TR$ — затраты на сырье и материалы
+
+В таком случае
+\begin{equation*}
+    \text{ВВП}=\sum_i\text{ДС}_i
+\end{equation*}
+
+\ex Хлебозавод купил пшеницу за 100р., потом изготовил муку и продал за 120р. пекарне. В ВВП добавится 20р. Пекарня испекла хлеб и продала его за 170р. В ВВП добавится 50р.
+
+
+\section{Задачи}
+\subsection{Задача 1}
+В расчете ВВП учитываются пункты
+\begin{equation*}
+    1,2,3,6,10,11,13
+\end{equation*}
+
+При этом, \textit{зарплата, полученная рабочими за работу в другой стране, и пересланная домой} будет учитываться в ВВП той страны, где они работали, но не будет учитываться в её ВНД
+
+\subsection{Задача 2}
+\begin{equation*}
+    \begin{tabular}{c|c|c}
+        &\text{РФ}&\text{США}\\
+        \hline
+        \text{ВВП}&15000&20000\\
+        \hline
+        \text{ВНД}&5000+5000&20000+2000+3000
+    \end{tabular}
+\end{equation*}
+
+\subsection{Задача 3}
+Во Франции ВВП удвоится за 35 лет. Тогда, чтобы ВВП на душу населения сравнялся через 35 лет российскому ВВП нужно вырасти в 4 раза, то есть удвоиться ему надо за $\frac{35}{2}=17.5$ лет. Пусть темп роста $x\%$ в год, тогда 
+\begin{equation*}
+    \frac{70}{x}=\frac{35}{2}\Longrightarrow x=4
+\end{equation*}
+
+То есть для РФ темпы роста должны быть $4\%$ в год
+
+\subsection{Задача 4}
+Пусть темп роста $x\%$ в год. Значит, 
+\begin{equation*}
+    (1+x)^T=3\Longrightarrow T=\log_{1+x}3=\frac{\ln(3)}{\ln(1+x)}=\frac{\ln(3)}{x}\approx\frac{1.1}{x}\underset{\text{в проценты}}{\overset{\text{переведем}}{\approx}}\frac{110}{x}\text{ лет}
+\end{equation*}
+
+
+
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{standart-header}
+\fancyhead[R]{Винер Даниил. БЭАД232}
+\fancyfoot [C] {\thepage}
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\newcommand{\orr}{\text{ or }}
+\newcommand{\andd}{\text{ and }}
+% \newcommand{\prob}[1]{\mathbb{P}\left(\left\{#1\right\}\right)}
+% \newcommand{\matwait}[1]{\mathbb{E}\left[#1\right]}
+% \newcommand{\dispersia}[1]{\mathbb{D}\left[#1\right]}
+\fancyhead[L]{ТВиМС—1. Консультация—6 08.11.2024}
+
+\begin{document}
+На этой консультации повторяли материал из \href{https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fc8XCsejPj%2FtKt87zMG2T7%2BKeFtYtnJjbzGHtYx%2B1a05z5eJWZ7rUsYBXdDhpwau2sLK2WbwBkR%2F%2FqfmVHoPilw%3D%3D%3A%2FЛИСТКИ%2FМОДУЛЬ-1%2FЛИСТОК-5%20%5B2024--2025%5D.pdf&name=ЛИСТОК-5%20%5B2024--2025%5D.pdf}{листка №5 из модуля 1}
+
+\definition Пусть задано измеримое пространство $(\Omega,\fk)$. Функция $\xi:\Omega\longrightarrow\mathbb{R}$, $\xi=\xi(\omega)$, $\omega\in\Omega$ называется \textit{измеримой} функцией относительно \s-алгебры $\fk$, если $$\forall c\in\mathbb{R}\ \{\omega\in\Omega:\xi(\omega)>c\}\in\fk$$
+
+Назовем условием измеримости функцию, измеримую относительно \s-алгебры $\fk$, также называемую $\fk$-измеримой функцией или функцией, согласованной с \s-алгеброй $\fk$
+    
+\section*{№3}
+$(\Omega, \fk)$ — измеримое пространство, $\xi:\Omega\rightarrow\mathbb{R}$ — $\fk$-измеримая функция $\forall c\in\mathbb{R}$
+
+Доказать утверждения
+\begin{itemize}
+    \item[\textbf{а)}] $\underbrace{\{\omega\in\Omega:\ \xi(\omega)\geqslant c\}}_{=LHS}=\underbrace{\displaystyle\bigcap_{i=1}^n \left\{\omega\in\Omega:\ \xi(\omega)>c-\frac{1}{n}\right\}\in\fk}_{=RHS}$
+    \begin{itemize}
+        \item $(LHS\subseteq RHS)$: $\omega_0\in LHS\Longrightarrow\xi(\omega)\geqslant c\Longrightarrow\forall n\in\mathbb{N}:  \xi{w_0}>c-\frac{1}{n}\Longrightarrow \omega_0\in RHS$
+        \item $(RHS\subseteq LHS)$: $\omega_0\in RHS\Longrightarrow\forall n\in\mathbb{N}: \xi(\omega_0)>c-\frac{1}{n}\Longrightarrow\xi(\omega_0)\geqslant\lim\limits_{n\mapsto\infty}\left(c-\frac{1}{n}\right)=c\Longrightarrow\omega_0\in LHS$
+    \end{itemize}
+    \item[\textbf{b)}] $\{\omega\in\Omega:\xi(\omega)=c\}=\underbrace{\{\omega\in\Omega:\xi(\omega)\geqslant c\}}_{\in\fk\text{(см.п.а)}}\setminus\underbrace{\{\omega\in\Omega:\xi(\omega)>c\}}_{\in\fk\text{(по опр. $\fk$-изм.ф-и)}}\in\fk$
+    \item[\textbf{c)}] $\{\omega\in\Omega:\xi(\omega)\leqslant c\}=\underbrace{\Omega}_{\in\fk}\setminus\underbrace{\{\omega\in\Omega:\xi(\omega)>c\}}_{\in\fk\text{(по опр. $\fk$-изм.ф-и)}}\in\fk$ 
+    \item[\textbf{d)}] $\{\omega\in\omega:\xi(\omega)<c\}=\underbrace{\{\omega\in\Omega:\xi(\omega)\leqslant c\}}_{\in\fk\text{(см. п.c)}}\setminus\underbrace{\{\omega\in\Omega:\xi(\omega)=c\}}_{\in\fk\text{(см.п.b)}}$
+\end{itemize}
+
+
+\section*{№4}
+$(\Omega,\fk)$ — измеримое пространство, $\xi:\Omega\rightarrow\mathbb{R}$ — $\fk$-измеримая функция
+
+Докажите, что $\xi^2(\omega)$ — $\fk$-измерима
+Рассмотрим два случая
+\begin{itemize}
+    \item $c<0:\ \{\omega\in\Omega:\xi^2(\omega)>c\}=\Omega\in\fk$
+    \item $c\geqslant 0:\ \{\omega\in\Omega:\xi^2(\omega)>c\}=\underbrace{\{\omega\in\Omega:\xi(\omega)<-\sqrt{c}\}}_{\in\fk\text{(см. п.3d)}}\cup\underbrace{\{\omega\in\Omega:\xi(\omega)>\sqrt{c}\}}_{\in\fk\text{(по опр.$\fk$-изм.ф-и)}}\in\fk$
+\end{itemize}
+
+\section*{№5}
+% TODO
+
+\section*{№6}
+
+
+
+\end{document}

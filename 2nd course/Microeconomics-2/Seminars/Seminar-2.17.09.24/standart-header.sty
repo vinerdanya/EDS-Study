@@ -1,0 +1,79 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage[left=25mm, top=20mm, right=25mm, bottom=30mm, nohead, nofoot]{geometry}
+\usepackage{amsmath, amsfonts, amssymb} % математический пакет
+\usepackage {fancybox, fancyhdr}
+\usepackage{python}
+\pagestyle{fancy}
+\fancyhf{}
+\setcounter {page}{1}
+\headsep=10mm
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{tikzsymbols}
+\usetikzlibrary{calc}
+\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\hypersetup{colorlinks=true, allcolors= [RGB]{010 090 200}} % цвет ссылок
+\usepackage {setspace}
+% \usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\usepackage{ dsfont }
+\usepackage{array}
+\setcounter{MaxMatrixCols}{20}
+\usepackage{mathbbol}
+% \usepackage{minted} 
+\usepackage{enumerate}
+\usepackage{listings}
+% \usepackage{breqn}
+\usepackage{indentfirst}
+\usepackage{soul}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+% «»
+
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
+}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
+\newcommand{\e}{\mathbbl{e}}
+\newcommand{\fb}{\mathbbl{f}}
+\newcommand{\m}[1]{\mathbf{#1}}
+\newcommand{\qed}{\hfill$\square$}
+\newcommand{\dfs}{\textbf{DFS }}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\vphi}{\varphi}
+\newcommand{\mat}{\text{Mat}}
+\newcommand{\rk}{\text{rk }}
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+
+\makeatletter
+\newcommand\xleftrightarrow[2][]{%
+  \ext@arrow 9999{\longleftrightarrowfill@}{#1}{#2}}
+\newcommand\longleftrightarrowfill@{%
+  \arrowfill@\leftarrow\relbar\rightarrow}
+\makeatother

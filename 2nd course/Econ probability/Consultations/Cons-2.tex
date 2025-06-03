@@ -1,0 +1,45 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{standart-header}
+\fancyhead[R]{Винер Даниил. БЭАД232}
+\fancyfoot [C] {\thepage}
+\setlength{\parindent}{15pt}
+\setlength{\parskip}{2mm}
+\newcommand{\orr}{\text{ or }}
+\newcommand{\andd}{\text{ and }}
+\newcommand{\definition}{\textbf{Определение. }}
+\newcommand{\state}{\textbf{Утверждение. }}
+\newcommand{\comment}{\textbf{Замечание. }}
+\newcommand{\prob}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\matwait}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\dispersia}[1]{\mathbb{D}\left[#1\right]}
+\fancyhead[L]{ТВиМС—1. Консультация—2 по минимуму 20.09.2024}
+
+\begin{document}
+\section*{№5}
+\section*{№6}
+\section*{№7}
+$X\sim\text{Bi}(n=4,p=\frac{3}{4})$. Напомним, что $\prob{X=k}=C_4^k (\frac{3}{4})^k(\frac{1}{4})^{4-k}$
+\begin{itemize}
+    \item[\textbf{a)}] $\prob{X=0}=C_4^0 \left(\displaystyle\frac{3}{4}\right)^0\left(\displaystyle\frac{1}{4}\right)^{4}=\left(\displaystyle\frac{1}{4}\right)^4$
+    \item[\textbf{б)}] $\prob{X>0}=1-\prob{X=0}=1-\left(\displaystyle\frac{1}{4}\right)^4$
+    \item[\textbf{в)}] $\prob{X<0}=0$, так как количество успехов в биномиальном распределении $\geqslant0$
+    \item[\textbf{г)}] $\matwait{X}=n\cdot p=4\cdot\frac{3}{4}=3$
+    \item[\textbf{д)}] $\dispersia{X}=np(1-p)=\frac{3}{4}$
+    \item[\textbf{е)}] Нужно посчитать наиболее вероятную величину. Всего есть 5 значений — 5 возможных успешных исходов
+    
+    $\prob{X=0}=\left(\displaystyle\frac{1}{4}\right)^4$
+    
+    $\prob{X=1}=C_4^1\cdot\displaystyle\frac{3}{4}\cdot\left(\frac{1}{4}\right)^3$
+
+    $\prob{X=2}=C_4^2\cdot\displaystyle\left(\frac{3}{4}\right)^2\cdot\left(\frac{1}{4}\right)^2$
+
+    $\prob{X=3}=C_4^3\cdot\displaystyle\left(\frac{3}{4}\right)^3\cdot\left(\frac{1}{4}\right)^1$
+
+    $\prob{X=4}=C_4^4\cdot\displaystyle\left(\frac{3}{4}\right)^4\cdot\left(\frac{1}{4}\right)^0$
+
+\end{itemize}
+
+
+
+
+\end{document}
