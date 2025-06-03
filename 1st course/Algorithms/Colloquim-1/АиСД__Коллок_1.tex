@@ -1,79 +1,17 @@
 \documentclass[a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
-\usepackage[english, russian]{babel}
-\usepackage[left=25mm, top=20mm, right=25mm, bottom=30mm, nohead, nofoot]{geometry}
-\usepackage{amsmath, amsfonts, amssymb} % математический пакет
-\usepackage {fancybox, fancyhdr}
-\usepackage{python}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[R]{Винер Даниил. БЭАД232}
-\fancyfoot [R] {\thepage}
-\setlength{\footskip}{12.0pt}
-% \setlength{\headheight}{12.0pt}
-\fancyhead[L]{АиСД. ЭАД ФКН—ФЭН ВШЭ}
-\setcounter {page}{1}
-\headsep=10mm
-\usepackage{xcolor}
-\usepackage{cancel}
-\usepackage{ulem}
-\usepackage{hyperref}
-\usepackage{epigraph}
-\hypersetup{colorlinks=true, allcolors= [RGB]{010 090 200}} % цвет ссылок
-\usepackage {setspace}
-\usepackage[pdftex]{graphicx}
-\usepackage{ dsfont }
-\usepackage{array}
-\setcounter{MaxMatrixCols}{20}
-\usepackage{mathbbol}
-\usepackage{minted}
-\usepackage{enumerate}
-\usepackage{listings}
-\usepackage{indentfirst}
-\usepackage{color}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\lstset{frame=tb,
-  language=C++,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-% «»
-
-\DeclareRobustCommand{\divby}{%
-  \mathrel{\text{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}}%
-}
-\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
-\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
-\newcommand{\e}{\mathbbl{e}}
-\newcommand{\dfs}{\textbf{DFS }}
-\definecolor{codegray}{gray}{0.9}
-\newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+\usepackage{header}
 \begin{document}
-\section*{\LARGE{Алгоритмы и структуры данных. Коллоквиум}}
-\begin{flushright}
-    \textit{Основано на лекциях и тренировках}\\ 
-    \textit{по алгоритмам Михаила Густокашина}
-\end{flushright}
+\title{\LARGE{Алгоритмы и структуры данных-1}\\ Коллоквиум}
+\author{Винер Даниил \href{https://t.me/danya_vin}{@danya\_vin}}
+\date{Версия от \today}
+\maketitle
 \tableofcontents
 \newpage
 \section{Способы задания графов}
 \subsection{Матрица смежности}
 \textbf{Матрица смежности} — матрица графа $G=(V,E)$ размера $V\times V$, такая что на пересечении $i-$ой строки и $j-$ого столбца стоит 1, если есть ребро между вершинами $i$ и $j$, и 0 — если иначе\\[2mm]
-\indent\textbf{Сложность построения} — $O(V^2)$
+\indentЕсли нужно узнать, есть ли ребро между \(i\) и \(j\), достаточно обратиться к \(A[i][j]\) — $O(1)$\\[2mm]
+\indent\textbf{Затраты по памяти} — $O(V^2)$, так как храним матрицу размера $V\times V$
 
 \subsection{Список смежности}
 \textbf{Список смежности} — массив, в котором каждой вершине графа соответствует список, состоящий из соседей этой вершины\\[2mm]
