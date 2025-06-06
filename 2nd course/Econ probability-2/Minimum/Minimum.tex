@@ -515,7 +515,7 @@ $T=\displaystyle\frac{\overline{X}-p}{\sqrt{\frac{\overline{X}(1-\overline{X})}{
 
 Известно, что
 $$
-T=\frac{\bar{X}-\bar{Y}-\left(\mu_{X}-\mu_{Y}\right)}{\sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}} \sim N(0,1) .
+T=\frac{\overline{X}-\overline{Y}-\left(\mu_{X}-\mu_{Y}\right)}{\sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}} \sim N(0,1) .
 $$
 
 Обозначим через $z_{\alpha / 2}$ и $z_{1-\alpha / 2}$ квантили стандартного нормального распределения уровней $\alpha / 2$ и $1-\alpha / 2$ соответственно. Тогда $\mathbb{P}\left(\left\{z_{\alpha / 2} \leqslant T \leqslant z_{1-\alpha / 2}\right\}\right)=\alpha$
@@ -523,14 +523,14 @@ $$
 Далее, имеем
 \begin{equation*}
     \begin{aligned}
-        z_{\alpha / 2} \leqslant T \leqslant z_{1-\alpha / 2}&\Longleftrightarrow z_{\alpha / 2} \leqslant \frac{\bar{X}-\bar{Y}-\left(\mu_{X}-\mu_{Y}\right)}{\sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}} \leqslant z_{1-\alpha / 2}\\
-        &\Longleftrightarrow z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant \bar{X}-\bar{Y}-\left(\mu_{X}-\mu_{Y}\right) \leqslant z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\\
-        &\Longleftrightarrow -(\bar{X}-\bar{Y})+z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant-\left(\mu_{X}-\mu_{Y}\right) \leqslant-(\bar{X}-\bar{Y})+z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\\
-        &\Longleftrightarrow \bar{X}-\bar{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant \mu_{X}-\mu_{Y} \leqslant \bar{X}-\bar{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}
+        z_{\alpha / 2} \leqslant T \leqslant z_{1-\alpha / 2}&\Longleftrightarrow z_{\alpha / 2} \leqslant \frac{\overline{X}-\overline{Y}-\left(\mu_{X}-\mu_{Y}\right)}{\sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}} \leqslant z_{1-\alpha / 2}\\
+        &\Longleftrightarrow z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant \overline{X}-\overline{Y}-\left(\mu_{X}-\mu_{Y}\right) \leqslant z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\\
+        &\Longleftrightarrow -(\overline{X}-\overline{Y})+z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant-\left(\mu_{X}-\mu_{Y}\right) \leqslant-(\overline{X}-\overline{Y})+z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\\
+        &\Longleftrightarrow \overline{X}-\overline{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant \mu_{X}-\mu_{Y} \leqslant \overline{X}-\overline{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}
     \end{aligned}
 \end{equation*}
 
-Следовательно, вероятности событий $\left\{z_{\alpha / 2} \leqslant T \leqslant z_{1-\alpha / 2}\right\}$ и $$\left\{\bar{X}-\bar{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant \mu_{X}-\mu_{Y} \leqslant \bar{X}-\bar{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\right\}$$ совпадают и равны $\alpha=0.95$, а значит, $\left[\bar{X}-\bar{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} ; \quad \bar{X}-\bar{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\right]$ — искомый доверительный интервал, т.е. $T_{1}(X, Y)=\bar{X}-\bar{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}$ и $T_{2}(X, Y)=\bar{X}-\bar{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}$
+Следовательно, вероятности событий $\left\{z_{\alpha / 2} \leqslant T \leqslant z_{1-\alpha / 2}\right\}$ и $$\left\{\overline{X}-\overline{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}} \leqslant \mu_{X}-\mu_{Y} \leqslant \overline{X}-\overline{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\right\}$$ совпадают и равны $\alpha=0.95$, а значит, $\left[\overline{X}-\overline{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}};\ \overline{X}-\overline{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\right]$ — искомый доверительный интервал, т.е. $T_{1}(X, Y)=\overline{X}-\overline{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}$ и $T_{2}(X, Y)=\overline{X}-\overline{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}$
 
 Рассчитаем теперь границы доверительного интервала $\left[T_{1}(X, Y) ; T_{2}(X, Y)\right]$, используя реализации случайных выборок. Имеем:
 \begin{equation*}
@@ -542,8 +542,8 @@ $$
 Тогда
 \begin{equation*}
     \begin{aligned}
-        T_{1}(x, y)&=\bar{X}-\bar{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}=(-1.59+2.6)-1.96\cdot\sqrt{\frac{2}{3}+\frac{1}{2}}\approx-1.1\\
-        T_{2}(x, y)&=\bar{X}-\bar{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}=(-1.59+2.6)+1.96\cdot\sqrt{\frac{2}{3}+\frac{1}{2}}\approx3.12
+        T_{1}(x, y)&=\overline{X}-\overline{Y}-z_{1-\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}=(-1.59+2.6)-1.96\cdot\sqrt{\frac{2}{3}+\frac{1}{2}}\approx-1.1\\
+        T_{2}(x, y)&=\overline{X}-\overline{Y}-z_{\alpha / 2} \sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}=(-1.59+2.6)+1.96\cdot\sqrt{\frac{2}{3}+\frac{1}{2}}\approx3.12
     \end{aligned}
 \end{equation*}
 Получается, что ответ — $[-1.1;3.12]$
@@ -558,43 +558,86 @@ $$
 \end{equation*}
 постройте $95 \%$-й доверительный интервал для разности математических ожиданий $\mu_{X}-\mu_{Y}$
 
-Уровень доверия — $0.95=1-\alpha\Longrightarrow\alpha=0.05$ — уровень значимости. Для выборки из нормального распределения с неизвестными, но равными дисперсиями доверительный интревал имеет вид:
+Положим $\gamma=0.95$ и $\alpha=1-\gamma=0.05$. Требуется найти такие две функции $T_{1}(X, Y)$ и $T_{2}(X, Y)$ от случайных выборок $X=\left(X_{1}, \ldots, X_{n}\right)$ и $Y=\left(Y_{1}, \ldots, Y_{m}\right)$, что
 \begin{equation*}
-    \overline{X}-\overline{Y}-t_{n+m-2;1-\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n}+\frac{1}{m}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+t_{n+m-2;1-\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n}+\frac{1}{m}},
+    \forall \mu_{X} \in \mathbb{R} \forall \mu_{Y} \in \mathbb{R} \forall \sigma_{X}^{2}>0, \sigma_{Y}^{2}>0, \sigma_{X}^{2}=\sigma_{Y}^{2}: \mathbb{P}\left(\left\{T_{1}(X, Y) \leq \mu_{X}-\mu_{Y} \leq T_{2}(X, Y)\right\}\right)=\gamma
 \end{equation*}
-где 
-\begin{equation*}
-    \widehat{\sigma^2_0}=\frac{\sum_{i=1}^{n}\left(X_i-\overline{X}\right)^2+\sum_{i=1}^{m}\left(Y_i-\overline{Y}\right)^2}{n+m-2}
-\end{equation*}
-Выпишем альтернативный вариант доверительного интервала и работать будем с этим вариантом:
-\begin{equation*}
-    (\overline{X}-\overline{Y})\mp t_{n+m-2,1-\alpha / 2} \sqrt{\left(\frac{n+m}{n m}\right)\left(\frac{(n-1) \hat{\sigma}_X^2+(m-1) \hat{\sigma}_Y^2}{n+m-2}\right)}
-\end{equation*}
-% При этом, $\widehat{\sigma}_X^2=\widehat{\sigma}_Y^2=\widehat{\sigma}_0^2$
+Другими словами, нужно найти такой интервал $\left[T_{1}(X, Y) ; T_{2}(X, Y)\right]$, который с заданным уровнем доверия (надежности) $\gamma=0.95$ накрывает разность математических ожиданий $\mu_{X}-\mu_{Y}$ при любых возможных значениях параметров $\mu_{X}$ и $\mu_{Y}$, а также любых значениях дисперсий $\sigma_{X}^{2}>0$ и $\sigma_{X}^{2}>0$, удовлетворяющих соотношению $\sigma_{X}^{2}=\sigma_{Y}^{2}$.
 
-Найдем выборочные средние:
+Известно, что
 \begin{equation*}
-    \begin{aligned}
-        \overline{X}&=\frac{1.53+2.83-1.25}{3}=\frac{3.11}{3}\\
-        \overline{Y}&=\frac{-0.8+0.06}{2}=-0.37
-    \end{aligned}
+    T=\frac{\bar{X}-\bar{Y}-\left(\mu_{X}-\mu_{Y}\right)}{\sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{n-1}{n+m-2} \widehat{\sigma_{X}^{2}}+\frac{m-1}{n+m-2} \widehat{\sigma_{Y}^{2}}\right)}} \sim t(n+m-2),
 \end{equation*}
-Вычилим выборочные дисперсии:
+где $\widehat{\sigma_{X}^{2}}=\frac{1}{n-1} \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}, \widehat{\sigma_{Y}^{2}}=\frac{1}{m-1} \sum_{j=1}^{m}\left(Y_{j}-\bar{Y}\right)^{2}$.
 
+
+Обозначим через $t_{n+m-2, \alpha / 2}$ и $t_{n+m-2,1-\alpha / 2}$ квантили $t$-распределения с $n+m-2$ степенями свободы уровней $\alpha / 2$ и $1-\alpha / 2$ соответственно. Тогда $\mathbb{P}\left(\left\{t_{n+m-2, \alpha / 2} \leq T \leq t_{n+m-2,1-\alpha / 2}\right\}\right)=\gamma$
+
+Далее, имеем 
 \begin{equation*}
     \begin{aligned}
-        \widehat{\sigma}^2_X&=\frac{(1.53-\frac{3.11}{3})^2+(2.83-\frac{3.11}{3})^2+(-1.25-\frac{3.11}{3})^2}{2}\approx4.34413\\
-        \widehat{\sigma}^2_Y&=\frac{(-0.8+0.37)^2+(0.06+0.37)^2}{1}=0.3698
+        t_{n+m-2, \alpha / 2} \leq T \leq t_{n+m-2,1-\alpha / 2}&\Longleftrightarrow t_{n+m-2, \alpha / 2} \leq \frac{\bar{X}-\bar{Y}-\left(\mu_{X}-\mu_{Y}\right)}{\sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{n-1}{n+m-2} \widehat{\sigma_{X}^{2}}+\frac{m-1}{n+m-2} \widehat{\sigma_{Y}^{2}}\right)}} \leq t_{n+m-2,1-\alpha / 2}\\
+        &\text{пусть }B=\sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{n-1}{n+m-2} \widehat{\sigma_{X}^{2}}+\frac{m-1}{n+m-2} \widehat{\sigma_{Y}^{2}}\right)}\\
+        &\Longleftrightarrow t_{n+m-2, \alpha / 2} B \leq \bar{X}-\bar{Y}-\left(\mu_{X}-\mu_{Y}\right) \leq t_{n+m-2,1-\alpha / 2} B\\
+        &\Longleftrightarrow -(\bar{X}-\bar{Y})+t_{n+m-2, \alpha / 2} B \leq-\left(\mu_{X}-\mu_{Y}\right) \leq-(\bar{X}-\bar{Y})+t_{n+m-2,1-\alpha / 2} B\\
+        &\Longleftrightarrow \bar{X}-\bar{Y}-t_{n+m-2,1-\alpha / 2} B \leq \mu_{X}-\mu_{Y} \leq \bar{X}-\bar{Y}-t_{n+m-2, \alpha / 2} B
     \end{aligned}
 \end{equation*}
-Тогда, доверительный интервал имеет вид:
+Следовательно, вероятности событий $\left\{t_{n+m-2, \alpha / 2} \leq T \leq t_{n+m-2,1-\alpha / 2}\right\}$ и
+\begin{equation*}
+    \left\{\bar{X}-\bar{Y}-t_{n+m-2,1-\alpha / 2} B \leq \mu_{X}-\mu_{Y} \leq \bar{X}-\bar{Y}-t_{n+m-2, \alpha / 2} B\right\}
+\end{equation*}
+совпадают и равны $\gamma=0.95$, а значит,
+\begin{equation*}
+    \left[\bar{X}-\bar{Y}-t_{n+m-2,1-\alpha / 2} B; \bar{X}-\bar{Y}-t_{n+m-2, \alpha / 2} B\right]
+\end{equation*}
+- искомый доверительный интервал, т. е.
 \begin{equation*}
     \begin{aligned}
-        \left(\frac{3.11}{3}+0.37\right)- t_{3,0.975} \sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}&<\mu_X-\mu_Y<\left(\frac{3.11}{3}+0.37\right)+ t_{3,0.975} \sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}\\
-        \frac{21.1}{15}-3.182\cdot\sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}&<\mu_X-\mu_Y<\frac{21.1}{15}+3.182\cdot\sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}\\
-        -3.64072&<\mu_X-\mu_Y<6.45405
+        T_{1}(X, Y)&=\bar{X}-\bar{Y}-t_{n+m-2,1-\alpha / 2} \sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{n-1}{n+m-2} \widehat{\sigma_{X}^{2}}+\frac{m-1}{n+m-2} \widehat{\sigma_{Y}^{2}}\right)}\\
+        T_{2}(X, Y)&=\bar{X}-\bar{Y}-t_{n+m-2, \alpha / 2} \sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{n-1}{n+m-2} \widehat{\sigma_{X}^{2}}+\frac{m-1}{n+m-2} \widehat{\sigma_{Y}^{2}}\right)}
     \end{aligned}
 \end{equation*}
+
+Рассчитаем теперь границы доверительного интервала $\left[T_{1}(X, Y); T_{2}(X, Y)\right]$, используя реализации случайных выборок. Имеем:
+
+% Уровень доверия — $0.95=1-\alpha\Longrightarrow\alpha=0.05$ — уровень значимости. Для выборки из нормального распределения с неизвестными, но равными дисперсиями доверительный интревал имеет вид:
+% \begin{equation*}
+%     \overline{X}-\overline{Y}-t_{n+m-2;1-\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n}+\frac{1}{m}}<\mu_X-\mu_Y<\overline{X}-\overline{Y}+t_{n+m-2;1-\alpha/2}\widehat{\sigma_0}\sqrt{\frac{1}{n}+\frac{1}{m}},
+% \end{equation*}
+% где 
+% \begin{equation*}
+%     \widehat{\sigma^2_0}=\frac{\sum_{i=1}^{n}\left(X_i-\overline{X}\right)^2+\sum_{i=1}^{m}\left(Y_i-\overline{Y}\right)^2}{n+m-2}
+% \end{equation*}
+% Выпишем альтернативный вариант доверительного интервала и работать будем с этим вариантом:
+% \begin{equation*}
+%     (\overline{X}-\overline{Y})\mp t_{n+m-2,1-\alpha / 2} \sqrt{\left(\frac{n+m}{n m}\right)\left(\frac{(n-1) \hat{\sigma}_X^2+(m-1) \hat{\sigma}_Y^2}{n+m-2}\right)}
+% \end{equation*}
+% % При этом, $\widehat{\sigma}_X^2=\widehat{\sigma}_Y^2=\widehat{\sigma}_0^2$
+
+% Найдем выборочные средние:
+% \begin{equation*}
+%     \begin{aligned}
+%         \overline{X}&=\frac{1.53+2.83-1.25}{3}=\frac{3.11}{3}\\
+%         \overline{Y}&=\frac{-0.8+0.06}{2}=-0.37
+%     \end{aligned}
+% \end{equation*}
+% Вычилим выборочные дисперсии:
+
+% \begin{equation*}
+%     \begin{aligned}
+%         \widehat{\sigma}^2_X&=\frac{(1.53-\frac{3.11}{3})^2+(2.83-\frac{3.11}{3})^2+(-1.25-\frac{3.11}{3})^2}{2}\approx4.34413\\
+%         \widehat{\sigma}^2_Y&=\frac{(-0.8+0.37)^2+(0.06+0.37)^2}{1}=0.3698
+%     \end{aligned}
+% \end{equation*}
+% Тогда, доверительный интервал имеет вид:
+% \begin{equation*}
+%     \begin{aligned}
+%         \left(\frac{3.11}{3}+0.37\right)- t_{3,0.975} \sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}&<\mu_X-\mu_Y<\left(\frac{3.11}{3}+0.37\right)+ t_{3,0.975} \sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}\\
+%         \frac{21.1}{15}-3.182\cdot\sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}&<\mu_X-\mu_Y<\frac{21.1}{15}+3.182\cdot\sqrt{\frac{5}{6}\cdot\frac{2\cdot4.34413+1\cdot 0.3698}{3}}\\
+%         -3.64072&<\mu_X-\mu_Y<6.45405
+%     \end{aligned}
+% \end{equation*}
 
 \subsection{Пусть $X_{1}, \ldots, X_{n}$ — случайная выборка из распределения Бернулли с параметром $p$}
 Используя реализацию случайной выборки $X_{1}, \ldots, X_{n}$, в которой 55 нулей и 45 единиц, постройте приближенный $95 \%$-й доверительный интервал для неизвестного параметра $p$
